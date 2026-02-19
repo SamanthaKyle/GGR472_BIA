@@ -49,5 +49,6 @@ def get_route_stats(G, route_nodes):
 # nodes, edges = ox.convert.graph_to_gdfs(G)
 # print(edges.head(10))
 
-#Uncomment this code below to save the new edges file with the stored elevation data.
-#edges.to_file('walking_network_edges_elevation.geojson', driver='GeoJSON')
+#Uncomment this code below to save the new edges file with the stored elevation data. Done outside of a folder originally
+#in JupyterHub, but saved to emmett_data in files afterward.
+#edges.to_file('emmett_data/walking_network_edges_elevation.geojson', driver='GeoJSON')
