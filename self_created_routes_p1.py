@@ -1,0 +1,64 @@
+import osmnx as ox
+import networkx as nx
+import geopandas as gpd
+import gpxpy
+
+# Load your graph
+place = 'The Beaches, Toronto, Ontario, Canada'
+G = ox.graph.graph_from_place(place, network_type='walk')
+
+#Parse the GPX file for the Kew Gardens Route.
+with open("emmett_data/routes/Walk_through_kew_Gardens.gpx", "r") as f:
+    gpx_kg = gpxpy.parse(f)
+    
+#Parse the GPX file for the Ivan Forrest / Glen Stewart Ravine Route.
+with open("emmett_data/routes/Glen_Stewart_and_Ivan_Forest_Garden_route.gpx", "r") as f:
+    gpx_ifgsr = gpxpy.parse(f)
+
+#Extract coordinates from the GPX track for Kew Gardens and then Ivan Forrest / Glen Stewart Ravine Routes.
+waypoints_kg = []
+for track in gpx_kg.tracks:
+    for segment in track.segments:
+        for point in segment.points:
+            waypoints_kg.append((point.latitude, point.longitude))
+            
+waypoints_ifgsr = []
+for track in gpx_ifgsr.tracks:
+    for segment in track.segments:
+        for point in segment.points:
+            waypoints_ifgsr.append((point.latitude, point.longitude))
+
+print(f"Total GPS points recorded: {len(waypoints_kg)}")           
+print(f"Total GPS points recorded: {len(waypoints_ifgsr)}")
+
+#Snap every GPS coordinate to its' nearest node.
+snapped_nodes_kg = [ox.distance.nearest_nodes(G, lon, lat) for lat, lon in waypoints_kg]
+snapped_nodes_ifgsr = [ox.distance.nearest_nodes(G, lon, lat) for lat, lon in waypoints_ifgsr]
+
+#Remove consecutive duplicates (common when GPS points are very close together) for both routes.
+deduplicated_nodes_kg = [snapped_nodes_kg[0]]
+for node in snapped_nodes_kg[1:]:
+    if node != deduplicated_nodes_kg[-1]:
+        deduplicated_nodes_kg.append(node)
+
+print(f"Unique snapped nodes: {len(deduplicated_nodes_kg)}")
+
+# Remove consecutive duplicates (common when GPS points are very close together)
+deduplicated_nodes_ifgsr = [snapped_nodes_ifgsr[0]]
+for node in snapped_nodes_ifgsr[1:]:
+    if node != deduplicated_nodes_ifgsr[-1]:
+        deduplicated_nodes_ifgsr.append(node)
+
+print(f"Unique snapped nodes: {len(deduplicated_nodes_ifgsr)}")
+
+#Uncomment the code below to print the coordinates of the deduplicated nodes. Then, use geojson.io
+#to parse the coordinates, getting rid of anything unnessecary.
+# for node in deduplicated_nodes_kg:
+#     data = G.nodes[node]
+#     print(f"Node {node}: lat={data['y']}, lon={data['x']}")
+    
+#Uncomment the code below to print the coordinates of the deduplicated nodes. Then, use geojson.io
+#to parse the coordinates, getting rid of anything unnessecary.
+# for node in deduplicated_nodes_ifgsr:
+#     data = G.nodes[node]
+#     print(f"Node {node}: lat={data['y']}, lon={data['x']}")
