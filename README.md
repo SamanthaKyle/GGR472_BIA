@@ -13,3 +13,9 @@ BIA project code library
 - Added python files to show cleaning work: beaches_businesses.py, get_aziza_geojsons.py, greenp_bikeshare_cleaning.py, inaturalist_cleaning.py
 - Added walking netowrk edges updated in emmett_data with grades and weights to add route weight that favours Queen street east, and elevation for route difficulty (work shown in integrating_DEM_to_network.py)
 - Created 2 Nature-based trails and made them into GeoJSONs after cleaning in GeoJSON.io (as shown in self_created_routes_p1.py and self_created_routes_p2.py)
+
+## Juliette:
+
+- Sorted out Mapbox geocoding options for Beaches businesses
+- Sorted out which aspects of project will need APIs: routing, iNaturalist, weather data, water quality, strava, and google maps all do not need API keys; business hours will if using Google Places.
+- Sourced out potential servers for 'Message in a Bottle" idea
