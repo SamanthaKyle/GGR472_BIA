@@ -178,3 +178,21 @@ import geopandas as gpd
 #]
 #gdf_WF_cleaned = gdf_WF[important_cols]
 #gdf_WF_cleaned.to_file("emmett_data/aziza_geojsons_cleaned/waterfountains.geojson", driver="GeoJSON")
+
+#Import shapefile for neighbourhood outline and save as a GeoJSON.
+#gdf_NO = gpd.read_file("emmett_data/aziza_shapefiles_raw/neighbourhood_outline/neighbourhood_outline.shp", encoding="cp1252")
+#gdf_NO = gdf_NO.to_crs("EPSG:4326")
+#important_cols = [
+#   "_id1",
+#   "AREA_NA7",
+#   "Shape_Leng",
+#   "Shape_Area",
+#   "geometry",
+#]
+#gdf_NO_sub = gdf_NO[important_cols]
+#new_names = {
+#    "_id1": "id",
+#    "AREA_NA7": "Name",
+#}
+#gdf_NO_cleaned = gdf_NO_sub.rename(columns=new_names)
+#gdf_NO_cleaned.to_file("emmett_data/aziza_geojsons_cleaned/neighbourhood.geojson", driver="GeoJSON")

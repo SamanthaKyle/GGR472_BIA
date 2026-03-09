@@ -22,19 +22,26 @@ map.addControl(new mapboxgl.NavigationControl());
 
 
 map.on('load', () => {
-
     // Add datasource from GeoJSON
-    map.addSource('toronto-mus', {
+    map.addSource('beaches-outline', {
         type: 'geojson',
         data: 'https://raw.githubusercontent.com/smith-lg/ggr472-wk6-demo/main/data/torontomusicvenues.geojson'
         //'https://smith-lg.github.io/ggr472-wk6-demo/data/torontomusicvenues.geojson'
     });
+    
 
-    map.addSource('features', {
-        type: 'geojson',
-        data: 'https://github.com/SamanthaKyle/GGR472_BIA/blob/0d7d3a5f54dd2ad460fb1beedd79999331bf173c/data/Beaches_places_features_osmnx.geojson'
-        //'https://smith-lg.github.io/ggr472-wk6-demo/data/torontomusicvenues.geojson'
-    });
+    // // Add datasource from GeoJSON
+    // map.addSource('toronto-mus', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/smith-lg/ggr472-wk6-demo/main/data/torontomusicvenues.geojson'
+    //     //'https://smith-lg.github.io/ggr472-wk6-demo/data/torontomusicvenues.geojson'
+    // });
+
+    // map.addSource('features', {
+    //     type: 'geojson',
+    //     data: 'https://github.com/SamanthaKyle/GGR472_BIA/blob/0d7d3a5f54dd2ad460fb1beedd79999331bf173c/data/Beaches_places_features_osmnx.geojson'
+    //     //'https://smith-lg.github.io/ggr472-wk6-demo/data/torontomusicvenues.geojson'
+    // });
 
     // map.addSource('toronto-mus', {
     //     type: 'geojson',
