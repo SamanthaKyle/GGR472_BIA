@@ -4,3 +4,31 @@
     bottom: 0;
     width: 100%;
 }
+
+.map-search-container {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    top: 0;
+    right: 0;
+    width: 260px;
+    margin: 10px 10px 0 0;
+    padding: 10px;
+    border-radius: 8px;
+    overflow: visible;
+}
+
+.mapboxgl-ctrl-top-right {
+    top: 160px; 
+    right: 10px;
+}
+
+.geocoder {
+    position: relative;
+    margin: 10px 0 10px;
+}
+
+#returnbutton {
+    position: relative;
+    margin: 10px 0 10px;
+    width: 100%;
+}

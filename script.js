@@ -13,41 +13,63 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic2FtLWt5bGUiLCJhIjoiY21rZTR3NW82MDNjazNscHdvZ
 const map = new mapboxgl.Map({
     container: 'my-map', //container id in HTML
     style: 'mapbox://styles/mapbox/dark-v11',  //stylesheet location
-    center: [-79.39, 43.65],  // starting point, longitude/latitude 43.652652, -79.393014
-    zoom: 12 // starting zoom level
+    center: [-79.305089, 43.670681],  // starting point, longitude/latitude 43.652652, -79.393014
+    zoom: 14 // starting zoom level
 });
 
-// Add zoom and rotation controls to the map.
-map.addControl(new mapboxgl.NavigationControl());
+/*--------------------------------------------------------------------
+ADD CONTROLS, INTERACTIVITY, AND GEOCODER
+--------------------------------------------------------------------*/
 
+// Add navigation and fullscreen controls to the map.
+map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
+
+// Add geocoder control to the map, which allows users to search for locations in the GTA
+const geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl,
+    region: "Ontario",
+    placeholder: 'Search for a location in GTA',
+    bbox: [-79.6393, 43.5810, -79.1158, 43.8554]
+});
+
+// Append geocoder to the geocoder-container div in HTML
+document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+
+// Add event listener which returns map view to full screen on button click using flyTo method
+document.getElementById('returnbutton').addEventListener('click', () => {
+    map.flyTo({
+        center: [-79.305089, 43.670681],
+        zoom: 14,
+        essential: true
+    });
+});
+
+/*--------------------------------------------------------------------
+LOAD GEOJSON DATA AND ADD LAYERS TO MAP
+--------------------------------------------------------------------*/
 
 map.on('load', () => {
     // Add datasource from GeoJSON
-    map.addSource('beaches-outline', {
+    map.addSource('beaches-poly', {
         type: 'geojson',
-        data: 'https://raw.githubusercontent.com/smith-lg/ggr472-wk6-demo/main/data/torontomusicvenues.geojson'
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/aziza_geojsons_cleaned/neighbourhood.geojson'
         //'https://smith-lg.github.io/ggr472-wk6-demo/data/torontomusicvenues.geojson'
     });
-    
 
-    // // Add datasource from GeoJSON
-    // map.addSource('toronto-mus', {
-    //     type: 'geojson',
-    //     data: 'https://raw.githubusercontent.com/smith-lg/ggr472-wk6-demo/main/data/torontomusicvenues.geojson'
-    //     //'https://smith-lg.github.io/ggr472-wk6-demo/data/torontomusicvenues.geojson'
-    // });
+    map.addLayer({
+        'id': 'beaches-outline',
+        'type': 'line',
+        'source': 'beaches-poly',
+        'paint': {
+            'line-color': '#ffffff',
+            'fill-color': '#ffffff',
+            'fill-opacity': 0.8,
+            'line-width': 0.5
+        }
+    });
 
-    // map.addSource('features', {
-    //     type: 'geojson',
-    //     data: 'https://github.com/SamanthaKyle/GGR472_BIA/blob/0d7d3a5f54dd2ad460fb1beedd79999331bf173c/data/Beaches_places_features_osmnx.geojson'
-    //     //'https://smith-lg.github.io/ggr472-wk6-demo/data/torontomusicvenues.geojson'
-    // });
-
-    // map.addSource('toronto-mus', {
-    //     type: 'geojson',
-    //     data: 'https://raw.githubusercontent.com/smith-lg/ggr472-wk6-demo/main/data/torontomusicvenues.geojson'
-    //     //'https://smith-lg.github.io/ggr472-wk6-demo/data/torontomusicvenues.geojson'
-    // });
 
     // Draw GeoJSON points
     // map.addLayer({
@@ -90,20 +112,20 @@ map.on('load', () => {
     //     }
     // });
 
-    map.addLayer({
-        'id': 'feature_labels',
-        'type': 'symbol',
-        'source': 'features',
-        // 'layout': {
-        //     'text-field': ['get', 'name'],
-        //     'text-variable-anchor': ['bottom'],
-        //     'text-radial-offset': 0.5,
-        //     'text-justify': 'auto'
-        // },
-        // 'paint': {
-        //     'text-color': 'blue'
-        // }
-    });
+    // map.addLayer({
+    //     'id': 'feature_labels',
+    //     'type': 'symbol',
+    //     'source': 'features',
+    //     // 'layout': {
+    //     //     'text-field': ['get', 'name'],
+    //     //     'text-variable-anchor': ['bottom'],
+    //     //     'text-radial-offset': 0.5,
+    //     //     'text-justify': 'auto'
+    //     // },
+    //     // 'paint': {
+    //     //     'text-color': 'blue'
+    //     // }
+    // });
 
 });
 

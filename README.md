@@ -19,3 +19,9 @@ BIA project code library
 - Sorted out Mapbox geocoding options for Beaches businesses
 - Sorted out which aspects of project will need APIs: routing, iNaturalist, weather data, water quality, strava, and google maps all do not need API keys; business hours will if using Google Places.
 - Sourced out potential servers for 'Message in a Bottle" idea
+
+
+# Tool and Website Building Updates:
+
+## Emmett:
+- Mar 9: Added in Neighbourhood GeoJSON onto map as outline, search box and return to full extent, re-oriented map controls, changed center of map
