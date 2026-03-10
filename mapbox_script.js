@@ -223,7 +223,7 @@ map.on('load', () => {
 
     });
 
-    // Benches - visible on high zoom - present in legend
+    // Benches - visible on extra high zoom - present in legend
 
     map.addSource('benches-data', {
         type: 'geojson',
@@ -258,6 +258,8 @@ map.on('load', () => {
         }
     );
 
+    // Bike Rings - visible on extra high zoom - present in legend
+
     map.addSource('bike-ring-data', {
         type: 'geojson',
         data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/aziza_geojsons_cleaned/bike_rings.geojson'
@@ -279,7 +281,7 @@ map.on('load', () => {
                 'layout': {
                     'icon-allow-overlap': true,
                     'icon-image': 'cat', // reference the image
-                    'icon-size': 0.05
+                    'icon-size': class2_size
                 },
                 'paint': {
                     'icon-color': 'grey',
@@ -290,6 +292,43 @@ map.on('load', () => {
             });
         }
     );
+
+    // Public Washrooms - visible on extra high zoom - present in legend
+
+    map.addSource('washrooms-data', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/aziza_geojsons_cleaned/public_washrooms.geojson'
+    })
+
+    map.loadImage(
+        test_path,
+        (error, image) => {
+            if (error) throw error;
+
+            // Add the image to the map style.
+            map.addImage('cat', image, { sdf: true });
+
+            // Add a layer to use the image to represent the data.
+            map.addLayer({
+                'id': 'washrooms-icon-layer',
+                'type': 'symbol',
+                'source': 'washrooms-data', // reference the data source
+                'layout': {
+                    'icon-allow-overlap': true,
+                    'icon-image': 'cat', // reference the image
+                    'icon-size': class2_size
+                },
+                'paint': {
+                    'icon-color': 'white',
+                    'icon-halo-color': 'grey', //update if necessary
+                    'icon-halo-width': 0.3
+                },
+                'minzoom': class2_minzoom
+            });
+        }
+    );
+
+
 
     // map.addLayer({
     //     'id': 'basketball-courts',
