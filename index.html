@@ -37,53 +37,63 @@
         <button type="button" class="btn btn-primary btn-sm" id="returnbutton">Return to full extent</button>
     </div>
 
-    <!-- SCROLL AREA WITH CARDS FOR ROUTE CHOICE -->
-    <div class="scroll-area" style="overflow-y:scroll;">
-        <div class="card-columns">
-            <div class="card-kew">
-                <img class="card-img-top" data-src="..." alt="Card image cap">
-                <div class="card-block">
-                    <h4 class="card-title">Kew Gardens Stroll</h4>
-                    <p class="card-text">A route for those who enjoy outdoor physical activity, play and tranquility.
-                    </p>
+    <!-- LEFT PANEL -->
+    <div class="left-panel">
+        <!-- SCROLL AREA WITH CARDS FOR ROUTE CHOICE -->
+        <div class="scroll-area" style="overflow-y:scroll;">
+            <div class="mb-3">
+                <div class="card card-kew">
+                    <div class="card-body">
+                        <h5 class="card-title">Kew Garden Stroll</h5>
+                        <p class="card-text">A route for those who enjoy outdoor physical activity, play and tranquility.
+                        </p>
+                        <a href="#" class="btn btn-primary">Take this route</a>
+                    </div>
                 </div>
             </div>
-            <div class="card-ivan-forrest-glen-stewart">
-                <img class="card-img-top" data-src="..." alt="Card image cap">
-                <div class="card-block">
-                    <h4 class="card-title">Ivan Forrest/Glen Stewart Hike</h4>
-                    <p class="card-text">A trail for nature enthusiasts, hikers and those who enjoy a challenge.
-                    </p>
+            <div class="mb-3">
+                <div class="card card-ivan-forrest">
+                    <div class="card-body">
+                        <h5 class="card-title">Ivan Forrest/Glen Stewart Hike</h5>
+                        <p class="card-text">A trail for nature enthusiasts, hikers and those who enjoy a challenge.</p>
+                        <a href="#" class="btn btn-primary">Take this route</a>
+                    </div>
                 </div>
             </div>
-            <div class="card-pub-crawl">
-                <img class="card-img-top" data-src="..." alt="Card image cap">
-                <div class="card-block">
-                    <h4 class="card-title">Pub Crawl</h4>
-                    <p class="card-text">A route for those who enjoy exploring local bars and restaurants.</p>
+            <div class="mb-3">
+                <div class="card card-pub-crawl">
+                    <div class="card-body">
+                        <h5 class="card-title">Pub Crawl</h5>
+                        <p class="card-text">A route for those who enjoy exploring local bars and restaurants.</p>
+                        <a href="#" class="btn btn-primary">Take this route</a>
+                    </div>
                 </div>
             </div>
-            <div class="card-page-to-screen">
-                <img class="card-img-top" data-src="..." alt="Card image cap">
-                <div class="card-block">
-                    <h4 class="card-title">Page to Screen</h4>
-                    <p class="card-text">A route for those looking to read a book, watch a movie, and explore The
-                        Beaches.</p>
+            <div class="mb-3">
+                <div class="card card-page-to-screen">
+                    <div class="card-body">
+                        <h5 class="card-title">Page to Screen</h5>
+                        <p class="card-text">A route for those looking to read a book, watch a movie, and explore The
+                            Beaches.</p>
+                        <a href="#" class="btn btn-primary">Take this route</a>
+                    </div>
                 </div>
             </div>
-            <div class="card-take-the-scenic-route">
-                <img class="card-img-top" data-src="..." alt="Card image cap">
-                <div class="card-block">
-                    <h4 class="card-title">Take the Scenic Route</h4>
+        </div>
+
+        <!-- TAKE THE SCENIC ROUTE OPTION -->
+        <div class="mb-3">
+            <div class="card card-scenic-route">
+                <div class="card-body">
+                    <h5 class="card-title">Take the Scenic Route</h5>
                     <p class="card-text">Create your own adventure through the Beaches, visiting all of the locations
                         you wish!</p>
+                    <a href="#" class="btn btn-primary">Take this route</a>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    </div>
-
+    
     <!-- Load the mapbox-gl-geocoder plugin. -->
     <script
         src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.1.0/mapbox-gl-geocoder.min.js"></script>
@@ -99,7 +109,6 @@
     <!-- SWITCH REFERENCE TO ALTERNATIVE JS SOURCE WHEN READY TO EXPLORE EVENTS -->
     <!-- <script src="script-events-adv.js"></script> -->
     <!-- <script src="script-events-adv.js"></script> -->
-
 </body>
 
 </html>
