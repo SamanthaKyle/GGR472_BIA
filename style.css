@@ -33,14 +33,43 @@
     width: 100%;
 }
 
-.scroll-area {
+.left-panel {
     position: absolute;
-    background: rgba(255, 255, 255, 0.8);
     bottom: 20px;
     left: 20px;
     width: 300px;
-    margin: 0 0 10px 30px;
-    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.scroll-area {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.4);
+    bottom: 20px;
+    width: 300px;
+    height: 600px;
+    overflow-y: scroll;
+    margin: 0 0 200px 0px;
     padding: 10px;
     border-radius: 8px;
 }
+
+.card-kew { 
+    background-color: #a8d5a2; 
+} 
+.card-ivan-forrest { 
+    background-color: #a2c4d5; 
+} 
+.card-pub-crawl { 
+    background-color: #d5a2a2; 
+} 
+.card-page-to-screen { 
+    background-color: #d5cba2; 
+} 
+
+.card-scenic-route { 
+    background-color: #c4a2d5; 
+    width: 100%;
+    border-radius: 8px;
+} 
