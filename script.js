@@ -9,33 +9,33 @@ ADDING INTERACTIVITY TO CARDS
 
 let hoveredCard = null;
 
-const cards = document.querySelectorAll('.card');
+const cards = document.querySelectorAll('.mb-3[data-panel]');
+const scrollArea = document.querySelector('.scroll-area');
 
 cards.forEach(card => {
     card.addEventListener('mouseenter', () => {
-        // Reset previous card's panel if there was one
-        if (hoveredCard !== null) {
+        if (hoveredCard !== null && hoveredCard !== card) {
             closeCardPanel(hoveredCard);
         }
         hoveredCard = card;
         openCardPanel(card);
     });
+});
 
-    card.addEventListener('mouseleave', () => {
-        if (hoveredCard !== null) {
-            closeCardPanel(hoveredCard);
-        }
-        hoveredCard = null;
-    });
+// Only close when leaving the scroll area entirely
+scrollArea.addEventListener('mouseleave', () => {
+    if (hoveredCard !== null) {
+        closeCardPanel(hoveredCard);
+    }
+    hoveredCard = null;
 });
 
 function openCardPanel(card) {
-    const panelId = card.closest('[data-panel]').dataset.panel;
+    const panelId = card.dataset.panel;
     document.getElementById(panelId).style.display = 'block';
 }
 
 function closeCardPanel(card) {
-    const panelId = card.closest('[data-panel]').dataset.panel;
+    const panelId = card.dataset.panel;
     document.getElementById(panelId).style.display = 'none';
 }
-
