@@ -17,8 +17,11 @@ const map = new mapboxgl.Map({
 /*--------------------------------------------------------------------
 DEFINE CONSTANTS
 --------------------------------------------------------------------*/
-const d1_minzoom = 15; // minzoom for class 1 features
-const d2_minzoom = 16; //minzoom for class 2 features
+const class1_minzoom = 15; // minzoom for class 1 features
+const class2_minzoom = 16; //minzoom for class 2 features
+
+const class1_size = 0.065
+const class2_size = 0.05
 
 /*--------------------------------------------------------------------
 PRELOAD ICONS
@@ -141,14 +144,14 @@ map.on('load', () => {
                 'layout': {
                     'icon-allow-overlap': true,
                     'icon-image': 'cat', // reference the image
-                    'icon-size': 0.05
+                    'icon-size': class1_size
                 },
                 'paint': {
                     'icon-color': 'white',
                     // 'icon-halo-color': 'red', //update if necessary
                     // 'icon-halo-width': 0.3
                 },
-                'minzoom': d1_minzoom
+                'minzoom': class1_minzoom
             });
         }
     );
@@ -159,13 +162,13 @@ map.on('load', () => {
         'type': 'circle',
         'source': 'bikeshare-stations-data',
         'paint': {
-            'circle-radius': 10,
+            'circle-radius': 13,
             'circle-color': '#5bb163', //taken from official logo
             'circle-stroke-color': '#346e55', // taken from official logo
             'circle-stroke-width': 2,
             'circle-opacity': 1
         },
-        'minzoom': d1_minzoom
+        'minzoom': class1_minzoom
 
     });
 
@@ -192,14 +195,14 @@ map.on('load', () => {
                 'layout': {
                     'icon-allow-overlap': true,
                     'icon-image': 'cat', // reference the image
-                    'icon-size': 0.05
+                    'icon-size': class1_size
                 },
                 'paint': {
                     'icon-color': 'black',
                     // 'icon-halo-color': 'red', //update if necessary
                     // 'icon-halo-width': 0.3
                 },
-                'minzoom': d1_minzoom
+                'minzoom': class1_minzoom
             });
         }
     );
@@ -210,17 +213,17 @@ map.on('load', () => {
         'type': 'circle',
         'source': 'city-parking-data',
         'paint': {
-            'circle-radius': 10,
+            'circle-radius': 13,
             'circle-color': '#5bb163', //taken from official logo
             'circle-stroke-color': '#346e55', // taken from official logo
             'circle-stroke-width': 2,
             'circle-opacity': 1
         },
-        'minzoom': d1_minzoom
+        'minzoom': class1_minzoom
 
     });
 
-    // Benches - visible on high zoom - present in legend
+    // Benches - visible on extra high zoom - present in legend
 
     map.addSource('benches-data', {
         type: 'geojson',
@@ -243,17 +246,89 @@ map.on('load', () => {
                 'layout': {
                     'icon-allow-overlap': true,
                     'icon-image': 'cat', // reference the image
-                    'icon-size': 0.05
+                    'icon-size': class2_size
                 },
                 'paint': {
                     'icon-color': 'orange',
                     // 'icon-halo-color': 'red', //update if necessary
                     // 'icon-halo-width': 0.3
                 },
-                'minzoom': d2_minzoom
+                'minzoom': class2_minzoom
             });
         }
     );
+
+    // Bike Rings - visible on extra high zoom - present in legend
+
+    map.addSource('bike-ring-data', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/aziza_geojsons_cleaned/bike_rings.geojson'
+    })
+
+    map.loadImage(
+        test_path,
+        (error, image) => {
+            if (error) throw error;
+
+            // Add the image to the map style.
+            map.addImage('cat', image, { sdf: true });
+
+            // Add a layer to use the image to represent the data.
+            map.addLayer({
+                'id': 'bike-ring-icon-layer',
+                'type': 'symbol',
+                'source': 'bike-ring-data', // reference the data source
+                'layout': {
+                    'icon-allow-overlap': true,
+                    'icon-image': 'cat', // reference the image
+                    'icon-size': class2_size
+                },
+                'paint': {
+                    'icon-color': 'grey',
+                    // 'icon-halo-color': 'red', //update if necessary
+                    // 'icon-halo-width': 0.3
+                },
+                'minzoom': class2_minzoom
+            });
+        }
+    );
+
+    // Public Washrooms - visible on extra high zoom - present in legend
+
+    map.addSource('washrooms-data', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/aziza_geojsons_cleaned/public_washrooms.geojson'
+    })
+
+    map.loadImage(
+        test_path,
+        (error, image) => {
+            if (error) throw error;
+
+            // Add the image to the map style.
+            map.addImage('cat', image, { sdf: true });
+
+            // Add a layer to use the image to represent the data.
+            map.addLayer({
+                'id': 'washrooms-icon-layer',
+                'type': 'symbol',
+                'source': 'washrooms-data', // reference the data source
+                'layout': {
+                    'icon-allow-overlap': true,
+                    'icon-image': 'cat', // reference the image
+                    'icon-size': class2_size
+                },
+                'paint': {
+                    'icon-color': 'white',
+                    'icon-halo-color': 'grey', //update if necessary
+                    'icon-halo-width': 0.3
+                },
+                'minzoom': class2_minzoom
+            });
+        }
+    );
+
+
 
     // map.addLayer({
     //     'id': 'basketball-courts',
