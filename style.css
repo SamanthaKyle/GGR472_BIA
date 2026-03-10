@@ -80,3 +80,13 @@
     width: 100%;
     border-radius: 8px;
 } 
+
+.side-panel {
+    position: absolute;
+    left: 330px; /* just to the right of your left-panel */
+    bottom: 20px;
+    width: 250px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 10px;
+}

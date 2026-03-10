@@ -41,7 +41,7 @@
     <div class="left-panel">
         <!-- SCROLL AREA WITH CARDS FOR ROUTE CHOICE -->
         <div class="scroll-area" style="overflow-y:scroll;">
-            <div class="mb-3">
+            <div class="mb-3" id="card-kew" data-panel="panel-kew">
                 <div class="card card-kew">
                     <div class="card-body">
                         <h5 class="card-title">Kew Garden Stroll</h5>
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="mb-3">
-                <div class="card card-ivan-forrest">
+                <div class="card card-ivan-forrest" id="card-ivan-forrest" data-panel="panel-ivan-forrest">
                     <div class="card-body">
                         <h5 class="card-title">Ivan Forrest/Glen Stewart Hike</h5>
                         <p class="card-text">A trail for nature enthusiasts, hikers and those who enjoy a challenge.</p>
@@ -61,7 +61,7 @@
                 </div>
             </div>
             <div class="mb-3">
-                <div class="card card-pub-crawl">
+                <div class="card card-pub-crawl" id="card-pub-crawl" data-panel="panel-pub-crawl">
                     <div class="card-body">
                         <h5 class="card-title">Pub Crawl</h5>
                         <p class="card-text">A route for those who enjoy exploring local bars and restaurants.</p>
@@ -69,7 +69,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mb-3">
+            <div class="mb-3" id="card-page-to-screen" data-panel="panel-page-to-screen">
                 <div class="card card-page-to-screen">
                     <div class="card-body">
                         <h5 class="card-title">Page to Screen</h5>
@@ -83,7 +83,7 @@
 
         <!-- TAKE THE SCENIC ROUTE OPTION -->
         <div class="mb-3">
-            <div class="card card-scenic-route">
+            <div class="card card-scenic-route" id="card-scenic-route">
                 <div class="card-body">
                     <h5 class="card-title">Take the Scenic Route</h5>
                     <p class="card-text">Create your own adventure through the Beaches, visiting all of the locations
@@ -94,6 +94,43 @@
         </div>
     </div>
 
+    <!-- CARD PANELS -->
+    <div id="panel-kew" class="side-panel" style="display: none;">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Kew Garden Stroll</h5>
+                <p class="card-text">A route for those who enjoy outdoor physical activity, play and tranquility.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="panel-ivan-forrest" class="side-panel" style="display: none;">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Ivan Forrest/Glen Stewart Hike</h5>
+                <p class="card-text">A trail for nature enthusiasts, hikers and those who enjoy a challenge.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="panel-pub-crawl" class="side-panel" style="display: none;">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Pub Crawl</h5>
+                <p class="card-text">A route for those who enjoy exploring local bars and restaurants.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="panel-page-to-screen" class="side-panel" style="display: none;">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Page to Screen</h5>
+                <p class="card-text">A route for those looking to read a book, watch a movie, and explore The
+                    Beaches.</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Load the mapbox-gl-geocoder plugin. -->
     <script
@@ -103,7 +140,7 @@
         type="text/css">
 
     <!-- Load First JS File -->
-    <!-- <script src="script.js"></script> -->
+    <script src="script.js"></script>
     <!-- Load Second JS File -->
     <script src="mapbox_script.js"></script>
 
