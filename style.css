@@ -8,10 +8,9 @@
 .map-search-container {
     position: absolute;
     background: rgba(255, 255, 255, 0.8);
-    top: 0;
-    right: 0;
+    top: 10px;
+    right: 10px;
     width: 260px;
-    margin: 10px 10px 0 0;
     padding: 10px;
     border-radius: 8px;
     overflow: visible;
@@ -45,13 +44,10 @@
 
 
 .scroll-area {
-    position: absolute;
     background: rgba(255, 255, 255, 0.4);
-    bottom: 20px;
     width: 300px;
     height: 600px;
     overflow-y: scroll;
-    margin: 0 0 200px 0px;
     padding: 10px;
     border-radius: 8px;
 }
