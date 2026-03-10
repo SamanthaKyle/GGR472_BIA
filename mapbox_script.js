@@ -23,6 +23,15 @@ const class2_minzoom = 16; //minzoom for class 2 features
 const class1_size = 0.065
 const class2_size = 0.05
 
+// BRANDING COLOURS
+
+const light_blue = '#b1daf0'
+const light_purple = '#d1d8e9'
+const peach = '#f8d8aa'
+const orange = '#e27237'
+const brown = '#9a8f6e'
+const taupe = '#b19074'
+
 /*--------------------------------------------------------------------
 PRELOAD ICONS
 --------------------------------------------------------------------*/
@@ -77,7 +86,7 @@ map.on('load', () => {
         'type': 'line',
         'source': 'beaches-poly',
         'paint': {
-            'line-color': '#ffffff',
+            'line-color': light_purple,
             'line-width': 1
         }
     });
@@ -99,21 +108,37 @@ map.on('load', () => {
         }
     });
 
-    // Baseball diamond - always visible - not present in legend
-    map.addSource('baseball-diamond-poly', {
+    // Tributaries - default visible - not on legend
+
+    map.addSource('tributaries-data', {
         type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/aziza_geojsons_cleaned/baseball_diamond.geojson'
-    });
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/aziza_geojsons_cleaned/tributaries.geojson'
+    })
 
     map.addLayer({
-        'id': 'baseball-diamonds',
-        'type': 'fill',
-        'source': 'baseball-diamond-poly',
-        'paint': {
-            'fill-color': '#a3995d',
-            'fill-opacity': 1
+        'id': 'tributaries-layer',
+        'type': 'line',
+        'source': 'tributaries-data',
+        'paint' : {
+            'line-color': light_blue
         }
     });
+
+    // water bodies - default visible - not on legend
+    map.addSource('waterbodies-data', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/aziza_geojsons_cleaned/waterbodies.geojson'
+    })
+
+    map.addLayer({
+        'id': 'waterbodies-layer',
+        'type': 'fill',
+        'source': 'waterbodies-data',
+        'paint': {
+            'fill-color': light_blue // from branding package
+        }
+    });
+
 
     // pedestrian walking edges - NOT ADDED 
 
@@ -249,7 +274,7 @@ map.on('load', () => {
                     'icon-size': class2_size
                 },
                 'paint': {
-                    'icon-color': 'orange',
+                    'icon-color': taupe,
                     // 'icon-halo-color': 'red', //update if necessary
                     // 'icon-halo-width': 0.3
                 },
@@ -284,7 +309,7 @@ map.on('load', () => {
                     'icon-size': class2_size
                 },
                 'paint': {
-                    'icon-color': 'grey',
+                    'icon-color': orange,
                     // 'icon-halo-color': 'red', //update if necessary
                     // 'icon-halo-width': 0.3
                 },
@@ -397,6 +422,8 @@ map.on('load', () => {
     // });
 
 });
+
+
 
 
 /*--------------------------------------------------------------------
