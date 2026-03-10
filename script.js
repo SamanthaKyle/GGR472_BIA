@@ -1,8 +1,5 @@
 /*--------------------------------------------------------------------
-GGR472 WEEK 6: JavaScript for Web Maps
-Using expressions to:
-    - filter data drawn in map layers
-    - define paint properties based on attribute data and zoom level
+GGR472 BIA: JavaScript file
 --------------------------------------------------------------------*/
 
 
@@ -51,10 +48,28 @@ LOAD GEOJSON DATA AND ADD LAYERS TO MAP
 --------------------------------------------------------------------*/
 
 map.on('load', () => {
-    // Add datasource from GeoJSON
+    // Add datasource from neighbourhood GeoJSON
     map.addSource('beaches-poly', {
         type: 'geojson',
         data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/aziza_geojsons_cleaned/neighbourhood.geojson'
+        //'https://smith-lg.github.io/ggr472-wk6-demo/data/torontomusicvenues.geojson'
+    });
+
+    map.addSource('green-spaces-poly', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/aziza_geojsons_cleaned/green_spaces.geojson'
+        //'https://smith-lg.github.io/ggr472-wk6-demo/data/torontomusicvenues.geojson'
+    });
+
+    map.addSource('baseball-diamond-poly', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/aziza_geojsons_cleaned/baseball_diamond.geojson'
+        //'https://smith-lg.github.io/ggr472-wk6-demo/data/torontomusicvenues.geojson'
+    });
+
+    map.addSource('walking-edges', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/walking_network_edges_updated.geojson'
         //'https://smith-lg.github.io/ggr472-wk6-demo/data/torontomusicvenues.geojson'
     });
 
@@ -64,11 +79,42 @@ map.on('load', () => {
         'source': 'beaches-poly',
         'paint': {
             'line-color': '#ffffff',
-            'fill-color': '#ffffff',
-            'fill-opacity': 0.8,
-            'line-width': 0.5
+            'line-width': 1
         }
     });
+    
+    map.addLayer({
+        'id': 'baseball-diamonds',
+        'type': 'fill',
+        'source': 'baseball-diamond-poly',
+        'paint': {
+            'fill-color': '#a3995d',
+            'fill-opacity': 1
+        }
+    });
+
+    map.addLayer({
+        'id': 'basketball-courts',
+        'type': 'fill',
+        'source': 'basketball-courts-poly',
+        'paint': {
+            'fill-color': '#a3995d',
+            'fill-opacity': 1
+        }
+    });
+
+    map.addLayer({
+        'id': 'green-spaces',
+        'type': 'fill',
+        'source': 'green-spaces-poly',
+        'paint': {
+            'fill-color': '#187a34',
+            'fill-opacity': 0.3
+        }
+    });
+
+
+
 
 
     // Draw GeoJSON points

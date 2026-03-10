@@ -32,3 +32,19 @@
     margin: 10px 0 10px;
     width: 100%;
 }
+
+.scroll-area {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    top: 0;
+    left: 20px;
+    width: 300px;
+    margin: 10px 0 0 30px;
+    overflow: visible;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.card-primary {
+    width: 100%;
+}
