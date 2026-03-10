@@ -13,17 +13,19 @@ const map = new mapboxgl.Map({
     center: [-79.305089, 43.670681],  // starting point, longitude/latitude 43.652652, -79.393014
     zoom: 14 // starting zoom level
 });
+
+/*--------------------------------------------------------------------
+DEFINE CONSTANTS
+--------------------------------------------------------------------*/
+const d1_minzoom = 15; // minzoom for class 1 features
+const d2_minzoom = 16; //minzoom for class 2 features
+
 /*--------------------------------------------------------------------
 PRELOAD ICONS
 --------------------------------------------------------------------*/
 const bike_icon_path = 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/icons/bike.png?raw=true'
 const test_path = 'https://docs.mapbox.com/mapbox-gl-js/assets/cat.png'
-map.loadImage(bike_icon_path, (error, image) => {
-    if (error) throw error;
-    map.addImage('bike-icon', image);
-})
-
-
+//const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/raw/e24e26c71054470033c8d43eb16b21cdea59fcf6/icons/bike.png'
 
 /*--------------------------------------------------------------------
 ADD CONTROLS, INTERACTIVITY, AND GEOCODER
@@ -145,7 +147,8 @@ map.on('load', () => {
                     'icon-color': 'white',
                     // 'icon-halo-color': 'red', //update if necessary
                     // 'icon-halo-width': 0.3
-                }
+                },
+                'minzoom': d1_minzoom
             });
         }
     );
@@ -161,7 +164,8 @@ map.on('load', () => {
             'circle-stroke-color': '#346e55', // taken from official logo
             'circle-stroke-width': 2,
             'circle-opacity': 1
-        }
+        },
+        'minzoom': d1_minzoom
 
     });
 
@@ -194,7 +198,8 @@ map.on('load', () => {
                     'icon-color': 'black',
                     // 'icon-halo-color': 'red', //update if necessary
                     // 'icon-halo-width': 0.3
-                }
+                },
+                'minzoom': d1_minzoom
             });
         }
     );
@@ -210,18 +215,45 @@ map.on('load', () => {
             'circle-stroke-color': '#346e55', // taken from official logo
             'circle-stroke-width': 2,
             'circle-opacity': 1
-        }
+        },
+        'minzoom': d1_minzoom
 
     });
-    
 
+    // Benches - visible on high zoom - present in legend
 
-    map.addLayer({
-        'id' : 'city-parking-layer',
-        'type': 'symbol'
+    map.addSource('benches-data', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/aziza_geojsons_cleaned/benches.geojson'
     })
 
-    // Benches
+    map.loadImage(
+        test_path,
+        (error, image) => {
+            if (error) throw error;
+
+            // Add the image to the map style.
+            map.addImage('cat', image, { sdf: true });
+
+            // Add a layer to use the image to represent the data.
+            map.addLayer({
+                'id': 'benches-icon-layer',
+                'type': 'symbol',
+                'source': 'benches-data', // reference the data source
+                'layout': {
+                    'icon-allow-overlap': true,
+                    'icon-image': 'cat', // reference the image
+                    'icon-size': 0.05
+                },
+                'paint': {
+                    'icon-color': 'orange',
+                    // 'icon-halo-color': 'red', //update if necessary
+                    // 'icon-halo-width': 0.3
+                },
+                'minzoom': d2_minzoom
+            });
+        }
+    );
 
     // map.addLayer({
     //     'id': 'basketball-courts',
@@ -232,14 +264,6 @@ map.on('load', () => {
     //         'fill-opacity': 1
     //     }
     // });
-
-    
-
-    
-
-
-
-
 
     // Draw GeoJSON points
     // map.addLayer({
