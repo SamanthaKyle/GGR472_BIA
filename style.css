@@ -36,7 +36,7 @@
     position: absolute;
     bottom: 20px;
     left: 20px;
-    width: 300px;
+    width: min(300px, 30vw);
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -46,7 +46,8 @@
 .scroll-area {
     background: rgba(255, 255, 255, 0.4);
     width: 300px;
-    height: 600px;
+    height: calc(100vh - 200px);
+    max-height: 600px;
     overflow-y: scroll;
     padding: 10px;
     border-radius: 8px;
@@ -54,15 +55,24 @@
 
 .card-kew { 
     background-color: #a8d5a2; 
+    width: 100%;
+    border-radius: 8px;
 } 
 .card-ivan-forrest { 
     background-color: #a2c4d5; 
+    width: 100%;
+    border-radius: 8px;
+
 } 
 .card-pub-crawl { 
     background-color: #d5a2a2; 
+    width: 100%;
+    border-radius: 8px;
 } 
 .card-page-to-screen { 
     background-color: #d5cba2; 
+    width: 100%;
+    border-radius: 8px;
 } 
 
 .card-scenic-route { 
