@@ -83,10 +83,17 @@
 
 .side-panel {
     position: absolute;
-    left: 330px; /* just to the right of your left-panel */
-    bottom: 20px;
-    width: 250px;
-    background: rgba(255, 255, 255, 0.9);
+    left: 330px; 
+    top: 300px;
+    width: 200px; 
+    display: flex;
+    flex-direction: column;
     border-radius: 8px;
     padding: 10px;
 }
+
+#panel-kew { background-color: #a8d5a2; }
+#panel-ivan-forrest { background-color: #a2c4d5; }
+#panel-pub-crawl { background-color: #d5a2a2; }
+#panel-page-to-screen { background-color: #d5cba2; }
+
