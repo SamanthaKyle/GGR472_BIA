@@ -15,29 +15,29 @@ const map = new mapboxgl.Map({
 });
 
 /*--------------------------------------------------------------------
-DEFINE CONSTANTS
+DEFINE CONSTANTS FOR LAYER STYLING
 --------------------------------------------------------------------*/
-const class1_minzoom = 15; // minzoom for class 1 features
-const class2_minzoom = 16; //minzoom for class 2 features
+const CLASS_1_MINZOOM = 15; // minzoom for class 1 features
+const CLASS_2_MINZOOM = 16; //minzoom for class 2 features
 
-const class1_size = 0.065
-const class2_size = 0.05
+const CLASS_1_SIZE = 0.065
+const CLASS_2_SIZE = 0.05
 
 // BRANDING COLOURS
 
-const light_blue = '#b1daf0'
-const light_purple = '#d1d8e9'
-const peach = '#f8d8aa'
-const orange = '#e27237'
-const brown = '#9a8f6e'
-const taupe = '#b19074'
+const BRAND_LIGHT_BLUE = '#b1daf0'
+const BRAND_LIGHT_PURPLE = '#d1d8e9'
+const BRAND_PEACH = '#f8d8aa'
+const BRAND_ORANGE = '#e27237'
+const BRAND_BROWN = '#9a8f6e'
+const BRAND_TAUPE = '#b19074'
 
 /*--------------------------------------------------------------------
 PRELOAD ICONS
 --------------------------------------------------------------------*/
 //const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/icons/bike.png?raw=true'
-//const test_path = 'https://docs.mapbox.com/mapbox-gl-js/assets/cat.png'
-const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/raw/e24e26c71054470033c8d43eb16b21cdea59fcf6/icons/bike.png'
+const test_path = 'https://docs.mapbox.com/mapbox-gl-js/assets/cat.png'
+//const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/raw/e24e26c71054470033c8d43eb16b21cdea59fcf6/icons/bike.png'
 
 /*--------------------------------------------------------------------
 ADD CONTROLS, INTERACTIVITY, AND GEOCODER
@@ -86,7 +86,7 @@ map.on('load', () => {
         'type': 'line',
         'source': 'beaches-poly',
         'paint': {
-            'line-color': light_purple,
+            'line-color': BRAND_LIGHT_PURPLE,
             'line-width': 1
         }
     });
@@ -120,7 +120,7 @@ map.on('load', () => {
         'type': 'line',
         'source': 'tributaries-data',
         'paint' : {
-            'line-color': light_blue
+            'line-color': BRAND_LIGHT_BLUE
         }
     });
 
@@ -135,7 +135,7 @@ map.on('load', () => {
         'type': 'fill',
         'source': 'waterbodies-data',
         'paint': {
-            'fill-color': light_blue // from branding package
+            'fill-color': BRAND_LIGHT_BLUE // from branding package
         }
     });
 
@@ -169,14 +169,14 @@ map.on('load', () => {
                 'layout': {
                     'icon-allow-overlap': true,
                     'icon-image': 'cat', // reference the image
-                    'icon-size': class1_size
+                    'icon-size': CLASS_1_SIZE
                 },
                 'paint': {
                     'icon-color': 'white',
                     // 'icon-halo-color': 'red', //update if necessary
                     // 'icon-halo-width': 0.3
                 },
-                'minzoom': class1_minzoom
+                'minzoom': CLASS_1_MINZOOM
             });
         }
     );
@@ -193,7 +193,7 @@ map.on('load', () => {
             'circle-stroke-width': 2,
             'circle-opacity': 1
         },
-        'minzoom': class1_minzoom
+        'minzoom': CLASS_1_MINZOOM
 
     });
 
@@ -220,14 +220,14 @@ map.on('load', () => {
                 'layout': {
                     'icon-allow-overlap': true,
                     'icon-image': 'cat', // reference the image
-                    'icon-size': class1_size
+                    'icon-size': CLASS_1_SIZE
                 },
                 'paint': {
                     'icon-color': 'black',
                     // 'icon-halo-color': 'red', //update if necessary
                     // 'icon-halo-width': 0.3
                 },
-                'minzoom': class1_minzoom
+                'minzoom': CLASS_1_MINZOOM
             });
         }
     );
@@ -244,7 +244,7 @@ map.on('load', () => {
             'circle-stroke-width': 2,
             'circle-opacity': 1
         },
-        'minzoom': class1_minzoom
+        'minzoom': CLASS_1_MINZOOM
 
     });
 
@@ -271,14 +271,14 @@ map.on('load', () => {
                 'layout': {
                     'icon-allow-overlap': true,
                     'icon-image': 'cat', // reference the image
-                    'icon-size': class2_size
+                    'icon-size': CLASS_2_SIZE
                 },
                 'paint': {
-                    'icon-color': taupe,
+                    'icon-color': BRAND_TAUPE,
                     // 'icon-halo-color': 'red', //update if necessary
                     // 'icon-halo-width': 0.3
                 },
-                'minzoom': class2_minzoom
+                'minzoom': CLASS_2_MINZOOM
             });
         }
     );
@@ -306,14 +306,14 @@ map.on('load', () => {
                 'layout': {
                     'icon-allow-overlap': true,
                     'icon-image': 'cat', // reference the image
-                    'icon-size': class2_size
+                    'icon-size': CLASS_2_SIZE
                 },
                 'paint': {
-                    'icon-color': orange,
+                    'icon-color': BRAND_ORANGE,
                     // 'icon-halo-color': 'red', //update if necessary
                     // 'icon-halo-width': 0.3
                 },
-                'minzoom': class2_minzoom
+                'minzoom': CLASS_2_MINZOOM
             });
         }
     );
@@ -341,14 +341,14 @@ map.on('load', () => {
                 'layout': {
                     'icon-allow-overlap': true,
                     'icon-image': 'cat', // reference the image
-                    'icon-size': class2_size
+                    'icon-size': CLASS_2_SIZE
                 },
                 'paint': {
                     'icon-color': 'white',
                     'icon-halo-color': 'grey', //update if necessary
                     'icon-halo-width': 0.3
                 },
-                'minzoom': class2_minzoom
+                'minzoom': CLASS_2_MINZOOM
             });
         }
     );
@@ -365,7 +365,7 @@ map.on('load', () => {
         'type': 'line',
         'source': 'ivan-gardens-route-data',
         'paint': {
-            'line-color' : peach,
+            'line-color' : BRAND_PEACH,
             'line-width' : 3
         },
         'layout' : {
@@ -384,7 +384,7 @@ map.on('load', () => {
         'source': 'ivan-gardens-node-data',
         'paint': {
             'circle-radius': 4,
-            'circle-stroke-color': peach,
+            'circle-stroke-color': BRAND_PEACH,
             'circle-stroke-width': 0.3,
         },
         'layout' : {
@@ -402,7 +402,7 @@ map.on('load', () => {
         'type': 'line',
         'source': 'kew-gardens-route-data',
         'paint': {
-            'line-color': peach,
+            'line-color': BRAND_PEACH,
             'line-width': 3
         },
         'layout': {
@@ -420,7 +420,7 @@ map.on('load', () => {
         'source': 'kew-gardens-node-data',
         'paint': {
             'circle-radius': 4,
-            'circle-stroke-color': peach,
+            'circle-stroke-color': BRAND_PEACH,
             'circle-stroke-width': 0.3,
         },
         'layout': {
@@ -496,7 +496,7 @@ map.on('load', () => {
 });
 
 /*--------------------------------------------------------------------
-EVENT LISTENERS FOR MAP CHANGES
+FUNCTIONS FOR EVENT LISTENERS FOR MAP CHANGES
 --------------------------------------------------------------------*/
 
 function make_route_visible(route_layer_id, node_layer_id, layer_center) {
@@ -561,28 +561,23 @@ function toggle_card(e, route_layer_id, node_layer_id, layer_center) {
     
 }
 
-// ALL EVENT LISTENER CODE
+/*--------------------------------------------------------------------
+EVENT LISTENERS FOR MAP CHANGES
+--------------------------------------------------------------------*/
+
 const DEFAULT_CENTER = [-79.305089, 43.670681]
 let selected_route_layer_id = 'none';
 let selected_node_layer_id = 'none';
 
-// Ivan Forrest Listeners
-// MOUSE ENTER AND LEAVE (HOVER)
+/* MOUSE ENTER AND LEAVE (HOVER) */
+
+// IVAN FORREST LISTENERS
 document.getElementById('card-ivan-forrest').addEventListener("mouseenter", (e) => {
     toggle_card(e, 'ivan-gardens-route-layer', 'ivan-gardens-node-layer', [-79.29407743073317, 43.67414933330741])
 });
 
 document.getElementById('card-ivan-forrest').addEventListener("mouseleave", (e) => {
     toggle_card(e, 'ivan-gardens-route-layer', 'ivan-gardens-node-layer', [-79.29407743073317, 43.67414933330741])
-});
-
-// CLICK
-document.getElementById('card-ivan-forrest').addEventListener("click", (e) => {
-    make_route_visible('ivan-gardens-route-layer', 'ivan-gardens-node-layer', [-79.29407743073317, 43.67414933330741])
-    make_route_invisible(selected_route_layer_id, selected_node_layer_id)
-    selected_route_layer_id = 'ivan-gardens-route-layer'
-    selected_node_layer_id = 'ivan-gardens-node-layer'
-    fly_to_layer_extent(layer_center)
 });
 
 // KEW GARDEN LISTENERS
@@ -592,6 +587,15 @@ document.getElementById('card-kew').addEventListener("mouseenter", (e) => {
 
 document.getElementById('card-kew').addEventListener("mouseleave", (e) => {
     toggle_card(e, 'kew-gardens-route-layer', 'kew-gardens-node-layer', [-79.2984377648393, 43.66840672830028])
+});
+
+/* CARD CLICK */
+document.getElementById('card-ivan-forrest').addEventListener("click", (e) => {
+    make_route_visible('ivan-gardens-route-layer', 'ivan-gardens-node-layer', [-79.29407743073317, 43.67414933330741])
+    make_route_invisible(selected_route_layer_id, selected_node_layer_id)
+    selected_route_layer_id = 'ivan-gardens-route-layer'
+    selected_node_layer_id = 'ivan-gardens-node-layer'
+    fly_to_layer_extent(layer_center)
 });
 
 document.getElementById('card-kew').addEventListener("click", (e) => {
