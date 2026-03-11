@@ -8,26 +8,64 @@ ADDING INTERACTIVITY TO CARDS
 --------------------------------------------------------------------*/
 
 let hoveredCard = null;
+let pinnedCard = null;
+let closeTimeout = null;
 
 const cards = document.querySelectorAll('.mb-3[data-panel]');
 const scrollArea = document.querySelector('.scroll-area');
 
 cards.forEach(card => {
     card.addEventListener('mouseenter', () => {
+        clearTimeout(closeTimeout);
+
         if (hoveredCard !== null && hoveredCard !== card) {
             closeCardPanel(hoveredCard);
         }
         hoveredCard = card;
         openCardPanel(card);
     });
+
+    card.addEventListener('click', () => {
+        if (pinnedCard !== null && pinnedCard !== card) {
+            closeCardPanel(pinnedCard);
+        }
+        pinnedCard = card;
+        openCardPanel(card);
+    });
 });
 
 // Only close when leaving the scroll area entirely
 scrollArea.addEventListener('mouseleave', () => {
-    if (hoveredCard !== null) {
-        closeCardPanel(hoveredCard);
-    }
-    hoveredCard = null;
+    closeTimeout = setTimeout(() => {
+        if (hoveredCard !== null && hoveredCard !== pinnedCard) {
+            closeCardPanel(hoveredCard);
+        }
+        hoveredCard = null;
+    }, 300);
+});
+
+// Keep panel open when mouse enters it, close when it leaves (unless pinned)
+document.querySelectorAll('.side-panel').forEach(panel => {
+    panel.addEventListener('mouseenter', () => {
+        clearTimeout(closeTimeout);
+    });
+
+    panel.addEventListener('mouseleave', () => {
+        closeTimeout = setTimeout(() => {
+            if (hoveredCard !== null && hoveredCard !== pinnedCard) {
+                closeCardPanel(hoveredCard);
+                hoveredCard = null;
+            }
+        }, 300);
+    });
+
+    // Click anywhere on panel to unpin/close it
+    panel.addEventListener('click', () => {
+        if (pinnedCard !== null) {
+            closeCardPanel(pinnedCard);
+            pinnedCard = null;
+        }
+    });
 });
 
 function openCardPanel(card) {
