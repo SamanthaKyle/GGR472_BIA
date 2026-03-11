@@ -556,6 +556,17 @@ document.getElementById('card-ivan-forrest').addEventListener("mouseleave", (e) 
     toggle_card(e, 'ivan-gardens-route-layer', 'ivan-gardens-node-layer', [-79.29407743073317, 43.67414933330741])
 });
 
+document.getElementById('card-ivan-forrest').addEventListener("click", (e) => {
+    //toggle_card(e, 'ivan-gardens-route-layer', 'ivan-gardens-node-layer', [-79.29407743073317, 43.67414933330741])
+   //toggle_card(e, 'kew-gardens-route-layer', 'kew-gardens-node-layer', [-79.2984377648393, 43.66840672830028])
+});
+
+document.getElementById('card-kew').addEventListener("mouseenter", (e) => {
+    //toggle_card(e, 'kew-gardens-route-layer', 'kew-gardens-node-layer', [-79.2984377648393, 43.66840672830028])
+    //toggle_card(e, 'ivan-gardens-route-layer', 'ivan-gardens-node-layer', [-79.29407743073317, 43.67414933330741])
+
+});
+
 document.getElementById('card-kew').addEventListener("mouseenter", (e) => {
     toggle_card(e, 'kew-gardens-route-layer', 'kew-gardens-node-layer', [-79.2984377648393, 43.66840672830028])
 });
