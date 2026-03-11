@@ -119,7 +119,7 @@ map.on('load', () => {
         'id': 'tributaries-layer',
         'type': 'line',
         'source': 'tributaries-data',
-        'paint' : {
+        'paint': {
             'line-color': BRAND_LIGHT_BLUE
         }
     });
@@ -139,9 +139,7 @@ map.on('load', () => {
         }
     });
 
-
     // pedestrian walking edges - NOT ADDED 
-
     map.addSource('walking-edges', {
         type: 'geojson',
         data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/walking_network_edges_updated.geojson'
@@ -149,9 +147,9 @@ map.on('load', () => {
 
     // Bikeshare stations - visible on high zoom value - present in legend
     map.addSource('bikeshare-stations-data', {
-                type: 'geojson',
-                data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/bikeshare_cleaned.geojson'
-            });
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/bikeshare_cleaned.geojson'
+    });
     // Image loading for bikeshare icons
     map.loadImage(
         test_path,
@@ -159,7 +157,7 @@ map.on('load', () => {
             if (error) throw error;
 
             // Add the image to the map style.
-            map.addImage('cat', image, {sdf:true});
+            map.addImage('cat', image, { sdf: true });
 
             // Add a layer to use the image to represent the data.
             map.addLayer({
@@ -360,16 +358,16 @@ map.on('load', () => {
         data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/ivan_forrest_glen_stewart_route_cleaned.geojson'
     })
 
-    map.addLayer({ 
+    map.addLayer({
         'id': 'ivan-gardens-route-layer',
         'type': 'line',
         'source': 'ivan-gardens-route-data',
         'paint': {
-            'line-color' : BRAND_PEACH,
-            'line-width' : 3
+            'line-color': BRAND_PEACH,
+            'line-width': 3
         },
-        'layout' : {
-            'visibility' :'none'
+        'layout': {
+            'visibility': 'none'
         }
     })
 
@@ -387,8 +385,8 @@ map.on('load', () => {
             'circle-stroke-color': BRAND_PEACH,
             'circle-stroke-width': 0.3,
         },
-        'layout' : {
-            'visibility' :'none'
+        'layout': {
+            'visibility': 'none'
         }
     })
 
@@ -413,7 +411,7 @@ map.on('load', () => {
     map.addSource('kew-gardens-node-data', {
         type: 'geojson',
         data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/Kew_Gardens_Park_Node.geojson'
-})
+    })
     map.addLayer({
         'id': 'kew-gardens-node-layer',
         'type': 'circle',
@@ -527,7 +525,7 @@ function make_route_invisible(route_layer_id, node_layer_id) {
 
 function fly_to_default_extent() {
     map.flyTo({
-        center: DEFAULT_CENTER,  // starting point, longitude/latitude 43.652652, -79.393014
+        center: DEFAULT_CENTER,
         zoom: 14,
         essential: true
     })
@@ -535,7 +533,7 @@ function fly_to_default_extent() {
 
 function fly_to_layer_extent(layer_center) {
     map.flyTo({
-        center: layer_center,  // starting point, longitude/latitude 43.652652, -79.393014
+        center: layer_center,
         zoom: 15,
         essential: true
     })
@@ -558,121 +556,57 @@ function toggle_card(e, route_layer_id, node_layer_id, layer_center) {
         fly_to_layer_extent(layer_center)
 
     }
-    
+
 }
 
 /*--------------------------------------------------------------------
 EVENT LISTENERS FOR MAP CHANGES
 --------------------------------------------------------------------*/
 
+// DEFAULT CENTER to view full beaches map
 const DEFAULT_CENTER = [-79.305089, 43.670681]
+
+// list of existing card ids (for event listeners)
+const CARD_IDS = ['card-ivan-forrest', 'card-kew']
+
+// dictionary mapping card id's to their corresponding route layer, node layer, and center point
+// this will allow for event listeners to be automatically created with a smaller amount of code
+// useful as we expect to create many many more cards in the coming weeks
+const CARD_ID_TO_LAYER_INFO = {
+    'card-ivan-forrest':
+        { 'route_layer_id': 'ivan-gardens-route-layer', 'node_layer_id': 'ivan-gardens-node-layer', 'center': [-79.29407743073317, 43.67414933330741] },
+    'card-kew':
+        { 'route_layer_id': 'kew-gardens-route-layer', 'node_layer_id': 'kew-gardens-node-layer', 'center': [-79.2984377648393, 43.66840672830028] }
+}
+
+// this ensures only one route/node combination is selected at a time
 let selected_route_layer_id = 'none';
 let selected_node_layer_id = 'none';
 
-/* MOUSE ENTER AND LEAVE (HOVER) */
+for (let i = 0; i < CARD_IDS.length; i++) { // over the list of card id's
 
-// IVAN FORREST LISTENERS
-document.getElementById('card-ivan-forrest').addEventListener("mouseenter", (e) => {
-    toggle_card(e, 'ivan-gardens-route-layer', 'ivan-gardens-node-layer', [-79.29407743073317, 43.67414933330741])
-});
+    // fetch their information here for cleanliness
+    let card_id = CARD_IDS[i];
+    let route_id = CARD_ID_TO_LAYER_INFO[card_id]['route_layer_id'];
+    let node_id = CARD_ID_TO_LAYER_INFO[card_id]['node_layer_id'];
+    let center = CARD_ID_TO_LAYER_INFO[card_id]['center'];
 
-document.getElementById('card-ivan-forrest').addEventListener("mouseleave", (e) => {
-    toggle_card(e, 'ivan-gardens-route-layer', 'ivan-gardens-node-layer', [-79.29407743073317, 43.67414933330741])
-});
+    // mouse enters a card -> toggle layer visibility
+    document.getElementById(card_id).addEventListener("mouseenter", (e) => {
+        toggle_card(e, route_id, node_id, center);
+    });
 
-// KEW GARDEN LISTENERS
-document.getElementById('card-kew').addEventListener("mouseenter", (e) => {
-    toggle_card(e, 'kew-gardens-route-layer', 'kew-gardens-node-layer', [-79.2984377648393, 43.66840672830028])
-});
+    // mouse leaves a card -> toggle layer visibility
+    document.getElementById(card_id).addEventListener("mouseleave", (e) => {
+        toggle_card(e, route_id, node_id, center);
+    });
 
-document.getElementById('card-kew').addEventListener("mouseleave", (e) => {
-    toggle_card(e, 'kew-gardens-route-layer', 'kew-gardens-node-layer', [-79.2984377648393, 43.66840672830028])
-});
-
-/* CARD CLICK */
-document.getElementById('card-ivan-forrest').addEventListener("click", (e) => {
-    make_route_visible('ivan-gardens-route-layer', 'ivan-gardens-node-layer', [-79.29407743073317, 43.67414933330741])
-    make_route_invisible(selected_route_layer_id, selected_node_layer_id)
-    selected_route_layer_id = 'ivan-gardens-route-layer'
-    selected_node_layer_id = 'ivan-gardens-node-layer'
-    fly_to_layer_extent(layer_center)
-});
-
-document.getElementById('card-kew').addEventListener("click", (e) => {
-    make_route_visible('kew-gardens-route-layer', 'kew-gardens-node-layer', [-79.2984377648393, 43.66840672830028])
-    make_route_invisible(selected_route_layer_id, selected_node_layer_id)
-    selected_route_layer_id = 'kew-gardens-route-layer'
-    selected_node_layer_id = 'kew-gardens-node-layer'
-    fly_to_layer_extent(layer_center)
-});
-
-/*--------------------------------------------------------------------
-EXAMPLE FILTERS
-Data expressions: get, has
-Conditional expressions: ==, >=, (etc.), any, all
---------------------------------------------------------------------*/
-// //Filter data shown in layer
-// 'filter': ['>=', ['get', 'capacity'], 1000]  //Only shows points with capacity >= 1000
-// 'filter': ['==', ['get', 'name'], 'Horseshoe Tavern']
-// 'filter': ['has', 'opentimes']
-// 'filter': ['!', ['has', '...']]
-
-// 'filter': ['any',    //ANY expression returns true if any inputs are met (OR)
-//     ['==', ['get', 'name'], 'Horseshoe Tavern'],
-//     ['==', ['get', 'name'], 'The Axis Club']] //returns features with name = "Horseshoe Tavern" or "The Axis Club"
-
-// 'filter': ['all',    //ALL expression returns true if all inputs are met (AND)
-//     ['==', ['get', 'name'], 'Horseshoe Tavern'],
-//     ['==', ['get', 'name'], 'The Axis Club']] //returns features with name = "Horseshoe Tavern" or "The Axis Club"
-
-
-
-/*--------------------------------------------------------------------
-EXAMPLE APPLICATION OF CATEGORICAL COLOUR SCHEME
-Data expressions: get
-Ramp/scale expression: step
---------------------------------------------------------------------*/
-//Changing colour of marker based on categories
-//Uses step and get expressions
-// [
-//     'step', // STEP expression produces stepped results based on value pairs
-//     ['get', 'capacity'], // GET expression retrieves property value from 'capacity' data field
-//     '#800026', // Colour assigned to any values < first step
-//     150, '#bd0026', // Colours assigned to values >= each step
-//     500, '#e31a1c',
-//     1000, '#fc4e2a',
-//     2500, '#fd8d3c'
-// ]
-
-
-
-/*--------------------------------------------------------------------
-EXAMPLE UPDATE OF MARKER SIZE BASED ON DATA VALUE AND ZOOM
-Data expressions: get
-Ramp/scale expression: interpolate (type: linear)
-Camera expression: zoom
-Maths expressions: /, *
---------------------------------------------------------------------*/
-//Set marker size to (capacity/20) using Maths expressions
-//['*', ['get', 'capacity'], 0.05]
-//['/', ['get', 'capacity'], 20]
-
-//Change marker size on zoom
-//Uses interpolate operator to define linear relationship between zoom level and circle size
-// [
-//     'interpolate', //INTERPOLATE expression produces continuous results by interplating between value pairs
-//     ['linear'], //linear interpolation between stops but could be exponential ['exponential', base] where base controls rate at which output increases
-//     ['zoom'], //ZOOM expression changes appearance with zoom level
-//     8, 1, // when zoom level is 8 or less, circle radius will be 1px
-//     12, 10 // when zoom level is 12 or greater, circle radius will be 10px
-// ]
-
-// [
-//     'interpolate', //INTERPOLATE expression produces continuous results by interplating between value pairs
-//     ['linear'], //linear interpolation between stops but could be exponential ['exponential', base] where base controls rate at which output increases
-//     ['zoom'], //zoom expression changes appearance with zoom level
-//     10, 5, // when zoom is 10 (or less), radius will be 5px
-//     12, ['/',['get', 'capacity'],20] // when zoom is 12 (or greater), radius will be capacity/20
-// ]
-
-
+    // click -> previously selected route becomes invisible and deselected, clicked route becomes selected, visible, and centered
+    document.getElementById(card_id).addEventListener("click", (e) => {
+        make_route_visible(route_id, node_id, center)
+        make_route_invisible(selected_route_layer_id, selected_node_layer_id)
+        selected_route_layer_id = route_id
+        selected_node_layer_id = node_id
+        fly_to_layer_extent(center)
+    });
+}
