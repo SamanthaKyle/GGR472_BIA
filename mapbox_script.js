@@ -35,9 +35,9 @@ const taupe = '#b19074'
 /*--------------------------------------------------------------------
 PRELOAD ICONS
 --------------------------------------------------------------------*/
-const bike_icon_path = 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/icons/bike.png?raw=true'
-const test_path = 'https://docs.mapbox.com/mapbox-gl-js/assets/cat.png'
-//const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/raw/e24e26c71054470033c8d43eb16b21cdea59fcf6/icons/bike.png'
+//const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/icons/bike.png?raw=true'
+//const test_path = 'https://docs.mapbox.com/mapbox-gl-js/assets/cat.png'
+const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/raw/e24e26c71054470033c8d43eb16b21cdea59fcf6/icons/bike.png'
 
 /*--------------------------------------------------------------------
 ADD CONTROLS, INTERACTIVITY, AND GEOCODER
@@ -499,55 +499,75 @@ map.on('load', () => {
 EVENT LISTENERS FOR MAP CHANGES
 --------------------------------------------------------------------*/
 
+function make_route_visible(route_layer_id, node_layer_id, layer_center) {
+    map.setLayoutProperty(
+        route_layer_id,
+        'visibility',
+        'visible'
+    )
+    map.setLayoutProperty(
+        node_layer_id,
+        'visibility',
+        'visible'
+    )
+}
+
+function make_route_invisible(route_layer_id, node_layer_id) {
+    map.setLayoutProperty(
+        route_layer_id,
+        'visibility',
+        'none'
+    )
+    map.setLayoutProperty(
+        node_layer_id,
+        'visibility',
+        'none'
+    )
+}
+
+function fly_to_default_extent() {
+    map.flyTo({
+        center: DEFAULT_CENTER,  // starting point, longitude/latitude 43.652652, -79.393014
+        zoom: 14,
+        essential: true
+    })
+}
+
+function fly_to_layer_extent(layer_center) {
+    map.flyTo({
+        center: layer_center,  // starting point, longitude/latitude 43.652652, -79.393014
+        zoom: 15,
+        essential: true
+    })
+}
+
 function toggle_card(e, route_layer_id, node_layer_id, layer_center) {
     //alert('mouse entered the thing')
     const visibility = map.getLayoutProperty(
         route_layer_id, 'visibility'
     )
 
-    if (visibility == 'visible') { // if this card route is already visible
+    if ((visibility == 'visible') && (selected_route_layer_id != route_layer_id)) { // if this card route is already visible
         // turn off visibility of route and nodes
-        map.setLayoutProperty(
-            route_layer_id,
-            'visibility',
-            'none'
-        )
-        map.setLayoutProperty(
-            node_layer_id,
-            'visibility',
-            'none'
-        )
-        // and zoom to full extent
-        map.flyTo({
-            center: [-79.305089, 43.670681],  // starting point, longitude/latitude 43.652652, -79.393014
-            zoom: 14,
-            essential: true
-        })
+        make_route_invisible(route_layer_id, node_layer_id, layer_center)
+        fly_to_default_extent()
 
     } else { // if this card route is being selected
         // set the route and node layers to visible
-        map.setLayoutProperty(
-            route_layer_id,
-            'visibility',
-            'visible'
-        )
-        map.setLayoutProperty(
-            node_layer_id,
-            'visibility',
-            'visible'
-        )
-        //fly to the extent of this route
-        map.flyTo({
-            center: layer_center,
-            zoom: 15,
-            essential: true
-        })
+        make_route_visible(route_layer_id, node_layer_id, layer_center)
+        fly_to_layer_extent(layer_center)
 
     }
     
 }
 
+// ALL EVENT LISTENER CODE
+const DEFAULT_CENTER = [-79.305089, 43.670681]
+let selected_route_layer_id = 'none';
+let selected_node_layer_id = 'none';
+
 // Ivan Forrest Listeners
+// MOUSE ENTER AND LEAVE (HOVER)
 document.getElementById('card-ivan-forrest').addEventListener("mouseenter", (e) => {
     toggle_card(e, 'ivan-gardens-route-layer', 'ivan-gardens-node-layer', [-79.29407743073317, 43.67414933330741])
 });
@@ -556,23 +576,30 @@ document.getElementById('card-ivan-forrest').addEventListener("mouseleave", (e) 
     toggle_card(e, 'ivan-gardens-route-layer', 'ivan-gardens-node-layer', [-79.29407743073317, 43.67414933330741])
 });
 
+// CLICK
 document.getElementById('card-ivan-forrest').addEventListener("click", (e) => {
-    //toggle_card(e, 'ivan-gardens-route-layer', 'ivan-gardens-node-layer', [-79.29407743073317, 43.67414933330741])
-   //toggle_card(e, 'kew-gardens-route-layer', 'kew-gardens-node-layer', [-79.2984377648393, 43.66840672830028])
+    make_route_visible('ivan-gardens-route-layer', 'ivan-gardens-node-layer', [-79.29407743073317, 43.67414933330741])
+    make_route_invisible(selected_route_layer_id, selected_node_layer_id)
+    selected_route_layer_id = 'ivan-gardens-route-layer'
+    selected_node_layer_id = 'ivan-gardens-node-layer'
+    fly_to_layer_extent(layer_center)
 });
 
-document.getElementById('card-kew').addEventListener("mouseenter", (e) => {
-    //toggle_card(e, 'kew-gardens-route-layer', 'kew-gardens-node-layer', [-79.2984377648393, 43.66840672830028])
-    //toggle_card(e, 'ivan-gardens-route-layer', 'ivan-gardens-node-layer', [-79.29407743073317, 43.67414933330741])
-
-});
-
+// KEW GARDEN LISTENERS
 document.getElementById('card-kew').addEventListener("mouseenter", (e) => {
     toggle_card(e, 'kew-gardens-route-layer', 'kew-gardens-node-layer', [-79.2984377648393, 43.66840672830028])
 });
 
 document.getElementById('card-kew').addEventListener("mouseleave", (e) => {
     toggle_card(e, 'kew-gardens-route-layer', 'kew-gardens-node-layer', [-79.2984377648393, 43.66840672830028])
+});
+
+document.getElementById('card-kew').addEventListener("click", (e) => {
+    make_route_visible('kew-gardens-route-layer', 'kew-gardens-node-layer', [-79.2984377648393, 43.66840672830028])
+    make_route_invisible(selected_route_layer_id, selected_node_layer_id)
+    selected_route_layer_id = 'kew-gardens-route-layer'
+    selected_node_layer_id = 'kew-gardens-node-layer'
+    fly_to_layer_extent(layer_center)
 });
 
 /*--------------------------------------------------------------------
