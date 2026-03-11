@@ -353,8 +353,80 @@ map.on('load', () => {
         }
     );
 
+    // ROUTES - visible on hover or click
 
+    map.addSource('ivan-gardens-route-data', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/ivan_forrest_glen_stewart_route_cleaned.geojson'
+    })
 
+    map.addLayer({ 
+        'id': 'ivan-gardens-route-layer',
+        'type': 'line',
+        'source': 'ivan-gardens-route-data',
+        'paint': {
+            'line-color' : peach,
+            'line-width' : 3
+        },
+        'layout' : {
+            'visibility' :'none'
+        }
+    })
+
+    map.addSource('ivan-gardens-node-data', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/Ivan_Forrest_GlenStewart_Ravine_Nodes.geojson'
+    })
+
+    map.addLayer({
+        'id': 'ivan-gardens-node-layer',
+        'type': 'circle',
+        'source': 'ivan-gardens-node-data',
+        'paint': {
+            'circle-radius': 4,
+            'circle-stroke-color': peach,
+            'circle-stroke-width': 0.3,
+        },
+        'layout' : {
+            'visibility' :'none'
+        }
+    })
+
+    map.addSource('kew-gardens-route-data', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/kew_gardens_route_cleaned.geojson'
+    })
+
+    map.addLayer({
+        'id': 'kew-gardens-route-layer',
+        'type': 'line',
+        'source': 'kew-gardens-route-data',
+        'paint': {
+            'line-color': peach,
+            'line-width': 3
+        },
+        'layout': {
+            'visibility': 'none'
+        }
+    })
+
+    map.addSource('kew-gardens-node-data', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/Kew_Gardens_Park_Node.geojson'
+})
+    map.addLayer({
+        'id': 'kew-gardens-node-layer',
+        'type': 'circle',
+        'source': 'kew-gardens-node-data',
+        'paint': {
+            'circle-radius': 4,
+            'circle-stroke-color': peach,
+            'circle-stroke-width': 0.3,
+        },
+        'layout': {
+            'visibility': 'none'
+        }
+    })
     // map.addLayer({
     //     'id': 'basketball-courts',
     //     'type': 'fill',
@@ -423,8 +495,74 @@ map.on('load', () => {
 
 });
 
+/*--------------------------------------------------------------------
+EVENT LISTENERS FOR MAP CHANGES
+--------------------------------------------------------------------*/
 
+function toggle_card(e, route_layer_id, node_layer_id, layer_center) {
+    //alert('mouse entered the thing')
+    const visibility = map.getLayoutProperty(
+        route_layer_id, 'visibility'
+    )
 
+    if (visibility == 'visible') { // if this card route is already visible
+        // turn off visibility of route and nodes
+        map.setLayoutProperty(
+            route_layer_id,
+            'visibility',
+            'none'
+        )
+        map.setLayoutProperty(
+            node_layer_id,
+            'visibility',
+            'none'
+        )
+        // and zoom to full extent
+        map.flyTo({
+            center: [-79.305089, 43.670681],  // starting point, longitude/latitude 43.652652, -79.393014
+            zoom: 14,
+            essential: true
+        })
+
+    } else { // if this card route is being selected
+        // set the route and node layers to visible
+        map.setLayoutProperty(
+            route_layer_id,
+            'visibility',
+            'visible'
+        )
+        map.setLayoutProperty(
+            node_layer_id,
+            'visibility',
+            'visible'
+        )
+        //fly to the extent of this route
+        map.flyTo({
+            center: layer_center,
+            zoom: 15,
+            essential: true
+        })
+
+    }
+    
+}
+
+// Ivan Forrest Listeners
+document.getElementById('card-ivan-forrest').addEventListener("mouseenter", (e) => {
+    toggle_card(e, 'ivan-gardens-route-layer', 'ivan-gardens-node-layer', [-79.29407743073317, 43.67414933330741])
+});
+
+document.getElementById('card-ivan-forrest').addEventListener("mouseleave", (e) => {
+    toggle_card(e, 'ivan-gardens-route-layer', 'ivan-gardens-node-layer', [-79.29407743073317, 43.67414933330741])
+});
+
+document.getElementById('card-kew').addEventListener("mouseenter", (e) => {
+    toggle_card(e, 'kew-gardens-route-layer', 'kew-gardens-node-layer', [-79.2984377648393, 43.66840672830028])
+});
+
+document.getElementById('card-kew').addEventListener("mouseleave", (e) => {
+    toggle_card(e, 'kew-gardens-route-layer', 'kew-gardens-node-layer', [-79.2984377648393, 43.66840672830028])
+});
 
 /*--------------------------------------------------------------------
 EXAMPLE FILTERS
