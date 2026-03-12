@@ -37,6 +37,7 @@ PRELOAD ICONS
 --------------------------------------------------------------------*/
 //const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/icons/bike.png?raw=true'
 const test_path = 'https://docs.mapbox.com/mapbox-gl-js/assets/cat.png'
+//const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/icons/bike2.png?raw=true'
 //const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/raw/e24e26c71054470033c8d43eb16b21cdea59fcf6/icons/bike.png'
 
 /*--------------------------------------------------------------------
@@ -384,6 +385,8 @@ map.on('load', () => {
             'circle-radius': 4,
             'circle-stroke-color': BRAND_PEACH,
             'circle-stroke-width': 0.3,
+            'circle-color': BRAND_PEACH,
+            'circle-opacity': 0.5
         },
         'layout': {
             'visibility': 'none'
@@ -419,6 +422,8 @@ map.on('load', () => {
         'paint': {
             'circle-radius': 4,
             'circle-stroke-color': BRAND_PEACH,
+            'circle-color': BRAND_PEACH,
+            'circle-opacity': 0.5,
             'circle-stroke-width': 0.3,
         },
         'layout': {
