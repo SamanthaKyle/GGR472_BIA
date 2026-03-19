@@ -15,6 +15,10 @@ let closeTimeout = null;
 const cards = document.querySelectorAll('.mb-3[data-panel]');
 const scrollArea = document.querySelector('.scroll-area');
 
+/*--------------------------------------------------------------------
+MOUSE ENTER/LEAVE AND CLICK
+--------------------------------------------------------------------*/
+
 // Create a for loop for mouse entering and clicking on a card
 cards.forEach(card => {
     card.addEventListener('mouseenter', () => {
@@ -70,19 +74,29 @@ document.querySelectorAll('.side-panel').forEach(panel => {
     });
 });
 
+// Opens the side panel associated with a card by reading the card's data-panel attribute
+// and setting the matching panel element's display to 'block' (visible)
 function openCardPanel(card) {
     const panelId = card.dataset.panel;
     document.getElementById(panelId).style.display = 'block';
 }
 
+// Closes the side panel associated with a card by reading the card's data-panel attribute
+// and setting the matching panel element's display to 'none' (hidden)
 function closeCardPanel(card) {
     const panelId = card.dataset.panel;
     document.getElementById(panelId).style.display = 'none';
 }
 
+/*--------------------------------------------------------------------
+EVENT LISTENERS FOR BUTTONS
+--------------------------------------------------------------------*/
 
-// Test for button event listeners HARD CODED into google maps url!!! 
+
+
+
+// Button event listener to export to google maps
 document.getElementById('bar-crawl-google-maps-btn').addEventListener('click', () => {
-    let url = 'https://www.google.com/maps/dir/?api=1&origin=43.669658478714325,-79.30241797077133&destination=43.673316738616506,-79.28492871510936&travelmode=walking&waypoints=43.66941454708757,-79.30199935012045|43.6712442,-79.2950865|43.672115,-79.290225';
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=43.669658478714325,-79.30241797077133&destination=43.673316738616506,-79.28492871510936&travelmode=walking&waypoints=43.66941454708757,-79.30199935012045|Castro%27s+Lounge+Toronto|The+Druid+Bar+Toronto';
     window.open(url, '_blank')
 });
