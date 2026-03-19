@@ -80,7 +80,8 @@
             "properties": {
                 "name": "Incurable Collector",
                 "address": "1920 Queen St E, Toronto, ON M4L 1H5",
-                "desc" : "Appreciate Indigenous art, puzzles, and other wares alongside more local art."
+                "desc" : "Appreciate Indigenous art, puzzles, and other wares alongside more local art.",
+                "img" : "https://github.com/SamanthaKyle/GGR472_BIA/blob/d5e083452bee5c63e5a91d274420ab99c5840e7a/images/incurable_collector.webp?raw=true"
             },
             "geometry": {
                 "coordinates": [
