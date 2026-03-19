@@ -98,14 +98,14 @@ document.getElementById('kew-gardens-google-maps-btn').addEventListener('click',
     window.open(url, '_blank')
 });
 
-// Button event listener to export ivan forrest / glen stewart ravine hike to google maps (NOT WORKING AND CANNOT FIGURE OUT WHY)
+// Button event listener to export ivan forrest / glen stewart ravine hike to google maps
 document.getElementById('ivan-forrest-glen-stewart-google-maps-btn').addEventListener('click', (e) => {
     e.preventDefault();
-    let url = 'https://www.google.com/maps/dir/?api=1&origin=43.6700309,-79.2997347&destination=43.6718343,-79.291883&travelmode=walking';
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=43.6717645,-79.292627&destination=43.6718343,-79.291883&travelmode=walking&waypoints=43.6729269,-79.2934019|43.6745413,-79.2945794|43.6744551,-79.2953531|43.6767289,-79.291398|43.6750966,-79.2933699|43.6735383,-79.293611';
     window.open(url, '_blank')
 });
 
-// Button event listener to export pub crawl to google maps (OPENS TWO AND CANNOT FIGURE OUT WHY)
+// Button event listener to export pub crawl to google maps
 document.getElementById('bar-crawl-google-maps-btn').addEventListener('click', (e) => {
     e.preventDefault();
     let url = 'https://www.google.com/maps/dir/?api=1&origin=43.669658478714325,-79.30241797077133&destination=43.673316738616506,-79.28492871510936&travelmode=walking&waypoints=43.66941454708757,-79.30199935012045|Castro%27s+Lounge+Toronto|The+Druid+Bar+Toronto';
