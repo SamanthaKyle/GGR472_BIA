@@ -93,7 +93,7 @@ EVENT LISTENERS FOR BUTTONS
 --------------------------------------------------------------------*/
 // Button event listener to export kew gardens stroll to google maps
 document.getElementById('kew-gardens-google-maps-btn').addEventListener('click', () => {
-    let url = 'https://www.google.com/maps/dir/?api=1&origin=43.6700309,-79.2997347&destination=43.670023,-79.2997718&travelmode=walking&waypoints=43.6700649,-79.2995794|43.6699897,-79.2988733|43.6698769,-79.2986538|43.6698402,-79.2984651|43.6697824,-79.298388|43.6695038,-79.2978836|43.6693425,-79.297661|';
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=43.6700309,-79.2997347&destination=43.670023,-79.2997718&travelmode=walking&waypoints=43.6693425,-79.297661|43.6684888,-79.2977055|43.6679937,-79.2977183|43.66628356772898,-79.29749104811573|43.6690367,-79.2993947';
     window.open(url, '_blank')
 });
 
