@@ -79,6 +79,11 @@
     width: 100%;
     border-radius: 8px;
 } 
+.card-date-night { 
+    background-color: '#04a777'; 
+    width: 100%;
+    border-radius: 8px;
+} 
 .card-page-to-screen { 
     background-color: #d5cba2; 
     width: 100%;

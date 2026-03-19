@@ -578,7 +578,44 @@ map.on('load', () => {
         }
     });
 
+ map.addSource('datenight-node-data', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/DateNight_nodes.geojson'
+    });
 
+    map.addLayer({
+        'id': 'datenight-node-layer',
+        'type': 'circle',
+        'source': 'datenight-node-data',
+        'paint': {
+            'circle-radius': 4,
+            'circle-stroke-color': BRAND_LIGHT_PINK,
+            'circle-color': BRAND_LIGHT_PINK,
+            'circle-opacity': 0.5,
+            'circle-stroke-width': 0.3,
+        },
+        'layout': {
+            //'visibility': 'none'
+        }
+    });
+
+    map.addSource('datenight-route-data', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/DateNight_lines.geojson'
+    });
+
+    map.addLayer({
+        'id': 'datenight-route-layer',
+        'type': 'line',
+        'source': 'datenight-route-data',
+        'paint': {
+            'line-color': BRAND_PINK,
+            'line-width': 3
+        },
+        'layout': {
+            //'visibility': 'none'
+        }
+    });
 });
 
 /*--------------------------------------------------------------------
