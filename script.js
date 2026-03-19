@@ -79,3 +79,9 @@ function closeCardPanel(card) {
     const panelId = card.dataset.panel;
     document.getElementById(panelId).style.display = 'none';
 }
+
+
+// Test for button event listeners HARD CODED into google maps url!!! 
+document.getElementById('bar-crawl-google-maps-btn').addEventListener('click', () => {
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=43.669658478714325,-79.30241797077133&destination=43.673316738616506,-79.28492871510936&travelmode=walking';
+    window.open(url, '_blank')});
