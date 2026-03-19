@@ -647,6 +647,28 @@ function toggle_card(e, route_layer_id, node_layer_id, layer_center) {
 
 }
 
+function make_popup(e) {
+    let this_node = e.features[0];
+    let this_html = ''
+
+    if (this_node.properties.img) {
+        path = this_node.properties.img;
+        this_html += '<img src =' + path + 'width="200" height = "100"><br><br>';
+    }
+
+    this_html += "<h6>" + this_node.properties.name + "</h6>"
+    this_html += '<h8>' + this_node.properties.desc + '<h8>'
+
+    if (e.features[0].properties.address) {
+        console.log(e.features[0].properties.address)
+        this_html += '<br><p>' + this_node.properties.address + '<p>'
+    }
+    popup = new mapboxgl.Popup({ "closeButton": false })
+        .setLngLat(e.lngLat) // Use method to set coordinates of popup based on mouse click location
+        .setHTML(this_html)
+        .addTo(map);
+}
+
 /*--------------------------------------------------------------------
 EVENT LISTENERS FOR MAP CHANGES
 --------------------------------------------------------------------*/
@@ -706,25 +728,7 @@ let new_routes = [{ 'route_layer_id': 'artwalk-route-layer', "node_layer_id": 'a
 { 'route_layer_id': 'pubcrawl-route-layer', "node_layer_id": 'pubcrawl-node-layer' }
 ];
 
-function make_popup(e) {
-    this_node = e.features[0];
-    this_html = "<h6>" + this_node.properties.name + "</h4>"
-    this_html += '<h8>' + this_node.properties.desc + '<h8>'
-    if (this_node.properties.img) {
-        path = this_node.properties.img;
-        console.log('HAS PATH: ', path)
-        
-        this_html += '<img src =' + path + 'width="200" height = "100"><br>';
-    }
-    if (e.features[0].properties.address) {
-        console.log(e.features[0].properties.address)
-        this_html += '<br><p>' + this_node.properties.address + '<p>'
-    }
-    popup = new mapboxgl.Popup({ "closeButton": false })
-        .setLngLat(e.lngLat) // Use method to set coordinates of popup based on mouse click location
-        .setHTML(this_html)
-        .addTo(map);
-}
+
 
 for (let i = 0; i < new_routes.length; i++) {
     map.on('mouseenter', new_routes[i]['node_layer_id'], (e) => {
