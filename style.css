@@ -1,3 +1,13 @@
+:root {
+    --BRAND_WHITE: '#e8f8ff';
+    --BRAND_LIGHT_BLUE: '#a6ddf4';
+    --BRAND_YELLOW: '#ffebb5';
+    --BRAND_PINK: '#d90368';
+    --BRAND_LIGHT_PINK: '#f385b9';
+    --BRAND_GREEN: '#04a777';
+    --BRAND_DARK_BLUE: '#000f4d';
+}
+
 .map-container {
     position: absolute;
     top: 0;
