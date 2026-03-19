@@ -35,7 +35,6 @@
             "type": "Feature",
             "properties": {
                 "name": "Boardwalk",
-                "address": "boardwalk",
                 "desc" : "Take a peaceful walk along the shoreline to continue the adventure."
             },
             "geometry": {
@@ -80,7 +79,8 @@
             "type": "Feature",
             "properties": {
                 "name": "Incurable Collector",
-                "address": "1920 Queen St E, Toronto, ON M4L 1H5"
+                "address": "1920 Queen St E, Toronto, ON M4L 1H5",
+                "desc" : "Appreciate Indigenous art, puzzles, and other wares alongside more local art."
             },
             "geometry": {
                 "coordinates": [
