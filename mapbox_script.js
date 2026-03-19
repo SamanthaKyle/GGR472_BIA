@@ -654,3 +654,28 @@ for (let i = 0; i < CARD_IDS.length; i++) { // over the list of card id's
         fly_to_layer_extent(center)
     });
 }
+
+let popup = 'none';
+
+//CHANGE THIS ONCE THEY ALL HAVE CARDS
+let new_routes = [{'route_layer_id': 'artwalk-route-layer', "node_layer_id" : 'artwalk-node-layer'}];
+
+for (let i = 0; i < new_routes.length; i++) {
+    map.on('mouseenter', new_routes[i]['node_layer_id'], (e) => {
+
+    })
+};
+
+map.on('mouseenter', 'artwalk-node-layer', (e) => {
+    // more information available on hover
+    popup = new mapboxgl.Popup() // Declare new popup object on each click
+        .setLngLat(e.lngLat) // Use method to set coordinates of popup based on mouse click location
+        .setHTML("Injury Type: " + e.features[0].properties.INJURY + "<br>" +
+            "Victim Type: " + e.features[0].properties.INVTYPE + "<br> Was there speeding invovled?: " + e.features[0].properties.SPEEDING) // Use click event properties to write text for popup
+        .addTo(map); // Show popup on map
+});
+
+map.on('mouseleave', 'crash_point_layer', (e) => {
+    // get rid of popups when mouse leaves
+    popup.remove();
+}); 
