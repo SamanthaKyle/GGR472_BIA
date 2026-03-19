@@ -15,6 +15,10 @@ let closeTimeout = null;
 const cards = document.querySelectorAll('.mb-3[data-panel]');
 const scrollArea = document.querySelector('.scroll-area');
 
+/*--------------------------------------------------------------------
+MOUSE ENTER/LEAVE AND CLICK
+--------------------------------------------------------------------*/
+
 // Create a for loop for mouse entering and clicking on a card
 cards.forEach(card => {
     card.addEventListener('mouseenter', () => {
@@ -70,19 +74,54 @@ document.querySelectorAll('.side-panel').forEach(panel => {
     });
 });
 
+// Opens the side panel associated with a card by reading the card's data-panel attribute
+// and setting the matching panel element's display to 'block' (visible)
 function openCardPanel(card) {
     const panelId = card.dataset.panel;
     document.getElementById(panelId).style.display = 'block';
 }
 
+// Closes the side panel associated with a card by reading the card's data-panel attribute
+// and setting the matching panel element's display to 'none' (hidden)
 function closeCardPanel(card) {
     const panelId = card.dataset.panel;
     document.getElementById(panelId).style.display = 'none';
 }
 
+/*--------------------------------------------------------------------
+EVENT LISTENERS FOR BUTTONS
+--------------------------------------------------------------------*/
+// Button event listener to export kew gardens stroll to google maps
+document.getElementById('kew-gardens-google-maps-btn').addEventListener('click', (e) => {
+    e.preventDefault();
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=43.6717645,-79.292627&destination=43.670023,-79.2997718&travelmode=walking&waypoints=43.6693425,-79.297661|43.6684888,-79.2977055|43.6679937,-79.2977183|43.66628356772898,-79.29749104811573|43.6690367,-79.2993947';
+    window.open(url, '_blank')
+});
 
-// Test for button event listeners HARD CODED into google maps url!!! 
-document.getElementById('bar-crawl-google-maps-btn').addEventListener('click', () => {
-    let url = 'https://www.google.com/maps/dir/?api=1&origin=43.669658478714325,-79.30241797077133&destination=43.673316738616506,-79.28492871510936&travelmode=walking&waypoints=43.66941454708757,-79.30199935012045|43.6712442,-79.2950865|43.672115,-79.290225';
+// Button event listener to export ivan forrest / glen stewart ravine hike to google maps
+document.getElementById('ivan-forrest-glen-stewart-google-maps-btn').addEventListener('click', (e) => {
+    e.preventDefault();
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=43.6717645,-79.292627&destination=43.6718343,-79.291883&travelmode=walking&waypoints=43.6729269,-79.2934019|43.6745413,-79.2945794|43.6744551,-79.2953531|43.6767289,-79.291398|43.6750966,-79.2933699|43.6735383,-79.293611';
+    window.open(url, '_blank')
+});
+
+// Button event listener to export pub crawl to google maps
+document.getElementById('bar-crawl-google-maps-btn').addEventListener('click', (e) => {
+    e.preventDefault();
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=43.669658478714325,-79.30241797077133&destination=43.673316738616506,-79.28492871510936&travelmode=walking&waypoints=43.66941454708757,-79.30199935012045|Castro%27s+Lounge+Toronto|The+Druid+Bar+Toronto';
+    window.open(url, '_blank')
+});
+
+// Button event listener to export art walk to google maps
+document.getElementById('artwalk-google-maps-btn').addEventListener('click', (e) => {
+    e.preventDefault();
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=Thought+Fox+Art+Studio+Toronto&destination=Incurable+Collector+Toronto&travelmode=walking&waypoints=Studio+88+Art+Gallery+Toronto|43.66909611178548,-79.28864219251545|43.6681341196406,-79.29728945767154|43.66628356772898,-79.29749104811573';
+    window.open(url, '_blank')
+});
+
+// Button event listener to export date night to google maps
+document.getElementById('date-night-google-maps-btn').addEventListener('click', (e) => {
+    e.preventDefault();
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=Beachwood+Flower+Shop+1916+Queen+St+E+Toronto&destination=Fox+Theatre+2236+Queen+St+E+Toronto&travelmode=walking&waypoints=Hanji+Gifts+1952+Queen+St+E+Toronto|Shop+Makers+The+Beaches+1984+Queen+St+E+Toronto|Arts+on+Queen+2198+Queen+St+E+Toronto|Ed%27s+Real+Scoop+2224+Queen+St+E+Toronto';
     window.open(url, '_blank')
 });

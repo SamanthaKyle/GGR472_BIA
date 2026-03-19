@@ -79,6 +79,14 @@
     width: 100%;
     border-radius: 8px;
 } 
+.card-artwalk { 
+    background-color: #f385b9;}
+
+.card-date-night { 
+    background-color: #c74a85; 
+    width: 100%;
+    border-radius: 8px;
+} 
 .card-page-to-screen { 
     background-color: #d5cba2; 
     width: 100%;
@@ -106,6 +114,8 @@
 #panel-ivan-forrest { background-color: #a2c4d5; }
 #panel-pub-crawl { background-color: #d5a2a2; }
 #panel-page-to-screen { background-color: #d5cba2; }
+#panel-artwalk { background-color: #f385b9;}
+#panel-date-night { background-color: #c74a85;}
 
 /* .custom-popup {
     max-width: 200px;
