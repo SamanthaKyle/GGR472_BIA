@@ -533,6 +533,45 @@ map.on('load', () => {
             //'visibility': 'none'
         }
     });
+    
+    map.addSource('pubcrawl-node-data',  {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PubCrawl_nodes.geojson'
+    });
+
+    map.addLayer({
+        'id': 'pubcrawl-node-layer',
+        'type': 'circle',
+        'source': 'pubcrawl-node-data',
+        'paint': {
+            'circle-radius': 4,
+            'circle-stroke-color': BRAND_PEACH,
+            'circle-color': BRAND_PEACH,
+            'circle-opacity': 0.5,
+            'circle-stroke-width': 0.3,
+        },
+        'layout': {
+            //'visibility': 'none'
+        }
+    });
+
+    map.addSource('pubcrawl-route-data', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PubCrawl_routes.geojson'
+    });
+
+    map.addLayer({
+        'id': 'pubcrawl-route-layer',
+        'type': 'line',
+        'source': 'pubcrawl-route-data',
+        'paint': {
+            'line-color': BRAND_PEACH,
+            'line-width': 3
+        },
+        'layout': {
+            //'visibility': 'none'
+        }
+    });
 
     
 });
