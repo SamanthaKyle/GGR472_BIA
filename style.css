@@ -81,8 +81,9 @@
 } 
 .card-artwalk { 
     background-color: #f385b9;}
+
 .card-date-night { 
-    background-color: '#04a777'; 
+    background-color: #c74a85; 
     width: 100%;
     border-radius: 8px;
 } 
@@ -114,6 +115,7 @@
 #panel-pub-crawl { background-color: #d5a2a2; }
 #panel-page-to-screen { background-color: #d5cba2; }
 #panel-artwalk { background-color: #f385b9;}
+#panel-date-night { background-color: #c74a85;}
 
 /* .custom-popup {
     max-width: 200px;

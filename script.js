@@ -114,3 +114,9 @@ document.getElementById('artwalk-google-maps-btn').addEventListener('click', () 
     let url = 'https://www.google.com/maps/dir/?api=1&origin=Thought+Fox+Art+Studio+Toronto&destination=Incurable+Collector+Toronto&travelmode=walking&waypoints=Studio+88+Art+Gallery+Toronto|43.66909611178548,-79.28864219251545|43.6681341196406,-79.29728945767154|43.66628356772898,-79.29749104811573';
     window.open(url, '_blank')
 });
+
+// Button event listener to export date night to google maps
+document.getElementById('date-night-google-maps-btn').addEventListener('click', () => {
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=Beachwood+Flower+Shop+1916+Queen+St+E+Toronto&destination=Fox+Theatre+2236+Queen+St+E+Toronto&travelmode=walking&waypoints=Hanji+Gifts+1952+Queen+St+E+Toronto|Shop+Makers+The+Beaches+1984+Queen+St+E+Toronto|Arts+on+Queen+2198+Queen+St+E+Toronto|Ed%27s+Real+Scoop+2224+Queen+St+E+Toronto';
+    window.open(url, '_blank')
+});
