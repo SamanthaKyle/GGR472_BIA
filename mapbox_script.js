@@ -500,7 +500,7 @@ map.on('load', () => {
     //     //     'text-color': 'blue'
     //     // }
     // });
-    map.addSource('artwalk-node-data',  {
+    map.addSource('artwalk-node-data', {
         type: 'geojson',
         data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/ArtWalk_nodes.geojson'
     });
@@ -538,8 +538,8 @@ map.on('load', () => {
             //'visibility': 'none'
         }
     });
-    
-    map.addSource('pubcrawl-node-data',  {
+
+    map.addSource('pubcrawl-node-data', {
         type: 'geojson',
         data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PubCrawl_nodes.geojson'
     });
@@ -578,7 +578,7 @@ map.on('load', () => {
         }
     });
 
-    
+
 });
 
 /*--------------------------------------------------------------------
@@ -702,20 +702,25 @@ for (let i = 0; i < CARD_IDS.length; i++) { // over the list of card id's
 let popup = 'none';
 
 //CHANGE THIS ONCE THEY ALL HAVE CARDS
-let new_routes = [{'route_layer_id': 'artwalk-route-layer', "node_layer_id" : 'artwalk-node-layer'},
-    { 'route_layer_id': 'pubcrawl-route-layer', "node_layer_id": 'pubcrawl-node-layer' }
+let new_routes = [{ 'route_layer_id': 'artwalk-route-layer', "node_layer_id": 'artwalk-node-layer' },
+{ 'route_layer_id': 'pubcrawl-route-layer', "node_layer_id": 'pubcrawl-node-layer' }
 ];
 
-function make_popup (e) {
+function make_popup(e) {
     this_node = e.features[0];
-    img = '';
     this_html = "<h6>" + this_node.properties.name + "</h4>"
     this_html += '<h8>' + this_node.properties.desc + '<h8>'
+    if (this_node.properties.img) {
+        path = this_node.properties.img;
+        console.log('HAS PATH: ', path)
+        
+        this_html += '<img src =' + path + 'width="200" height = "100"><br>';
+    }
     if (e.features[0].properties.address) {
         console.log(e.features[0].properties.address)
         this_html += '<br><p>' + this_node.properties.address + '<p>'
     }
-    popup = new mapboxgl.Popup({"closeButton": false})
+    popup = new mapboxgl.Popup({ "closeButton": false })
         .setLngLat(e.lngLat) // Use method to set coordinates of popup based on mouse click location
         .setHTML(this_html)
         .addTo(map);
@@ -724,20 +729,12 @@ function make_popup (e) {
 for (let i = 0; i < new_routes.length; i++) {
     map.on('mouseenter', new_routes[i]['node_layer_id'], (e) => {
         make_popup(e)
-        // this_html = "<h6>" + e.features[0].properties.name + "</h4>"
-        // + '<p>' + e.features[0].properties.desc + '</p>'
-        //add address as optional element
-        // popup = new mapboxgl.Popup()
-        //     .setLngLat(e.lngLat) // Use method to set coordinates of popup based on mouse click location
-        //     .setHTML(this_html)
-        //     .addTo(map); // Show popup on map
-        //     //.addClassName('custom-popup'); // this does not have any effect
     });
 
     map.on('mouseleave', new_routes[i]['node_layer_id'], () => {
         // get rid of popups when mouse leaves
         popup.remove();
-    }); 
+    });
 };
 
 // map.on('mouseenter', 'artwalk-node-layer', (e) => {
