@@ -24,8 +24,13 @@ const CLASS_1_SIZE = 0.065
 const CLASS_2_SIZE = 0.05
 
 // BRANDING COLOURS
-
-const BRAND_LIGHT_BLUE = '#b1daf0'
+const BRAND_WHITE = '#e8f8ff'
+const BRAND_LIGHT_BLUE = '#a6ddf4'
+const BRAND_YELLOW = '#ffebb5'
+const BRAND_PINK = '#d90368'
+const BRAND_LIGHT_PINK = '#f385b9'
+const BRAND_GREEN = '#04a777'
+const BRAND_DARK_BLUE = '#000f4d'
 const BRAND_LIGHT_PURPLE = '#d1d8e9'
 const BRAND_PEACH = '#f8d8aa'
 const BRAND_ORANGE = '#e27237'
@@ -35,11 +40,11 @@ const BRAND_TAUPE = '#b19074'
 /*--------------------------------------------------------------------
 PRELOAD ICONS
 --------------------------------------------------------------------*/
-//const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/icons/bike.png?raw=true'
-const test_path = 'https://docs.mapbox.com/mapbox-gl-js/assets/cat.png'
+const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/icons/bike.png?raw=true'
+//const test_path = 'https://docs.mapbox.com/mapbox-gl-js/assets/cat.png'
 //const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/icons/bike2.png?raw=true'
 //const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/raw/e24e26c71054470033c8d43eb16b21cdea59fcf6/icons/bike.png'
-
+//const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/blob/039c6dfaa6153fba0cdcc629656ce893675b8e09/images/beaches_n_cream.png?raw=true'
 /*--------------------------------------------------------------------
 ADD CONTROLS, INTERACTIVITY, AND GEOCODER
 --------------------------------------------------------------------*/
@@ -87,7 +92,7 @@ map.on('load', () => {
         'type': 'line',
         'source': 'beaches-poly',
         'paint': {
-            'line-color': BRAND_LIGHT_PURPLE,
+            'line-color': BRAND_WHITE,
             'line-width': 1
         }
     });
@@ -104,7 +109,7 @@ map.on('load', () => {
         'type': 'fill',
         'source': 'green-spaces-poly',
         'paint': {
-            'fill-color': '#187a34',
+            'fill-color': '#41c767',
             'fill-opacity': 0.3
         }
     });
@@ -273,7 +278,7 @@ map.on('load', () => {
                     'icon-size': CLASS_2_SIZE
                 },
                 'paint': {
-                    'icon-color': BRAND_TAUPE,
+                    'icon-color': BRAND_YELLOW,
                     // 'icon-halo-color': 'red', //update if necessary
                     // 'icon-halo-width': 0.3
                 },
@@ -364,7 +369,7 @@ map.on('load', () => {
         'type': 'line',
         'source': 'ivan-gardens-route-data',
         'paint': {
-            'line-color': BRAND_PEACH,
+            'line-color': BRAND_GREEN,
             'line-width': 3
         },
         'layout': {
@@ -403,7 +408,7 @@ map.on('load', () => {
         'type': 'line',
         'source': 'kew-gardens-route-data',
         'paint': {
-            'line-color': BRAND_PEACH,
+            'line-color': BRAND_GREEN,
             'line-width': 3
         },
         'layout': {
@@ -495,7 +500,7 @@ map.on('load', () => {
     //     //     'text-color': 'blue'
     //     // }
     // });
-    map.addSource('artwalk-node-data',  {
+    map.addSource('artwalk-node-data', {
         type: 'geojson',
         data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/ArtWalk_nodes.geojson'
     });
@@ -506,8 +511,8 @@ map.on('load', () => {
         'source': 'artwalk-node-data',
         'paint': {
             'circle-radius': 4,
-            'circle-stroke-color': BRAND_PEACH,
-            'circle-color': BRAND_PEACH,
+            'circle-stroke-color': BRAND_LIGHT_PINK,
+            'circle-color': BRAND_LIGHT_PINK,
             'circle-opacity': 0.5,
             'circle-stroke-width': 0.3,
         },
@@ -526,15 +531,15 @@ map.on('load', () => {
         'type': 'line',
         'source': 'artwalk-route-data',
         'paint': {
-            'line-color': BRAND_PEACH,
+            'line-color': BRAND_PINK,
             'line-width': 3
         },
         'layout': {
             //'visibility': 'none'
         }
     });
-    
-    map.addSource('pubcrawl-node-data',  {
+
+    map.addSource('pubcrawl-node-data', {
         type: 'geojson',
         data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PubCrawl_nodes.geojson'
     });
@@ -545,8 +550,8 @@ map.on('load', () => {
         'source': 'pubcrawl-node-data',
         'paint': {
             'circle-radius': 4,
-            'circle-stroke-color': BRAND_PEACH,
-            'circle-color': BRAND_PEACH,
+            'circle-stroke-color': BRAND_LIGHT_PINK,
+            'circle-color': BRAND_LIGHT_PINK,
             'circle-opacity': 0.5,
             'circle-stroke-width': 0.3,
         },
@@ -565,7 +570,7 @@ map.on('load', () => {
         'type': 'line',
         'source': 'pubcrawl-route-data',
         'paint': {
-            'line-color': BRAND_PEACH,
+            'line-color': BRAND_PINK,
             'line-width': 3
         },
         'layout': {
@@ -573,7 +578,7 @@ map.on('load', () => {
         }
     });
 
-    
+
 });
 
 /*--------------------------------------------------------------------
@@ -642,6 +647,28 @@ function toggle_card(e, route_layer_id, node_layer_id, layer_center) {
 
 }
 
+function make_popup(e) {
+    let this_node = e.features[0];
+    let this_html = ''
+
+    if (this_node.properties.img) {
+        path = this_node.properties.img;
+        this_html += '<img src =' + path + 'width="200" height = "100"><br><br>';
+    }
+
+    this_html += "<h6>" + this_node.properties.name + "</h6>"
+    this_html += '<h8>' + this_node.properties.desc + '<h8>'
+
+    if (e.features[0].properties.address) {
+        console.log(e.features[0].properties.address)
+        this_html += '<br><p>' + this_node.properties.address + '<p>'
+    }
+    popup = new mapboxgl.Popup({ "closeButton": false })
+        .setLngLat(e.lngLat) // Use method to set coordinates of popup based on mouse click location
+        .setHTML(this_html)
+        .addTo(map);
+}
+
 /*--------------------------------------------------------------------
 EVENT LISTENERS FOR MAP CHANGES
 --------------------------------------------------------------------*/
@@ -695,3 +722,37 @@ for (let i = 0; i < CARD_IDS.length; i++) { // over the list of card id's
         fly_to_layer_extent(center)
     });
 }
+
+let popup = 'none';
+
+//CHANGE THIS ONCE THEY ALL HAVE CARDS
+let new_routes = [{ 'route_layer_id': 'artwalk-route-layer', "node_layer_id": 'artwalk-node-layer' },
+{ 'route_layer_id': 'pubcrawl-route-layer', "node_layer_id": 'pubcrawl-node-layer' }
+];
+
+
+
+for (let i = 0; i < new_routes.length; i++) {
+    map.on('mouseenter', new_routes[i]['node_layer_id'], (e) => {
+        make_popup(e)
+    });
+
+    map.on('mouseleave', new_routes[i]['node_layer_id'], () => {
+        // get rid of popups when mouse leaves
+        popup.remove();
+    });
+};
+
+// map.on('mouseenter', 'artwalk-node-layer', (e) => {
+//     // more information available on hover
+//     popup = new mapboxgl.Popup() // Declare new popup object on each click
+//         .setLngLat(e.lngLat) // Use method to set coordinates of popup based on mouse click location
+//         .setHTML("Injury Type: " + e.features[0].properties.INJURY + "<br>" +
+//             "Victim Type: " + e.features[0].properties.INVTYPE + "<br> Was there speeding invovled?: " + e.features[0].properties.SPEEDING) // Use click event properties to write text for popup
+//         .addTo(map); // Show popup on map
+// });
+
+// map.on('mouseleave', 'crash_point_layer', (e) => {
+//     // get rid of popups when mouse leaves
+//     popup.remove();
+// }); 
