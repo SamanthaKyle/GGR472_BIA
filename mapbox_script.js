@@ -40,8 +40,8 @@ const BRAND_TAUPE = '#b19074'
 /*--------------------------------------------------------------------
 PRELOAD ICONS
 --------------------------------------------------------------------*/
-const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/icons/bike.png?raw=true'
-//const test_path = 'https://docs.mapbox.com/mapbox-gl-js/assets/cat.png'
+//const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/icons/bike.png?raw=true'
+const test_path = 'https://docs.mapbox.com/mapbox-gl-js/assets/cat.png'
 //const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/icons/bike2.png?raw=true'
 //const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/raw/e24e26c71054470033c8d43eb16b21cdea59fcf6/icons/bike.png'
 //const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/blob/039c6dfaa6153fba0cdcc629656ce893675b8e09/images/beaches_n_cream.png?raw=true'
@@ -510,7 +510,7 @@ map.on('load', () => {
         'type': 'circle',
         'source': 'artwalk-node-data',
         'paint': {
-            'circle-radius': 4,
+            'circle-radius': 8,
             'circle-stroke-color': BRAND_LIGHT_PINK,
             'circle-color': BRAND_LIGHT_PINK,
             'circle-opacity': 0.5,
@@ -549,14 +549,14 @@ map.on('load', () => {
         'type': 'circle',
         'source': 'pubcrawl-node-data',
         'paint': {
-            'circle-radius': 4,
+            'circle-radius': 8,
             'circle-stroke-color': BRAND_LIGHT_PINK,
             'circle-color': BRAND_LIGHT_PINK,
             'circle-opacity': 0.5,
             'circle-stroke-width': 0.3,
         },
         'layout': {
-            //'visibility': 'none'
+            'visibility': 'none'
         }
     });
 
@@ -574,7 +574,7 @@ map.on('load', () => {
             'line-width': 3
         },
         'layout': {
-            //'visibility': 'none'
+            'visibility': 'none'
         }
     });
 
@@ -687,6 +687,7 @@ function toggle_card(e, route_layer_id, node_layer_id, layer_center) {
 function make_popup(e) {
     let this_node = e.features[0];
     let this_html = ''
+    console.log('POPOUP TRIGGEREEEEEEEEEEEEEEEEEEEEEEEEE')
 
     if (this_node.properties.img) {
         path = this_node.properties.img;
@@ -714,12 +715,14 @@ EVENT LISTENERS FOR MAP CHANGES
 const DEFAULT_CENTER = [-79.305089, 43.670681]
 
 // list of existing card ids (for event listeners)
-const CARD_IDS = ['card-ivan-forrest', 'card-kew']
+const CARD_IDS = ['card-ivan-forrest', 'card-kew', 'card-pub-crawl']
 
 // dictionary mapping card id's to their corresponding route layer, node layer, and center point
 // this will allow for event listeners to be automatically created with a smaller amount of code
 // useful as we expect to create many many more cards in the coming weeks
 const CARD_ID_TO_LAYER_INFO = {
+    'card-pub-crawl': {
+        'route_layer_id': 'pubcrawl-route-layer', 'node_layer_id': 'pubcrawl-node-layer', 'center': [-79.29407743073317, 43.67414933330741] },
     'card-ivan-forrest':
         { 'route_layer_id': 'ivan-gardens-route-layer', 'node_layer_id': 'ivan-gardens-node-layer', 'center': [-79.29407743073317, 43.67414933330741] },
     'card-kew':
@@ -781,7 +784,27 @@ for (let i = 0; i < new_routes.length; i++) {
         // get rid of popups when mouse leaves
         popup.remove();
     });
+
+    map.on('touchstart', new_routes[i]['node_layer_id'], (e) => {
+        make_popup(e)
+        console.log('MAP LISTENER NODE')
+    })
+
+    map.on('touchend', () => { //new_routes[i]['node_layer_id'],
+        // get rid of popups when mouse leaves
+        popup.remove();
+    });
+    
 };
+
+// document.getElementById('artwalk-node-layer').addEventListener('touchstart', () => {
+//     console.log('DOCUMENT LISTENER')
+// })
+
+// map.on('touchend', 'artwalk-node-layer', () => {
+//     // get rid of popups when mouse leaves
+//     popup.remove();
+// });
 
 // map.on('mouseenter', 'artwalk-node-layer', (e) => {
 //     // more information available on hover
