@@ -659,8 +659,10 @@ const CARD_ID_TO_LAYER_INFO = {
     'card-ivan-forrest':
         { 'route_layer_id': 'ivan-gardens-route-layer', 'node_layer_id': 'ivan-gardens-node-layer', 'center': [-79.29407743073317, 43.67414933330741] },
     'card-kew':
-        { 'route_layer_id': 'kew-gardens-route-layer', 'node_layer_id': 'kew-gardens-node-layer', 'center': [-79.2984377648393, 43.66840672830028] }
-}
+        { 'route_layer_id': 'kew-gardens-route-layer', 'node_layer_id': 'kew-gardens-node-layer', 'center': [-79.2984377648393, 43.66840672830028] },
+    'card-pub-crawl':
+        { 'route_layer_id': 'pubcrawl-route-layer', 'node_layer_id': 'pubcrawl-node-layer', 'center': [-79.293212, 43.671496]}
+    }
 
 // this ensures only one route/node combination is selected at a time
 let selected_route_layer_id = 'none';
