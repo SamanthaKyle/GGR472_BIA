@@ -495,7 +495,46 @@ map.on('load', () => {
     //     //     'text-color': 'blue'
     //     // }
     // });
+    map.addSource('artwalk-node-data',  {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/ArtWalk_nodes.geojson'
+    });
 
+    map.addLayer({
+        'id': 'artwalk-node-layer',
+        'type': 'circle',
+        'source': 'artwalk-node-data',
+        'paint': {
+            'circle-radius': 4,
+            'circle-stroke-color': BRAND_PEACH,
+            'circle-color': BRAND_PEACH,
+            'circle-opacity': 0.5,
+            'circle-stroke-width': 0.3,
+        },
+        'layout': {
+            //'visibility': 'none'
+        }
+    });
+
+    map.addSource('artwalk-route-data', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/ArtWalk_route.geojson'
+    });
+
+    map.addLayer({
+        'id': 'artwalk-route-layer',
+        'type': 'line',
+        'source': 'artwalk-route-data',
+        'paint': {
+            'line-color': BRAND_PEACH,
+            'line-width': 3
+        },
+        'layout': {
+            //'visibility': 'none'
+        }
+    });
+
+    
 });
 
 /*--------------------------------------------------------------------
