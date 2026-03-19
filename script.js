@@ -92,8 +92,8 @@ function closeCardPanel(card) {
 EVENT LISTENERS FOR BUTTONS
 --------------------------------------------------------------------*/
 // Button event listener to export kew gardens stroll to google maps
-document.getElementById('bar-crawl-google-maps-btn').addEventListener('click', () => {
-    let url = 'https://www.google.com/maps/dir/?api=1&origin=43.669658478714325,-79.30241797077133&destination=43.673316738616506,-79.28492871510936&travelmode=walking&waypoints=43.66941454708757,-79.30199935012045|Castro%27s+Lounge+Toronto|The+Druid+Bar+Toronto';
+document.getElementById('kew-gardens-google-maps-btn').addEventListener('click', () => {
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=43.6700309,-79.2997347&destination=43.670023,-79.2997718&travelmode=walking&waypoints=43.6700649,-79.2995794|43.6699897,-79.2988733|43.6698769,-79.2986538|43.6698402,-79.2984651|43.6697824,-79.298388|43.6695038,-79.2978836|43.6693425,-79.297661|';
     window.open(url, '_blank')
 });
 
