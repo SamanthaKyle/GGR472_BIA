@@ -725,7 +725,9 @@ const CARD_ID_TO_LAYER_INFO = {
     'card-kew':
         { 'route_layer_id': 'kew-gardens-route-layer', 'node_layer_id': 'kew-gardens-node-layer', 'center': [-79.2984377648393, 43.66840672830028] },
     'card-pub-crawl':
-        { 'route_layer_id': 'pubcrawl-route-layer', 'node_layer_id': 'pubcrawl-node-layer', 'center': [-79.293212, 43.671496]}
+        { 'route_layer_id': 'pubcrawl-route-layer', 'node_layer_id': 'pubcrawl-node-layer', 'center': [-79.293212, 43.671496]},
+    'card-date-night':
+        { 'route_layer_id': 'datenight-route-layer', 'node_layer_id': 'datenight-node-layer', 'center': [-79.293212, 43.671496] }
     }
 
 // this ensures only one route/node combination is selected at a time
@@ -764,7 +766,8 @@ let popup = 'none';
 
 //CHANGE THIS ONCE THEY ALL HAVE CARDS
 let new_routes = [{ 'route_layer_id': 'artwalk-route-layer', "node_layer_id": 'artwalk-node-layer' },
-{ 'route_layer_id': 'pubcrawl-route-layer', "node_layer_id": 'pubcrawl-node-layer' }
+{ 'route_layer_id': 'pubcrawl-route-layer', "node_layer_id": 'pubcrawl-node-layer' },
+{ 'route_layer_id': 'datenight-route-layer', 'node_layer_id': 'datenight-node-layer' }
 ];
 
 
