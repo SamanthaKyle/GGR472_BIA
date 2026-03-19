@@ -24,8 +24,13 @@ const CLASS_1_SIZE = 0.065
 const CLASS_2_SIZE = 0.05
 
 // BRANDING COLOURS
-
-const BRAND_LIGHT_BLUE = '#b1daf0'
+const BRAND_WHITE = '#e8f8ff'
+const BRAND_LIGHT_BLUE = '#a6ddf4'
+const BRAND_YELLOW = '#ffebb5'
+const BRAND_PINK = '#d90368'
+const BRAND_LIGHT_PINK = '#f385b9'
+const BRAND_GREEN = '#04a777'
+const BRAND_DARK_BLUE = '#000f4d'
 const BRAND_LIGHT_PURPLE = '#d1d8e9'
 const BRAND_PEACH = '#f8d8aa'
 const BRAND_ORANGE = '#e27237'
@@ -87,7 +92,7 @@ map.on('load', () => {
         'type': 'line',
         'source': 'beaches-poly',
         'paint': {
-            'line-color': BRAND_LIGHT_PURPLE,
+            'line-color': BRAND_WHITE,
             'line-width': 1
         }
     });
@@ -104,7 +109,7 @@ map.on('load', () => {
         'type': 'fill',
         'source': 'green-spaces-poly',
         'paint': {
-            'fill-color': '#187a34',
+            'fill-color': '#41c767',
             'fill-opacity': 0.3
         }
     });
@@ -273,7 +278,7 @@ map.on('load', () => {
                     'icon-size': CLASS_2_SIZE
                 },
                 'paint': {
-                    'icon-color': BRAND_TAUPE,
+                    'icon-color': BRAND_YELLOW,
                     // 'icon-halo-color': 'red', //update if necessary
                     // 'icon-halo-width': 0.3
                 },
@@ -364,7 +369,7 @@ map.on('load', () => {
         'type': 'line',
         'source': 'ivan-gardens-route-data',
         'paint': {
-            'line-color': BRAND_PEACH,
+            'line-color': BRAND_GREEN,
             'line-width': 3
         },
         'layout': {
@@ -403,7 +408,7 @@ map.on('load', () => {
         'type': 'line',
         'source': 'kew-gardens-route-data',
         'paint': {
-            'line-color': BRAND_PEACH,
+            'line-color': BRAND_GREEN,
             'line-width': 3
         },
         'layout': {
@@ -506,8 +511,8 @@ map.on('load', () => {
         'source': 'artwalk-node-data',
         'paint': {
             'circle-radius': 4,
-            'circle-stroke-color': BRAND_PEACH,
-            'circle-color': BRAND_PEACH,
+            'circle-stroke-color': BRAND_LIGHT_PINK,
+            'circle-color': BRAND_LIGHT_PINK,
             'circle-opacity': 0.5,
             'circle-stroke-width': 0.3,
         },
@@ -526,7 +531,7 @@ map.on('load', () => {
         'type': 'line',
         'source': 'artwalk-route-data',
         'paint': {
-            'line-color': BRAND_PEACH,
+            'line-color': BRAND_PINK,
             'line-width': 3
         },
         'layout': {
@@ -545,8 +550,8 @@ map.on('load', () => {
         'source': 'pubcrawl-node-data',
         'paint': {
             'circle-radius': 4,
-            'circle-stroke-color': BRAND_PEACH,
-            'circle-color': BRAND_PEACH,
+            'circle-stroke-color': BRAND_LIGHT_PINK,
+            'circle-color': BRAND_LIGHT_PINK,
             'circle-opacity': 0.5,
             'circle-stroke-width': 0.3,
         },
@@ -565,7 +570,7 @@ map.on('load', () => {
         'type': 'line',
         'source': 'pubcrawl-route-data',
         'paint': {
-            'line-color': BRAND_PEACH,
+            'line-color': BRAND_PINK,
             'line-width': 3
         },
         'layout': {
@@ -701,14 +706,32 @@ let new_routes = [{'route_layer_id': 'artwalk-route-layer', "node_layer_id" : 'a
     { 'route_layer_id': 'pubcrawl-route-layer', "node_layer_id": 'pubcrawl-node-layer' }
 ];
 
+function make_popup (e) {
+    this_node = e.features[0];
+    img = '';
+    this_html = "<h6>" + this_node.properties.name + "</h4>"
+    this_html += '<h8>' + this_node.properties.desc + '<h8>'
+    if (e.features[0].properties.address) {
+        console.log(e.features[0].properties.address)
+        this_html += '<br><p>' + this_node.properties.address + '<p>'
+    }
+    popup = new mapboxgl.Popup({"closeButton": false})
+        .setLngLat(e.lngLat) // Use method to set coordinates of popup based on mouse click location
+        .setHTML(this_html)
+        .addTo(map);
+}
+
 for (let i = 0; i < new_routes.length; i++) {
     map.on('mouseenter', new_routes[i]['node_layer_id'], (e) => {
-        popup = new mapboxgl.Popup()
-            .setLngLat(e.lngLat) // Use method to set coordinates of popup based on mouse click location
-            .setHTML("Name: " + e.features[0].properties.name + "<br>" +
-                //"Address: " + e.features[0].properties.address + 
-                "<br>" + e.features[0].properties.desc) // Use click event properties to write text for popup
-            .addTo(map); // Show popup on map
+        make_popup(e)
+        // this_html = "<h6>" + e.features[0].properties.name + "</h4>"
+        // + '<p>' + e.features[0].properties.desc + '</p>'
+        //add address as optional element
+        // popup = new mapboxgl.Popup()
+        //     .setLngLat(e.lngLat) // Use method to set coordinates of popup based on mouse click location
+        //     .setHTML(this_html)
+        //     .addTo(map); // Show popup on map
+        //     //.addClassName('custom-popup'); // this does not have any effect
     });
 
     map.on('mouseleave', new_routes[i]['node_layer_id'], () => {
