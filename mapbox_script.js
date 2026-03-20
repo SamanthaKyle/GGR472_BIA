@@ -41,6 +41,27 @@ const BRAND_ORANGE = '#e27237'
 const BRAND_BROWN = '#9a8f6e'
 const BRAND_TAUPE = '#b19074'
 
+// list of existing card ids (for event listeners)
+const CARD_IDS = ['card-ivan-forrest', 'card-kew', 'card-pub-crawl', 'card-date-night', 'card-artwalk', 'card-page-to-screen']
+
+// dictionary mapping card id's to their corresponding route layer, node layer, and center point
+// this will allow for event listeners to be automatically created with a smaller amount of code
+// useful as we expect to create many many more cards in the coming weeks
+const CARD_ID_TO_LAYER_INFO = {
+    'card-ivan-forrest':
+        { 'node_source_id': 'ivan-gardens-node-data', 'route_layer_id': 'ivan-gardens-route-layer', 'node_layer_id': 'ivan-gardens-node-layer', 'center': [-79.29407743073317, 43.67414933330741] },
+    'card-kew':
+        {'node_source_id': 'kew-gardens-node-data', 'route_layer_id': 'kew-gardens-route-layer', 'node_layer_id': 'kew-gardens-node-layer', 'center': [-79.2984377648393, 43.66840672830028] },
+    'card-pub-crawl':
+        {'node_source_id': 'pubcrawl-node-data', 'route_layer_id': 'pubcrawl-route-layer', 'node_layer_id': 'pubcrawl-node-layer', 'center': [-79.293212, 43.671496] },
+    'card-date-night':
+        {'node_source_id': 'datenight-node-data', 'route_layer_id': 'datenight-route-layer', 'node_layer_id': 'datenight-node-layer', 'center': [-79.295706, 43.671042] },
+    'card-artwalk':
+        {'node_source_id': 'artwalk-node-data', 'route_layer_id': 'artwalk-route-layer', 'node_layer_id': 'artwalk-node-layer', 'center': [-79.293947, 43.669808] },
+    'card-page-to-screen':
+        { 'node_source_id': 'pagetoscreen-node-data', 'route_layer_id': 'pagetoscreen-route-layer', 'node_layer_id': 'pagetoscreen-node-layer', 'center': [-79.292337, 43.671849] }
+}
+
 /*--------------------------------------------------------------------
 PRELOAD ICONS
 --------------------------------------------------------------------*/
@@ -546,8 +567,6 @@ map.on('load', () => {
         }
     });
 
-
-
     map.addSource('pubcrawl-route-data', {
         type: 'geojson',
         data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PubCrawl_routes.geojson'
@@ -587,8 +606,6 @@ map.on('load', () => {
             'visibility': 'none'
         }
     });
-
-
 
     map.addSource('datenight-route-data', {
         type: 'geojson',
@@ -630,45 +647,6 @@ map.on('load', () => {
         }
     });
 
-    map.addSource('datenight-route-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/DateNight_lines.geojson'
-    });
-
-    map.addLayer({
-        'id': 'datenight-route-layer',
-        'type': 'line',
-        'source': 'datenight-route-data',
-        'paint': {
-            'line-color': BRAND_PINK,
-            'line-width': 3
-        },
-        'layout': {
-            //'visibility': 'none'
-        }
-    });
-
-    map.addSource('pagetoscreen-node-data', {
-            type: 'geojson',
-            data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PageToScreen_nodes.geojson'
-        });
-
-    map.addLayer({
-        'id': 'pagetoscreen-node-layer',
-        'type': 'circle',
-        'source': 'pagetoscreen-node-data',
-        'paint': {
-            'circle-radius': 4,
-            'circle-stroke-color': BRAND_YELLOW,
-            'circle-color': BRAND_YELLOW,
-            'circle-opacity': 0.5,
-            'circle-stroke-width': 0.3,
-        },
-        'layout': {
-            //'visibility': 'none'
-        }
-    });
-
     map.addSource('pagetoscreen-route-data', {
         type: 'geojson',
         data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PageToScreen_routes.geojson'
@@ -679,18 +657,80 @@ map.on('load', () => {
         'type': 'line',
         'source': 'pagetoscreen-route-data',
         'paint': {
-            'line-color': BRAND_YELLOW,
-            'line-width': 3
+            'line-color': BRAND_PINK,
+            'line-width': 3,
+            'line-opacity': ROUTE_OPACITY
         },
         'layout': {
-            //'visibility': 'none'
+            'visibility': 'none'
+        }
+        
+    });
+
+    map.addSource('pagetoscreen-node-data', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PageToScreen_nodes.geojson'
+    });
+
+    map.addLayer({
+        'id': 'pagetoscreen-node-layer',
+        'type': 'circle',
+        'source': 'pagetoscreen-node-data',
+        'paint': {
+            'circle-radius': 4,
+            'circle-stroke-color': BRAND_LIGHT_PINK,
+            'circle-color': BRAND_LIGHT_PINK,
+            'circle-opacity': NODE_OPACITY,
+            'circle-stroke-width': 0.3,
+        },
+        'layout': {
+            'visibility': 'none'
         }
     });
+
+    
+    for (let i = 0; i < CARD_IDS.length; i++) {
+        let card_id = CARD_IDS[i];
+        let node_id = CARD_ID_TO_LAYER_INFO[card_id]['node_layer_id'];
+        let node_source_id = CARD_ID_TO_LAYER_INFO[card_id]['node_source_id'];
+        map.addLayer({
+            'id': node_id + '-label',
+            'type': 'symbol',
+            'source': node_source_id,
+            'minzoom': 15,
+            // 'paint': {
+            //     'line-color': BRAND_YELLOW,
+            //     'line-width': 3
+            // },
+            'paint' : {
+                'text-color': BRAND_WHITE,
+                'text-halo-color': BRAND_PINK,
+                'text-halo-width': 0.1
+            },
+            'layout': {
+                'text-field' : '{name}',
+                'text-anchor': 'top',
+                'text-offset' : [0, 0.5],
+                'visibility': 'none'
+            }
+        });
+    }
+    
 });
 
 /*--------------------------------------------------------------------
 FUNCTIONS FOR EVENT LISTENERS FOR MAP CHANGES
 --------------------------------------------------------------------*/
+let selected_route_layer_id = 'none';
+let selected_node_layer_id = 'none';
+let click_selected_route_id = 'none';
+let click_selected_node_id = 'none';
+
+let hover_selected_route_id = 'none';
+let hover_selected_node_id = 'none';
+let popup = 'none';
+
+
 function make_route_visible(route_layer_id, node_layer_id, layer_center) {
     map.setLayoutProperty(
         route_layer_id,
@@ -701,6 +741,11 @@ function make_route_visible(route_layer_id, node_layer_id, layer_center) {
         node_layer_id,
         'visibility',
         'visible'
+    );
+
+    map.setLayoutProperty(
+        node_layer_id + '-label',
+        'visibility', 'visible'
     )
 }
 
@@ -715,6 +760,10 @@ function make_route_invisible(route_layer_id, node_layer_id) {
         'visibility',
         'none'
     )
+    map.setLayoutProperty(
+        node_layer_id + '-label',
+        'visibility', 'none'
+    )
 }
 
 function fly_to_default_extent() {
@@ -725,33 +774,12 @@ function fly_to_default_extent() {
     })
 }
 
-function fly_to_layer_extent(layer_center) {
+function fly_to_layer_extent(layer_center, zoom = 15) {
     map.flyTo({
         center: layer_center,
-        zoom: 15,
+        zoom: zoom,
         essential: true
     })
-}
-
-function toggle_card(e, route_layer_id, node_layer_id, layer_center) {
-    console.log('TOGGLING ', route_layer_id)
-    //alert('mouse entered the thing')
-    const visibility = map.getLayoutProperty(
-        route_layer_id, 'visibility'
-    )
-
-    if ((visibility == 'visible')){
-        // turn off visibility of route and nodes
-        make_route_invisible(route_layer_id, node_layer_id, layer_center)
-        fly_to_default_extent()
-
-    } else { // if this card route is being selected
-        // set the route and node layers to visible
-        make_route_visible(route_layer_id, node_layer_id, layer_center)
-        fly_to_layer_extent(layer_center)
-
-    }
-
 }
 
 function make_popup(e) {
@@ -773,6 +801,8 @@ function make_popup(e) {
         .setLngLat(e.lngLat) // Use method to set coordinates of popup based on mouse click location
         .setHTML(this_html)
         .addTo(map);
+
+    return popup;
 }
 
 /*--------------------------------------------------------------------
@@ -780,51 +810,18 @@ EVENT LISTENERS FOR MAP CHANGES
 --------------------------------------------------------------------*/
 
 // DEFAULT CENTER to view full beaches map
-const DEFAULT_CENTER = [-79.305089, 43.670681]
-
-// list of existing card ids (for event listeners)
-const CARD_IDS = ['card-ivan-forrest', 'card-kew', 'card-pub-crawl', 'card-date-night', 'card-artwalk', 'card-page-to-screen']
-
-// dictionary mapping card id's to their corresponding route layer, node layer, and center point
-// this will allow for event listeners to be automatically created with a smaller amount of code
-// useful as we expect to create many many more cards in the coming weeks
-const CARD_ID_TO_LAYER_INFO = {
-    'card-ivan-forrest':
-    {
-        'route_layer_id': 'ivan-gardens-route-layer', 'node_layer_id': 'ivan-gardens-node-layer', 'center': [-79.29407743073317, 43.67414933330741]
-    },
-    'card-kew':
-    {
-        'route_layer_id': 'kew-gardens-route-layer', 'node_layer_id': 'kew-gardens-node-layer', 'center': [-79.2984377648393, 43.66840672830028]
-    },
-    'card-pub-crawl':
-    {
-        'route_layer_id': 'pubcrawl-route-layer', 'node_layer_id': 'pubcrawl-node-layer', 'center': [-79.293212, 43.671496]
-    },
-    'card-date-night':
-        { 'route_layer_id': 'datenight-route-layer', 'node_layer_id': 'datenight-node-layer', 'center': [-79.295706, 43.671042] },
-    'card-artwalk':
-        { 'route_layer_id': 'artwalk-route-layer', 'node_layer_id': 'artwalk-node-layer', 'center': [-79.293947, 43.669808]},
-    'card-page-to-screen':
-        { 'route_layer_id': 'pagetoscreen-route-layer', 'node_layer_id': 'pagetoscreen-node-layer', 'center': [-79.292337, 43.671849] }
-    }
+const DEFAULT_CENTER = [-79.305089, 43.670681];
+let CURRENT_CENTER = DEFAULT_CENTER;
 
 // this ensures only one route/node combination is selected at a time
-let selected_route_layer_id = 'none';
-let selected_node_layer_id = 'none';
-let click_selected_route_id = 'none';
-let click_selected_node_id = 'none';
 
-let hover_selected_route_id = 'none';
-let hover_selected_node_id = 'none';
-let popup = 'none';
 
-map.on('click', (e) => {
-    new mapboxgl.Popup()
-        .setLngLat(e.lngLat)
-        .setHTML(e.lngLat)
-        .addTo(map);
-})
+// map.on('click', (e) => {
+//     new mapboxgl.Popup()
+//         .setLngLat(e.lngLat)
+//         .setHTML(e.lngLat)
+//         .addTo(map);
+// })
 
 for (let i = 0; i < CARD_IDS.length; i++) { // over the list of card id's
 
@@ -853,11 +850,12 @@ for (let i = 0; i < CARD_IDS.length; i++) { // over the list of card id's
         if (click_selected_node_id != node_id) {
             // NOT CURRENTLY CLICK-SELECTED -> WE ARE EXITING A HOVER
             make_route_invisible(route_id, node_id);
-            fly_to_default_extent();
+            //fly_to_default_extent();
+            fly_to_layer_extent(CURRENT_CENTER);
             hover_selected_node_id = 'none';
             hover_selected_route_id = 'none';
         }
-        
+
     });
 
     // click -> previously selected route becomes invisible and deselected, clicked route becomes selected, visible, and centered
@@ -875,14 +873,15 @@ for (let i = 0; i < CARD_IDS.length; i++) { // over the list of card id's
             fly_to_layer_extent(center);
             click_selected_route_id = route_id;
             click_selected_node_id = node_id;
+            CURRENT_CENTER = center;
         }
-        
+
     });
 
     // NOW THE NODES
 
     map.on('mouseenter', node_id, (e) => {
-        make_popup(e)
+        popup = make_popup(e)
     });
 
     map.on('mouseleave', node_id, () => {
@@ -891,7 +890,7 @@ for (let i = 0; i < CARD_IDS.length; i++) { // over the list of card id's
     });
 
     map.on('touchstart', node_id, (e) => {
-        make_popup(e)
+        popup = make_popup(e)
         console.log('MAP LISTENER NODE')
     })
 
