@@ -20,8 +20,12 @@ DEFINE CONSTANTS FOR LAYER STYLING
 const CLASS_1_MINZOOM = 15; // minzoom for class 1 features
 const CLASS_2_MINZOOM = 16; //minzoom for class 2 features
 
-const CLASS_1_SIZE = 0.065
-const CLASS_2_SIZE = 0.05
+const CLASS_1_SIZE = 0.065;
+const CLASS_2_SIZE = 0.05;
+
+const ROUTE_OPACITY = 0.7;
+const NODE_OPACITY = 1;
+
 
 // BRANDING COLOURS
 const BRAND_WHITE = '#e8f8ff'
@@ -370,7 +374,8 @@ map.on('load', () => {
         'source': 'ivan-gardens-route-data',
         'paint': {
             'line-color': BRAND_GREEN,
-            'line-width': 3
+            'line-width': 3,
+            'line-opacity': ROUTE_OPACITY,
         },
         'layout': {
             'visibility': 'none'
@@ -391,7 +396,7 @@ map.on('load', () => {
             'circle-stroke-color': BRAND_PEACH,
             'circle-stroke-width': 0.3,
             'circle-color': BRAND_PEACH,
-            'circle-opacity': 0.5
+            'circle-opacity': NODE_OPACITY
         },
         'layout': {
             'visibility': 'none'
@@ -409,7 +414,8 @@ map.on('load', () => {
         'source': 'kew-gardens-route-data',
         'paint': {
             'line-color': BRAND_GREEN,
-            'line-width': 3
+            'line-width': 3,
+            'line-opacity': ROUTE_OPACITY
         },
         'layout': {
             'visibility': 'none'
@@ -428,7 +434,7 @@ map.on('load', () => {
             'circle-radius': 4,
             'circle-stroke-color': BRAND_PEACH,
             'circle-color': BRAND_PEACH,
-            'circle-opacity': 0.5,
+            'circle-opacity': NODE_OPACITY,
             'circle-stroke-width': 0.3,
         },
         'layout': {
@@ -500,6 +506,25 @@ map.on('load', () => {
     //     //     'text-color': 'blue'
     //     // }
     // });
+    map.addSource('artwalk-route-data', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/ArtWalk_route.geojson'
+    });
+
+    map.addLayer({
+        'id': 'artwalk-route-layer',
+        'type': 'line',
+        'source': 'artwalk-route-data',
+        'paint': {
+            'line-color': BRAND_PINK,
+            'line-width': 3,
+            'line-opacity': ROUTE_OPACITY
+        },
+        'layout': {
+            'visibility': 'none'
+        }
+    });
+    
     map.addSource('artwalk-node-data', {
         type: 'geojson',
         data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/ArtWalk_nodes.geojson'
@@ -513,29 +538,32 @@ map.on('load', () => {
             'circle-radius': 8,
             'circle-stroke-color': BRAND_LIGHT_PINK,
             'circle-color': BRAND_LIGHT_PINK,
-            'circle-opacity': 0.5,
+            'circle-opacity': NODE_OPACITY,
             'circle-stroke-width': 0.3,
         },
         'layout': {
-            //'visibility': 'none'
+            'visibility': 'none'
         }
     });
 
-    map.addSource('artwalk-route-data', {
+    
+
+    map.addSource('pubcrawl-route-data', {
         type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/ArtWalk_route.geojson'
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PubCrawl_routes.geojson'
     });
 
     map.addLayer({
-        'id': 'artwalk-route-layer',
+        'id': 'pubcrawl-route-layer',
         'type': 'line',
-        'source': 'artwalk-route-data',
+        'source': 'pubcrawl-route-data',
         'paint': {
             'line-color': BRAND_PINK,
-            'line-width': 3
+            'line-width': 3,
+            'line-opacity': ROUTE_OPACITY
         },
         'layout': {
-            //'visibility': 'none'
+            'visibility': 'none'
         }
     });
 
@@ -552,7 +580,7 @@ map.on('load', () => {
             'circle-radius': 8,
             'circle-stroke-color': BRAND_LIGHT_PINK,
             'circle-color': BRAND_LIGHT_PINK,
-            'circle-opacity': 0.5,
+            'circle-opacity': NODE_OPACITY,
             'circle-stroke-width': 0.3,
         },
         'layout': {
@@ -560,44 +588,7 @@ map.on('load', () => {
         }
     });
 
-    map.addSource('pubcrawl-route-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PubCrawl_routes.geojson'
-    });
-
-    map.addLayer({
-        'id': 'pubcrawl-route-layer',
-        'type': 'line',
-        'source': 'pubcrawl-route-data',
-        'paint': {
-            'line-color': BRAND_PINK,
-            'line-width': 3
-        },
-        'layout': {
-            'visibility': 'none'
-        }
-    });
-
- map.addSource('datenight-node-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/DateNight_nodes.geojson'
-    });
-
-    map.addLayer({
-        'id': 'datenight-node-layer',
-        'type': 'circle',
-        'source': 'datenight-node-data',
-        'paint': {
-            'circle-radius': 4,
-            'circle-stroke-color': BRAND_LIGHT_PINK,
-            'circle-color': BRAND_LIGHT_PINK,
-            'circle-opacity': 0.5,
-            'circle-stroke-width': 0.3,
-        },
-        'layout': {
-            //'visibility': 'none'
-        }
-    });
+    
 
     map.addSource('datenight-route-data', {
         type: 'geojson',
@@ -610,18 +601,41 @@ map.on('load', () => {
         'source': 'datenight-route-data',
         'paint': {
             'line-color': BRAND_PINK,
-            'line-width': 3
+            'line-width': 3,
+            'line-opacity': ROUTE_OPACITY
         },
         'layout': {
-            //'visibility': 'none'
+            'visibility': 'none'
         }
     });
+
+    map.addSource('datenight-node-data', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/DateNight_nodes.geojson'
+    });
+
+    map.addLayer({
+        'id': 'datenight-node-layer',
+        'type': 'circle',
+        'source': 'datenight-node-data',
+        'paint': {
+            'circle-radius': 8,
+            'circle-stroke-color': BRAND_LIGHT_PINK,
+            'circle-color': BRAND_LIGHT_PINK,
+            'circle-opacity': NODE_OPACITY,
+            'circle-stroke-width': 0.3,
+        },
+        'layout': {
+            'visibility': 'none'
+        }
+    });
+
+    
 });
 
 /*--------------------------------------------------------------------
 FUNCTIONS FOR EVENT LISTENERS FOR MAP CHANGES
 --------------------------------------------------------------------*/
-
 function make_route_visible(route_layer_id, node_layer_id, layer_center) {
     map.setLayoutProperty(
         route_layer_id,
@@ -687,7 +701,6 @@ function toggle_card(e, route_layer_id, node_layer_id, layer_center) {
 function make_popup(e) {
     let this_node = e.features[0];
     let this_html = ''
-    console.log('POPOUP TRIGGEREEEEEEEEEEEEEEEEEEEEEEEEE')
 
     if (this_node.properties.img) {
         path = this_node.properties.img;
@@ -698,7 +711,6 @@ function make_popup(e) {
     this_html += '<h8>' + this_node.properties.desc + '<h8>'
 
     if (e.features[0].properties.address) {
-        console.log(e.features[0].properties.address)
         this_html += '<br><p>' + this_node.properties.address + '<p>'
     }
     popup = new mapboxgl.Popup({ "closeButton": false })
@@ -715,27 +727,50 @@ EVENT LISTENERS FOR MAP CHANGES
 const DEFAULT_CENTER = [-79.305089, 43.670681]
 
 // list of existing card ids (for event listeners)
-const CARD_IDS = ['card-ivan-forrest', 'card-kew', 'card-pub-crawl']
+const CARD_IDS = ['card-ivan-forrest', 'card-kew', 'card-pub-crawl', 'card-artwalk', 'card-date-night']
 
 // dictionary mapping card id's to their corresponding route layer, node layer, and center point
 // this will allow for event listeners to be automatically created with a smaller amount of code
 // useful as we expect to create many many more cards in the coming weeks
 const CARD_ID_TO_LAYER_INFO = {
+    'card-artwalk': {
+        'route_layer_id': 'artwalk-route-layer', 'node_layer_id': 'artwalk-node-layer', 'center': [-79.30206491762459, 43.670966087427985]
+    },
+    'card-date-night': {
+        'route_layer_id': 'datenight-route-layer', 'node_layer_id': 'datenight-node-layer', 'center': [-79.30327769208407, 43.6704366915512]
+    },
     'card-pub-crawl': {
-        'route_layer_id': 'pubcrawl-route-layer', 'node_layer_id': 'pubcrawl-node-layer', 'center': [-79.29407743073317, 43.67414933330741] },
+        'route_layer_id': 'pubcrawl-route-layer', 'node_layer_id': 'pubcrawl-node-layer', 'center': [-79.30232630332739, 43.67128518981329]
+    },
     'card-ivan-forrest':
-        { 'route_layer_id': 'ivan-gardens-route-layer', 'node_layer_id': 'ivan-gardens-node-layer', 'center': [-79.29407743073317, 43.67414933330741] },
+    {
+        'route_layer_id': 'ivan-gardens-route-layer', 'node_layer_id': 'ivan-gardens-node-layer', 'center': [-79.29407743073317, 43.67414933330741]
+    },
     'card-kew':
-        { 'route_layer_id': 'kew-gardens-route-layer', 'node_layer_id': 'kew-gardens-node-layer', 'center': [-79.2984377648393, 43.66840672830028] },
+    {
+        'route_layer_id': 'kew-gardens-route-layer', 'node_layer_id': 'kew-gardens-node-layer', 'center': [-79.2984377648393, 43.66840672830028]
+    },
     'card-pub-crawl':
-        { 'route_layer_id': 'pubcrawl-route-layer', 'node_layer_id': 'pubcrawl-node-layer', 'center': [-79.293212, 43.671496]},
+    {
+        'route_layer_id': 'pubcrawl-route-layer', 'node_layer_id': 'pubcrawl-node-layer', 'center': [-79.293212, 43.671496]
+    },
     'card-date-night':
-        { 'route_layer_id': 'datenight-route-layer', 'node_layer_id': 'datenight-node-layer', 'center': [-79.293212, 43.671496] }
+    {
+        'route_layer_id': 'datenight-route-layer', 'node_layer_id': 'datenight-node-layer', 'center': [-79.293212, 43.671496]
     }
+}
 
 // this ensures only one route/node combination is selected at a time
 let selected_route_layer_id = 'none';
 let selected_node_layer_id = 'none';
+let popup = 'none';
+
+map.on('click', (e) => {
+    new mapboxgl.Popup()
+    .setLngLat(e.lngLat) // Use method to set coordinates of popup based on mouse click location
+        .setHTML(e.lngLat)
+        .addTo(map);
+})
 
 for (let i = 0; i < CARD_IDS.length; i++) { // over the list of card id's
 
@@ -763,29 +798,19 @@ for (let i = 0; i < CARD_IDS.length; i++) { // over the list of card id's
         selected_node_layer_id = node_id
         fly_to_layer_extent(center)
     });
-}
 
-let popup = 'none';
+    // NOW THE NODES
 
-//CHANGE THIS ONCE THEY ALL HAVE CARDS
-let new_routes = [{ 'route_layer_id': 'artwalk-route-layer', "node_layer_id": 'artwalk-node-layer' },
-{ 'route_layer_id': 'pubcrawl-route-layer', "node_layer_id": 'pubcrawl-node-layer' },
-{ 'route_layer_id': 'datenight-route-layer', 'node_layer_id': 'datenight-node-layer' }
-];
-
-
-
-for (let i = 0; i < new_routes.length; i++) {
-    map.on('mouseenter', new_routes[i]['node_layer_id'], (e) => {
+    map.on('mouseenter', node_id, (e) => {
         make_popup(e)
     });
 
-    map.on('mouseleave', new_routes[i]['node_layer_id'], () => {
+    map.on('mouseleave', node_id, () => {
         // get rid of popups when mouse leaves
         popup.remove();
     });
 
-    map.on('touchstart', new_routes[i]['node_layer_id'], (e) => {
+    map.on('touchstart', node_id, (e) => {
         make_popup(e)
         console.log('MAP LISTENER NODE')
     })
@@ -794,8 +819,39 @@ for (let i = 0; i < new_routes.length; i++) {
         // get rid of popups when mouse leaves
         popup.remove();
     });
-    
-};
+}
+
+
+
+//CHANGE THIS ONCE THEY ALL HAVE CARDS
+// let new_routes = [{ 'route_layer_id': 'artwalk-route-layer', "node_layer_id": 'artwalk-node-layer' },
+// { 'route_layer_id': 'pubcrawl-route-layer', "node_layer_id": 'pubcrawl-node-layer' },
+// { 'route_layer_id': 'datenight-route-layer', 'node_layer_id': 'datenight-node-layer' }
+// ];
+
+
+
+// for (let i = 0; i < new_routes.length; i++) {
+//     map.on('mouseenter', new_routes[i]['node_layer_id'], (e) => {
+//         make_popup(e)
+//     });
+
+//     map.on('mouseleave', new_routes[i]['node_layer_id'], () => {
+//         // get rid of popups when mouse leaves
+//         popup.remove();
+//     });
+
+//     map.on('touchstart', new_routes[i]['node_layer_id'], (e) => {
+//         make_popup(e)
+//         console.log('MAP LISTENER NODE')
+//     })
+
+//     map.on('touchend', () => { //new_routes[i]['node_layer_id'],
+//         // get rid of popups when mouse leaves
+//         popup.remove();
+//     });
+
+// };
 
 // document.getElementById('artwalk-node-layer').addEventListener('touchstart', () => {
 //     console.log('DOCUMENT LISTENER')
