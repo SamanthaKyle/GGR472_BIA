@@ -125,3 +125,10 @@ document.getElementById('date-night-google-maps-btn').addEventListener('click', 
     let url = 'https://www.google.com/maps/dir/?api=1&origin=Beachwood+Flower+Shop+1916+Queen+St+E+Toronto&destination=Fox+Theatre+2236+Queen+St+E+Toronto&travelmode=walking&waypoints=Hanji+Gifts+1952+Queen+St+E+Toronto|Shop+Makers+The+Beaches+1984+Queen+St+E+Toronto|Arts+on+Queen+2198+Queen+St+E+Toronto|Ed%27s+Real+Scoop+2224+Queen+St+E+Toronto';
     window.open(url, '_blank')
 });
+
+// Button event listener to export page to screen to google maps
+document.getElementById('page-to-screen-google-maps-btn').addEventListener('click', (e) => {
+    e.preventDefault();
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=Toronto+Public+Library+-+Beaches+Branch&destination=Fox+Theatre+2236+Queen+St+E+Toronto&travelmode=walking&waypoints=43.66987490917481,-79.29866420836301|43.670002184627094,-79.29785126569573|43.67176434692246,-79.29262763537818|Judy%27s+Beach+Café+Toronto';
+    window.open(url, '_blank')
+});

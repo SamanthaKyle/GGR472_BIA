@@ -630,7 +630,62 @@ map.on('load', () => {
         }
     });
 
+    map.addSource('datenight-route-data', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/DateNight_lines.geojson'
+    });
 
+    map.addLayer({
+        'id': 'datenight-route-layer',
+        'type': 'line',
+        'source': 'datenight-route-data',
+        'paint': {
+            'line-color': BRAND_PINK,
+            'line-width': 3
+        },
+        'layout': {
+            //'visibility': 'none'
+        }
+    });
+
+    map.addSource('pagetoscreen-node-data', {
+            type: 'geojson',
+            data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PageToScreen_nodes.geojson'
+        });
+
+    map.addLayer({
+        'id': 'pagetoscreen-node-layer',
+        'type': 'circle',
+        'source': 'pagetoscreen-node-data',
+        'paint': {
+            'circle-radius': 4,
+            'circle-stroke-color': BRAND_YELLOW,
+            'circle-color': BRAND_YELLOW,
+            'circle-opacity': 0.5,
+            'circle-stroke-width': 0.3,
+        },
+        'layout': {
+            //'visibility': 'none'
+        }
+    });
+
+    map.addSource('pagetoscreen-route-data', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PageToScreen_routes.geojson'
+    });
+
+    map.addLayer({
+        'id': 'pagetoscreen-route-layer',
+        'type': 'line',
+        'source': 'pagetoscreen-route-data',
+        'paint': {
+            'line-color': BRAND_YELLOW,
+            'line-width': 3
+        },
+        'layout': {
+            //'visibility': 'none'
+        }
+    });
 });
 
 /*--------------------------------------------------------------------
@@ -728,21 +783,12 @@ EVENT LISTENERS FOR MAP CHANGES
 const DEFAULT_CENTER = [-79.305089, 43.670681]
 
 // list of existing card ids (for event listeners)
-const CARD_IDS = ['card-ivan-forrest', 'card-kew', 'card-pub-crawl', 'card-artwalk', 'card-date-night']
+const CARD_IDS = ['card-ivan-forrest', 'card-kew', 'card-pub-crawl', 'card-date-night', 'card-artwalk', 'card-page-to-screen']
 
 // dictionary mapping card id's to their corresponding route layer, node layer, and center point
 // this will allow for event listeners to be automatically created with a smaller amount of code
 // useful as we expect to create many many more cards in the coming weeks
 const CARD_ID_TO_LAYER_INFO = {
-    'card-artwalk': {
-        'route_layer_id': 'artwalk-route-layer', 'node_layer_id': 'artwalk-node-layer', 'center': [-79.30206491762459, 43.670966087427985]
-    },
-    'card-date-night': {
-        'route_layer_id': 'datenight-route-layer', 'node_layer_id': 'datenight-node-layer', 'center': [-79.30327769208407, 43.6704366915512]
-    },
-    'card-pub-crawl': {
-        'route_layer_id': 'pubcrawl-route-layer', 'node_layer_id': 'pubcrawl-node-layer', 'center': [-79.30232630332739, 43.67128518981329]
-    },
     'card-ivan-forrest':
     {
         'route_layer_id': 'ivan-gardens-route-layer', 'node_layer_id': 'ivan-gardens-node-layer', 'center': [-79.29407743073317, 43.67414933330741]
@@ -756,10 +802,12 @@ const CARD_ID_TO_LAYER_INFO = {
         'route_layer_id': 'pubcrawl-route-layer', 'node_layer_id': 'pubcrawl-node-layer', 'center': [-79.293212, 43.671496]
     },
     'card-date-night':
-    {
-        'route_layer_id': 'datenight-route-layer', 'node_layer_id': 'datenight-node-layer', 'center': [-79.293212, 43.671496]
+        { 'route_layer_id': 'datenight-route-layer', 'node_layer_id': 'datenight-node-layer', 'center': [-79.295706, 43.671042] },
+    'card-artwalk':
+        { 'route_layer_id': 'artwalk-route-layer', 'node_layer_id': 'artwalk-node-layer', 'center': [-79.293947, 43.669808]},
+    'card-page-to-screen':
+        { 'route_layer_id': 'pagetoscreen-route-layer', 'node_layer_id': 'pagetoscreen-node-layer', 'center': [-79.292337, 43.671849] }
     }
-}
 
 // this ensures only one route/node combination is selected at a time
 let selected_route_layer_id = 'none';
