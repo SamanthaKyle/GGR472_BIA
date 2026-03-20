@@ -524,7 +524,7 @@ map.on('load', () => {
             'visibility': 'none'
         }
     });
-    
+
     map.addSource('artwalk-node-data', {
         type: 'geojson',
         data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/ArtWalk_nodes.geojson'
@@ -546,7 +546,7 @@ map.on('load', () => {
         }
     });
 
-    
+
 
     map.addSource('pubcrawl-route-data', {
         type: 'geojson',
@@ -588,7 +588,7 @@ map.on('load', () => {
         }
     });
 
-    
+
 
     map.addSource('datenight-route-data', {
         type: 'geojson',
@@ -630,7 +630,7 @@ map.on('load', () => {
         }
     });
 
-    
+
 });
 
 /*--------------------------------------------------------------------
@@ -679,12 +679,13 @@ function fly_to_layer_extent(layer_center) {
 }
 
 function toggle_card(e, route_layer_id, node_layer_id, layer_center) {
+    console.log('TOGGLING ', route_layer_id)
     //alert('mouse entered the thing')
     const visibility = map.getLayoutProperty(
         route_layer_id, 'visibility'
     )
 
-    if ((visibility == 'visible') && (selected_route_layer_id != route_layer_id)) { // if this card route is already visible
+    if ((visibility == 'visible')){
         // turn off visibility of route and nodes
         make_route_invisible(route_layer_id, node_layer_id, layer_center)
         fly_to_default_extent()
@@ -763,11 +764,16 @@ const CARD_ID_TO_LAYER_INFO = {
 // this ensures only one route/node combination is selected at a time
 let selected_route_layer_id = 'none';
 let selected_node_layer_id = 'none';
+let click_selected_route_id = 'none';
+let click_selected_node_id = 'none';
+
+let hover_selected_route_id = 'none';
+let hover_selected_node_id = 'none';
 let popup = 'none';
 
 map.on('click', (e) => {
     new mapboxgl.Popup()
-    .setLngLat(e.lngLat) // Use method to set coordinates of popup based on mouse click location
+        .setLngLat(e.lngLat)
         .setHTML(e.lngLat)
         .addTo(map);
 })
@@ -782,21 +788,47 @@ for (let i = 0; i < CARD_IDS.length; i++) { // over the list of card id's
 
     // mouse enters a card -> toggle layer visibility
     document.getElementById(card_id).addEventListener("mouseenter", (e) => {
-        toggle_card(e, route_id, node_id, center);
+        if (click_selected_node_id != node_id) {
+            // IF THIS LAYER IS NOT CURRENTLY CLICK-SELECTED
+            // HOVER-SELECT IT
+            make_route_visible(route_id, node_id, center);
+            fly_to_layer_extent(center);
+            hover_selected_node_id = node_id;
+            hover_selected_route_id = route_id;
+        } else {
+            fly_to_layer_extent(center);
+        }
     });
 
     // mouse leaves a card -> toggle layer visibility
     document.getElementById(card_id).addEventListener("mouseleave", (e) => {
-        toggle_card(e, route_id, node_id, center);
+        if (click_selected_node_id != node_id) {
+            // NOT CURRENTLY CLICK-SELECTED -> WE ARE EXITING A HOVER
+            make_route_invisible(route_id, node_id);
+            fly_to_default_extent();
+            hover_selected_node_id = 'none';
+            hover_selected_route_id = 'none';
+        }
+        
     });
 
     // click -> previously selected route becomes invisible and deselected, clicked route becomes selected, visible, and centered
     document.getElementById(card_id).addEventListener("click", (e) => {
-        make_route_visible(route_id, node_id, center)
-        make_route_invisible(selected_route_layer_id, selected_node_layer_id)
-        selected_route_layer_id = route_id
-        selected_node_layer_id = node_id
-        fly_to_layer_extent(center)
+        if (click_selected_node_id == node_id) {
+            // THIS IS ALREADY CLICKED -> DESELECT IT
+            make_route_invisible(route_id, node_id);
+            click_selected_node_id = 'none';
+            click_selected_route_id = 'none';
+            // do not change extent
+        } else {
+            // THIS IS NOT ALREADY CLICKED -> SELECT IT
+            make_route_visible(route_id, node_id, center);
+            make_route_invisible(click_selected_route_id, click_selected_node_id)
+            fly_to_layer_extent(center);
+            click_selected_route_id = route_id;
+            click_selected_node_id = node_id;
+        }
+        
     });
 
     // NOW THE NODES
@@ -820,58 +852,3 @@ for (let i = 0; i < CARD_IDS.length; i++) { // over the list of card id's
         popup.remove();
     });
 }
-
-
-
-//CHANGE THIS ONCE THEY ALL HAVE CARDS
-// let new_routes = [{ 'route_layer_id': 'artwalk-route-layer', "node_layer_id": 'artwalk-node-layer' },
-// { 'route_layer_id': 'pubcrawl-route-layer', "node_layer_id": 'pubcrawl-node-layer' },
-// { 'route_layer_id': 'datenight-route-layer', 'node_layer_id': 'datenight-node-layer' }
-// ];
-
-
-
-// for (let i = 0; i < new_routes.length; i++) {
-//     map.on('mouseenter', new_routes[i]['node_layer_id'], (e) => {
-//         make_popup(e)
-//     });
-
-//     map.on('mouseleave', new_routes[i]['node_layer_id'], () => {
-//         // get rid of popups when mouse leaves
-//         popup.remove();
-//     });
-
-//     map.on('touchstart', new_routes[i]['node_layer_id'], (e) => {
-//         make_popup(e)
-//         console.log('MAP LISTENER NODE')
-//     })
-
-//     map.on('touchend', () => { //new_routes[i]['node_layer_id'],
-//         // get rid of popups when mouse leaves
-//         popup.remove();
-//     });
-
-// };
-
-// document.getElementById('artwalk-node-layer').addEventListener('touchstart', () => {
-//     console.log('DOCUMENT LISTENER')
-// })
-
-// map.on('touchend', 'artwalk-node-layer', () => {
-//     // get rid of popups when mouse leaves
-//     popup.remove();
-// });
-
-// map.on('mouseenter', 'artwalk-node-layer', (e) => {
-//     // more information available on hover
-//     popup = new mapboxgl.Popup() // Declare new popup object on each click
-//         .setLngLat(e.lngLat) // Use method to set coordinates of popup based on mouse click location
-//         .setHTML("Injury Type: " + e.features[0].properties.INJURY + "<br>" +
-//             "Victim Type: " + e.features[0].properties.INVTYPE + "<br> Was there speeding invovled?: " + e.features[0].properties.SPEEDING) // Use click event properties to write text for popup
-//         .addTo(map); // Show popup on map
-// });
-
-// map.on('mouseleave', 'crash_point_layer', (e) => {
-//     // get rid of popups when mouse leaves
-//     popup.remove();
-// }); 
