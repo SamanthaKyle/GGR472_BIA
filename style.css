@@ -101,6 +101,12 @@
     border-radius: 8px;
 } 
 
+.card-pup-crawl { 
+    background-color: var(--BRAND_LIGHT_BLUE); 
+    width: 100%;
+    border-radius: 8px;
+} 
+
 .card-scenic-route { 
     background-color: #c4a2d5; 
     width: 100%;
@@ -122,8 +128,9 @@
 #panel-ivan-forrest { background-color: var(--BRAND_LIGHT_BLUE); }
 #panel-pub-crawl { background-color: var(--BRAND_TAUPE); }
 #panel-page-to-screen { background-color: var(--BRAND_YELLOW); }
-#panel-artwalk { background-color: var(--BRAND_LIGHT_PINK);}
-#panel-date-night { background-color: var(--BRAND_PINK);}
+#panel-artwalk { background-color: var(--BRAND_LIGHT_PINK);} 
+#panel-date-night { background-color: var(--BRAND_PINK); }
+#panel-pup-crawl { background-color: var(--BRAND_LIGHT_BLUE); }
 
 /* .custom-popup {
     max-width: 200px;

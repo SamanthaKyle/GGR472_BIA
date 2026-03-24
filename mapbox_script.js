@@ -51,15 +51,17 @@ const CARD_ID_TO_LAYER_INFO = {
     'card-ivan-forrest':
         { 'node_source_id': 'ivan-gardens-node-data', 'route_layer_id': 'ivan-gardens-route-layer', 'node_layer_id': 'ivan-gardens-node-layer', 'center': [-79.29407743073317, 43.67414933330741] },
     'card-kew':
-        {'node_source_id': 'kew-gardens-node-data', 'route_layer_id': 'kew-gardens-route-layer', 'node_layer_id': 'kew-gardens-node-layer', 'center': [-79.2984377648393, 43.66840672830028] },
+        { 'node_source_id': 'kew-gardens-node-data', 'route_layer_id': 'kew-gardens-route-layer', 'node_layer_id': 'kew-gardens-node-layer', 'center': [-79.2984377648393, 43.66840672830028] },
     'card-pub-crawl':
-        {'node_source_id': 'pubcrawl-node-data', 'route_layer_id': 'pubcrawl-route-layer', 'node_layer_id': 'pubcrawl-node-layer', 'center': [-79.293212, 43.671496] },
+        { 'node_source_id': 'pubcrawl-node-data', 'route_layer_id': 'pubcrawl-route-layer', 'node_layer_id': 'pubcrawl-node-layer', 'center': [-79.293212, 43.671496] },
     'card-date-night':
-        {'node_source_id': 'datenight-node-data', 'route_layer_id': 'datenight-route-layer', 'node_layer_id': 'datenight-node-layer', 'center': [-79.295706, 43.671042] },
+        { 'node_source_id': 'datenight-node-data', 'route_layer_id': 'datenight-route-layer', 'node_layer_id': 'datenight-node-layer', 'center': [-79.295706, 43.671042] },
     'card-artwalk':
-        {'node_source_id': 'artwalk-node-data', 'route_layer_id': 'artwalk-route-layer', 'node_layer_id': 'artwalk-node-layer', 'center': [-79.293947, 43.669808] },
+        { 'node_source_id': 'artwalk-node-data', 'route_layer_id': 'artwalk-route-layer', 'node_layer_id': 'artwalk-node-layer', 'center': [-79.293947, 43.669808] },
     'card-page-to-screen':
-        { 'node_source_id': 'pagetoscreen-node-data', 'route_layer_id': 'pagetoscreen-route-layer', 'node_layer_id': 'pagetoscreen-node-layer', 'center': [-79.292337, 43.671849] }
+        { 'node_source_id': 'pagetoscreen-node-data', 'route_layer_id': 'pagetoscreen-route-layer', 'node_layer_id': 'pagetoscreen-node-layer', 'center': [-79.292337, 43.671849] },
+    'card-pup-crawl':
+        { 'node_source_id': 'pupcrawl-node-data', 'route_layer_id': 'pupcrawl-route-layer', 'node_layer_id': 'pupcrawl-node-layer', 'center': [-79.293212, 43.671496] }
 }
 
 /*--------------------------------------------------------------------
@@ -664,7 +666,7 @@ map.on('load', () => {
         'layout': {
             'visibility': 'none'
         }
-        
+
     });
 
     map.addSource('pagetoscreen-node-data', {
@@ -687,8 +689,46 @@ map.on('load', () => {
             'visibility': 'none'
         }
     });
+map.addSource('pupcrawl-route-data', {
+        type: 'geojson',
+        data: 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/data/PubCrawl_routes.geojson'
+    });
 
-    
+    map.addLayer({
+        'id': 'pupcrawl-route-layer',
+        'type': 'line',
+        'source': 'pupcrawl-route-data',
+        'paint': {
+            'line-color': BRAND_LIGHT_BLUE,
+            'line-width': 3,
+            'line-opacity': ROUTE_OPACITY
+        },
+        'layout': {
+            'visibility': 'none'
+        }
+    });
+
+    map.addSource('pupcrawl-node-data', {
+        type: 'geojson',
+        data: 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/data/PupCrawl_nodes.geojson'
+    });
+
+    map.addLayer({
+        'id': 'pupcrawl-node-layer',
+        'type': 'circle',
+        'source': 'pupcrawl-node-data',
+        'paint': {
+            'circle-radius': 8,
+            'circle-stroke-color': BRAND_LIGHT_BLUE,
+            'circle-color': BRAND_LIGHT_BLUE,
+            'circle-opacity': NODE_OPACITY,
+            'circle-stroke-width': 0.3,
+        },
+        'layout': {
+            'visibility': 'none'
+        }
+    });
+
     for (let i = 0; i < CARD_IDS.length; i++) {
         let card_id = CARD_IDS[i];
         let node_id = CARD_ID_TO_LAYER_INFO[card_id]['node_layer_id'];
@@ -702,20 +742,20 @@ map.on('load', () => {
             //     'line-color': BRAND_YELLOW,
             //     'line-width': 3
             // },
-            'paint' : {
+            'paint': {
                 'text-color': BRAND_WHITE,
                 'text-halo-color': BRAND_PINK,
                 'text-halo-width': 0.1
             },
             'layout': {
-                'text-field' : '{name}',
+                'text-field': '{name}',
                 'text-anchor': 'top',
-                'text-offset' : [0, 0.5],
+                'text-offset': [0, 0.5],
                 'visibility': 'none'
             }
         });
     }
-    
+
 });
 
 /*--------------------------------------------------------------------
