@@ -61,7 +61,7 @@ const CARD_ID_TO_LAYER_INFO = {
     'card-page-to-screen':
         { 'node_source_id': 'pagetoscreen-node-data', 'route_layer_id': 'pagetoscreen-route-layer', 'node_layer_id': 'pagetoscreen-node-layer', 'center': [-79.292337, 43.671849] },
     'card-pup-crawl':
-        { 'node_source_id': 'pupcrawl-node-data', 'route_layer_id': 'pupcrawl-route-layer', 'node_layer_id': 'pupcrawl-node-layer', 'center': [-79.293212, 43.671496] }
+        { 'node_source_id': 'pupcrawl-node-data', 'route_layer_id': 'pupcrawl-route-layer', 'node_layer_id': 'pupcrawl-node-layer', 'center': [-79.2935, 43.6695] }
 }
 
 /*--------------------------------------------------------------------

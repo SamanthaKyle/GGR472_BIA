@@ -136,6 +136,6 @@ document.getElementById('page-to-screen-google-maps-btn').addEventListener('clic
 // Button event listener to export pub crawl to google maps
 document.getElementById('pup-crawl-google-maps-btn').addEventListener('click', (e) => {
     e.preventDefault();
-    let url = 'https://www.google.com/maps/dir/?api=1&origin=RAW+101+Pet+Food+Toronto&destination=Petninsula+Toronto&travelmode=walking&waypoints=Kew+Gardens+Dog+Park+Toronto';
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=43.6718,-79.2926&destination=43.6623,-79.2991&travelmode=walking&waypoints=43.6663,-79.2975';
     window.open(url, '_blank')
 });
