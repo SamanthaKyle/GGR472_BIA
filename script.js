@@ -132,3 +132,10 @@ document.getElementById('page-to-screen-google-maps-btn').addEventListener('clic
     let url = 'https://www.google.com/maps/dir/?api=1&origin=Toronto+Public+Library+-+Beaches+Branch&destination=Fox+Theatre+2236+Queen+St+E+Toronto&travelmode=walking&waypoints=43.66987490917481,-79.29866420836301|43.670002184627094,-79.29785126569573|43.67176434692246,-79.29262763537818|Judy%27s+Beach+Café+Toronto';
     window.open(url, '_blank')
 });
+
+// Button event listener to export pub crawl to google maps
+document.getElementById('pup-crawl-google-maps-btn').addEventListener('click', (e) => {
+    e.preventDefault();
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=RAW+101+Pet+Food+Toronto&destination=Petninsula+Toronto&travelmode=walking&waypoints=Kew+Gardens+Dog+Park+Toronto';
+    window.open(url, '_blank')
+});
