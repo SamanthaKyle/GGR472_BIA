@@ -42,7 +42,7 @@ const BRAND_BROWN = '#9a8f6e'
 const BRAND_TAUPE = '#b19074'
 
 // list of existing card ids (for event listeners)
-const CARD_IDS = ['card-ivan-forrest', 'card-kew', 'card-pub-crawl', 'card-date-night', 'card-artwalk', 'card-page-to-screen']
+const CARD_IDS = ['card-ivan-forrest', 'card-kew', 'card-pub-crawl', 'card-date-night', 'card-artwalk', 'card-page-to-screen', 'card-pup-crawl']
 
 // dictionary mapping card id's to their corresponding route layer, node layer, and center point
 // this will allow for event listeners to be automatically created with a smaller amount of code
@@ -691,7 +691,7 @@ map.on('load', () => {
     });
 map.addSource('pupcrawl-route-data', {
         type: 'geojson',
-        data: 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/data/PubCrawl_routes.geojson'
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PupCrawl_routes.geojson'
     });
 
     map.addLayer({
@@ -710,7 +710,7 @@ map.addSource('pupcrawl-route-data', {
 
     map.addSource('pupcrawl-node-data', {
         type: 'geojson',
-        data: 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/data/PupCrawl_nodes.geojson'
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PupCrawl_nodes.geojson'
     });
 
     map.addLayer({
