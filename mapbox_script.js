@@ -9,7 +9,9 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic2FtLWt5bGUiLCJhIjoiY21rZTR3NW82MDNjazNscHdvZ
 // Initialize map
 const map = new mapboxgl.Map({
     container: 'my-map', //container id in HTML
-    style: 'mapbox://styles/mapbox/dark-v11',  //stylesheet location
+    //style: 'mapbox://styles/mapbox/dark-v11',  //stylesheet location
+    //style: 'mapbox://styles/sam-kyle/cmmxorjrn008z01s6ga49hva8',
+    style: 'mapbox://styles/sam-kyle/cmmz1k1a4000o01qm7s9sevt1',
     center: [-79.305089, 43.670681],  // starting point, longitude/latitude 43.652652, -79.393014
     zoom: 14 // starting zoom level
 });
@@ -25,7 +27,16 @@ const CLASS_2_SIZE = 0.05;
 
 const ROUTE_OPACITY = 0.7;
 const NODE_OPACITY = 1;
+// Esri color ramps - Esri Purple 2
+// #73377eff,#9753a3ff,#b983c3ff,#daafe1ff,#eac5f0ff
+// const colors = ["#73377eff", "#9753a3ff", "#b983c3ff", "#daafe1ff", "#eac5f0ff"];
+// // Esri color ramps - Garden Grass
+// // #4d8c8cff,#6fa9aaff,#99c5b6ff,#cbe0b2ff,#e3f1d2ff
+// const colors = ["#4d8c8cff", "#6fa9aaff", "#99c5b6ff", "#cbe0b2ff", "#e3f1d2ff"];
 
+// // Esri color ramps - Heatmap 16
+// // #b397b3ff,#bd84bdff,#c672c6ff,#d05fd0ff,#d94cd9ff,#e339e3ff,#ec26ecff,#f613f6ff,#ff00ffff,#ff3bbfff,#ff7580ff,#ffb040ff,#ffea00ff
+// const colors = ["#b397b3ff", "#bd84bdff", "#c672c6ff", "#d05fd0ff", "#d94cd9ff", "#e339e3ff", "#ec26ecff", "#f613f6ff", "#ff00ffff", "#ff3bbfff", "#ff7580ff", "#ffb040ff", "#ffea00ff"];
 
 // BRANDING COLOURS
 const BRAND_WHITE = '#e8f8ff'
@@ -70,6 +81,18 @@ const test_path = 'https://docs.mapbox.com/mapbox-gl-js/assets/cat.png'
 //const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/icons/bike2.png?raw=true'
 //const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/raw/e24e26c71054470033c8d43eb16b21cdea59fcf6/icons/bike.png'
 //const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/blob/039c6dfaa6153fba0cdcc629656ce893675b8e09/images/beaches_n_cream.png?raw=true'
+
+// map.addSource('test-source-id', {
+//     type: 'image',
+//     url: 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/icons/bike.png?raw=true'
+// });
+
+// const image = new Image(30,30);
+// image.src = 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/icons/bike.png?raw=true'
+// const images = ['myImage', image]
+
+// console.log('MADE IMAGE', images)
+
 /*--------------------------------------------------------------------
 ADD CONTROLS, INTERACTIVITY, AND GEOCODER
 --------------------------------------------------------------------*/
@@ -171,216 +194,261 @@ map.on('load', () => {
     });
 
     // pedestrian walking edges - NOT ADDED 
-    map.addSource('walking-edges', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/walking_network_edges_updated.geojson'
-    });
+    // map.addSource('walking-edges', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/walking_network_edges_updated.geojson'
+    // });
+
+    console.log(map.getStyle().layers);
+    //map.getStyle().layers[0]['paint'] = {'icon-color': 'red'};
+    console.log(map.getStyle().layers);
+    // let bikes2 = map.getStyle().layers[2]['id']
+    // console.log(bikes)
+    // map.addPaintProperty(bikes, 'icon-color', 'red')
+    // map.setLayoutProperty(bikes, 'visibility', 'none');
+    // map.setPaintProperty(bikes2, 'icon-color', 'red');
+    //map.setLayoutProperty(bikes2, 'visibility', 'none');
+
+    //map.setPaintProperty(bikes, 'fill-color', 'red');//{'icon-color': 'white', 'icon-halo-color': 'red', 'icon-halo-width': 0.3})
+    //map.setPaintProperty('waterbodies-layer', 'fill-color','red')
+
 
     // Bikeshare stations - visible on high zoom value - present in legend
-    map.addSource('bikeshare-stations-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/bikeshare_cleaned.geojson'
-    });
+    // map.addSource('bikeshare-stations-data', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/bikeshare_cleaned.geojson'
+    // });
+
+    // map.addSource('bike-test', {
+    //     type: 'vector',
+    //     url: 'mapbox://sam-kyle.ce6jclwa'
+    // })
+
+    // map.addLayer({
+    //     'id': 'test-bike-layer',
+    //     'type': 'symbol',
+
+    // })
     // Image loading for bikeshare icons
-    map.loadImage(
-        test_path,
-        (error, image) => {
-            if (error) throw error;
+    // map.addImage('bike', 'test-source-id', {sdf:true});
+    // map.addImage('tes', 'myImage');
+    // map.addLayer({
+    //     'id': 'bike-icon-layer',
+    //     'type': 'symbol',
+    //     'source': 'bikeshare-stations-data', // reference the data source
+    //     'layout': {
+    //         // 'icon-allow-overlap': true,
+    //         'icon-image': 'tes', // reference the image
+            
+    //         // 'icon-size': CLASS_1_SIZE
+    //     }
+    //     ,images: { images },
+    //     // 'paint': {
+    //     //     //'icon-color': 'white',
+    //     //     // 'icon-halo-color': 'red', //update if necessary
+    //     //     // 'icon-halo-width': 0.3
+    //     // },
+    //     //'minzoom': CLASS_1_MINZOOM
+    // });
+    // map.loadImage(
+    //     test_path,
+    //     (error, image) => {
+    //         if (error) throw error;
 
-            // Add the image to the map style.
-            map.addImage('cat', image, { sdf: true });
+    //         // Add the image to the map style.
+    //         map.addImage('cat', image, { sdf: true });
 
-            // Add a layer to use the image to represent the data.
-            map.addLayer({
-                'id': 'bike-icon-layer',
-                'type': 'symbol',
-                'source': 'bikeshare-stations-data', // reference the data source
-                'layout': {
-                    'icon-allow-overlap': true,
-                    'icon-image': 'cat', // reference the image
-                    'icon-size': CLASS_1_SIZE
-                },
-                'paint': {
-                    'icon-color': 'white',
-                    // 'icon-halo-color': 'red', //update if necessary
-                    // 'icon-halo-width': 0.3
-                },
-                'minzoom': CLASS_1_MINZOOM
-            });
-        }
-    );
+    //         // Add a layer to use the image to represent the data.
+    //         map.addLayer({
+    //             'id': 'bike-icon-layer',
+    //             'type': 'symbol',
+    //             'source': 'bikeshare-stations-data', // reference the data source
+    //             'layout': {
+    //                 'icon-allow-overlap': true,
+    //                 'icon-image': 'cat', // reference the image
+    //                 'icon-size': CLASS_1_SIZE
+    //             },
+    //             'paint': {
+    //                 'icon-color': 'white',
+    //                 // 'icon-halo-color': 'red', //update if necessary
+    //                 // 'icon-halo-width': 0.3
+    //             },
+    //             'minzoom': CLASS_1_MINZOOM
+    //         });
+    //     }
+    // );
 
-    // Circle layer for bikeshare logo
-    map.addLayer({
-        'id': 'bikeshare-stations-layer',
-        'type': 'circle',
-        'source': 'bikeshare-stations-data',
-        'paint': {
-            'circle-radius': 13,
-            'circle-color': '#5bb163', //taken from official logo
-            'circle-stroke-color': '#346e55', // taken from official logo
-            'circle-stroke-width': 2,
-            'circle-opacity': 1
-        },
-        'minzoom': CLASS_1_MINZOOM
+    // // Circle layer for bikeshare logo
+    // map.addLayer({
+    //     'id': 'bikeshare-stations-layer',
+    //     'type': 'circle',
+    //     'source': 'bikeshare-stations-data',
+    //     'paint': {
+    //         'circle-radius': 13,
+    //         'circle-color': '#5bb163', //taken from official logo
+    //         'circle-stroke-color': '#346e55', // taken from official logo
+    //         'circle-stroke-width': 2,
+    //         'circle-opacity': 1
+    //     },
+    //     'minzoom': CLASS_1_MINZOOM
 
-    });
+    // });
 
     // City of Toronto Parking - visible on high zoom value - present in legend
 
-    map.addSource('city-parking-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/greenp_cleaned.geojson'
-    });
+    // map.addSource('city-parking-data', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/greenp_cleaned.geojson'
+    // });
 
-    map.loadImage(
-        test_path,
-        (error, image) => {
-            if (error) throw error;
+    // map.loadImage(
+    //     test_path,
+    //     (error, image) => {
+    //         if (error) throw error;
 
-            // Add the image to the map style.
-            map.addImage('cat', image, { sdf: true });
+    //         // Add the image to the map style.
+    //         map.addImage('cat', image, { sdf: true });
 
-            // Add a layer to use the image to represent the data.
-            map.addLayer({
-                'id': 'city-parking-icon-layer',
-                'type': 'symbol',
-                'source': 'city-parking-data', // reference the data source
-                'layout': {
-                    'icon-allow-overlap': true,
-                    'icon-image': 'cat', // reference the image
-                    'icon-size': CLASS_1_SIZE
-                },
-                'paint': {
-                    'icon-color': 'black',
-                    // 'icon-halo-color': 'red', //update if necessary
-                    // 'icon-halo-width': 0.3
-                },
-                'minzoom': CLASS_1_MINZOOM
-            });
-        }
-    );
+    //         // Add a layer to use the image to represent the data.
+    //         map.addLayer({
+    //             'id': 'city-parking-icon-layer',
+    //             'type': 'symbol',
+    //             'source': 'city-parking-data', // reference the data source
+    //             'layout': {
+    //                 'icon-allow-overlap': true,
+    //                 'icon-image': 'cat', // reference the image
+    //                 'icon-size': CLASS_1_SIZE
+    //             },
+    //             'paint': {
+    //                 'icon-color': 'black',
+    //                 // 'icon-halo-color': 'red', //update if necessary
+    //                 // 'icon-halo-width': 0.3
+    //             },
+    //             'minzoom': CLASS_1_MINZOOM
+    //         });
+    //     }
+    // );
 
     // Circle layer for city parking
-    map.addLayer({
-        'id': 'city-parking-layer',
-        'type': 'circle',
-        'source': 'city-parking-data',
-        'paint': {
-            'circle-radius': 13,
-            'circle-color': '#5bb163', //taken from official logo
-            'circle-stroke-color': '#346e55', // taken from official logo
-            'circle-stroke-width': 2,
-            'circle-opacity': 1
-        },
-        'minzoom': CLASS_1_MINZOOM
+    // map.addLayer({
+    //     'id': 'city-parking-layer',
+    //     'type': 'circle',
+    //     'source': 'city-parking-data',
+    //     'paint': {
+    //         'circle-radius': 13,
+    //         'circle-color': '#5bb163', //taken from official logo
+    //         'circle-stroke-color': '#346e55', // taken from official logo
+    //         'circle-stroke-width': 2,
+    //         'circle-opacity': 1
+    //     },
+    //     'minzoom': CLASS_1_MINZOOM
 
-    });
+    // });
 
     // Benches - visible on extra high zoom - present in legend
 
-    map.addSource('benches-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/aziza_geojsons_cleaned/benches.geojson'
-    })
+    // map.addSource('benches-data', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/aziza_geojsons_cleaned/benches.geojson'
+    // })
 
-    map.loadImage(
-        test_path,
-        (error, image) => {
-            if (error) throw error;
+    // map.loadImage(
+    //     test_path,
+    //     (error, image) => {
+    //         if (error) throw error;
 
-            // Add the image to the map style.
-            map.addImage('cat', image, { sdf: true });
+    //         // Add the image to the map style.
+    //         map.addImage('cat', image, { sdf: true });
 
-            // Add a layer to use the image to represent the data.
-            map.addLayer({
-                'id': 'benches-icon-layer',
-                'type': 'symbol',
-                'source': 'benches-data', // reference the data source
-                'layout': {
-                    'icon-allow-overlap': true,
-                    'icon-image': 'cat', // reference the image
-                    'icon-size': CLASS_2_SIZE
-                },
-                'paint': {
-                    'icon-color': BRAND_YELLOW,
-                    // 'icon-halo-color': 'red', //update if necessary
-                    // 'icon-halo-width': 0.3
-                },
-                'minzoom': CLASS_2_MINZOOM
-            });
-        }
-    );
+    //         // Add a layer to use the image to represent the data.
+    //         map.addLayer({
+    //             'id': 'benches-icon-layer',
+    //             'type': 'symbol',
+    //             'source': 'benches-data', // reference the data source
+    //             'layout': {
+    //                 'icon-allow-overlap': true,
+    //                 'icon-image': 'cat', // reference the image
+    //                 'icon-size': CLASS_2_SIZE
+    //             },
+    //             'paint': {
+    //                 'icon-color': BRAND_YELLOW,
+    //                 // 'icon-halo-color': 'red', //update if necessary
+    //                 // 'icon-halo-width': 0.3
+    //             },
+    //             'minzoom': CLASS_2_MINZOOM
+    //         });
+    //     }
+    // );
 
     // Bike Rings - visible on extra high zoom - present in legend
 
-    map.addSource('bike-ring-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/aziza_geojsons_cleaned/bike_rings.geojson'
-    })
+    // map.addSource('bike-ring-data', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/aziza_geojsons_cleaned/bike_rings.geojson'
+    // })
 
-    map.loadImage(
-        test_path,
-        (error, image) => {
-            if (error) throw error;
+    // map.loadImage(
+    //     test_path,
+    //     (error, image) => {
+    //         if (error) throw error;
 
-            // Add the image to the map style.
-            map.addImage('cat', image, { sdf: true });
+    //         // Add the image to the map style.
+    //         map.addImage('cat', image, { sdf: true });
 
-            // Add a layer to use the image to represent the data.
-            map.addLayer({
-                'id': 'bike-ring-icon-layer',
-                'type': 'symbol',
-                'source': 'bike-ring-data', // reference the data source
-                'layout': {
-                    'icon-allow-overlap': true,
-                    'icon-image': 'cat', // reference the image
-                    'icon-size': CLASS_2_SIZE
-                },
-                'paint': {
-                    'icon-color': BRAND_ORANGE,
-                    // 'icon-halo-color': 'red', //update if necessary
-                    // 'icon-halo-width': 0.3
-                },
-                'minzoom': CLASS_2_MINZOOM
-            });
-        }
-    );
+    //         // Add a layer to use the image to represent the data.
+    //         map.addLayer({
+    //             'id': 'bike-ring-icon-layer',
+    //             'type': 'symbol',
+    //             'source': 'bike-ring-data', // reference the data source
+    //             'layout': {
+    //                 'icon-allow-overlap': true,
+    //                 'icon-image': 'cat', // reference the image
+    //                 'icon-size': CLASS_2_SIZE
+    //             },
+    //             'paint': {
+    //                 'icon-color': BRAND_ORANGE,
+    //                 // 'icon-halo-color': 'red', //update if necessary
+    //                 // 'icon-halo-width': 0.3
+    //             },
+    //             'minzoom': CLASS_2_MINZOOM
+    //         });
+    //     }
+    // );
 
     // Public Washrooms - visible on extra high zoom - present in legend
 
-    map.addSource('washrooms-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/aziza_geojsons_cleaned/public_washrooms.geojson'
-    })
+    // map.addSource('washrooms-data', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/aziza_geojsons_cleaned/public_washrooms.geojson'
+    // })
 
-    map.loadImage(
-        test_path,
-        (error, image) => {
-            if (error) throw error;
+    // map.loadImage(
+    //     test_path,
+    //     (error, image) => {
+    //         if (error) throw error;
 
-            // Add the image to the map style.
-            map.addImage('cat', image, { sdf: true });
+    //         // Add the image to the map style.
+    //         map.addImage('cat', image, { sdf: true });
 
-            // Add a layer to use the image to represent the data.
-            map.addLayer({
-                'id': 'washrooms-icon-layer',
-                'type': 'symbol',
-                'source': 'washrooms-data', // reference the data source
-                'layout': {
-                    'icon-allow-overlap': true,
-                    'icon-image': 'cat', // reference the image
-                    'icon-size': CLASS_2_SIZE
-                },
-                'paint': {
-                    'icon-color': 'white',
-                    'icon-halo-color': 'grey', //update if necessary
-                    'icon-halo-width': 0.3
-                },
-                'minzoom': CLASS_2_MINZOOM
-            });
-        }
-    );
+    //         // Add a layer to use the image to represent the data.
+    //         map.addLayer({
+    //             'id': 'washrooms-icon-layer',
+    //             'type': 'symbol',
+    //             'source': 'washrooms-data', // reference the data source
+    //             'layout': {
+    //                 'icon-allow-overlap': true,
+    //                 'icon-image': 'cat', // reference the image
+    //                 'icon-size': CLASS_2_SIZE
+    //             },
+    //             'paint': {
+    //                 'icon-color': 'white',
+    //                 'icon-halo-color': 'grey', //update if necessary
+    //                 'icon-halo-width': 0.3
+    //             },
+    //             'minzoom': CLASS_2_MINZOOM
+    //         });
+    //     }
+    // );
 
     // ROUTES - visible on hover or click
 
@@ -391,6 +459,7 @@ map.on('load', () => {
 
     map.addLayer({
         'id': 'ivan-gardens-route-layer',
+        'slot': 'top',
         'type': 'line',
         'source': 'ivan-gardens-route-data',
         'paint': {
@@ -411,6 +480,7 @@ map.on('load', () => {
     map.addLayer({
         'id': 'ivan-gardens-node-layer',
         'type': 'circle',
+        'slot': 'top',
         'source': 'ivan-gardens-node-data',
         'paint': {
             'circle-radius': 4,
@@ -432,6 +502,7 @@ map.on('load', () => {
     map.addLayer({
         'id': 'kew-gardens-route-layer',
         'type': 'line',
+        'slot': 'top',
         'source': 'kew-gardens-route-data',
         'paint': {
             'line-color': BRAND_GREEN,
@@ -450,6 +521,7 @@ map.on('load', () => {
     map.addLayer({
         'id': 'kew-gardens-node-layer',
         'type': 'circle',
+        'slot': 'top',
         'source': 'kew-gardens-node-data',
         'paint': {
             'circle-radius': 4,
@@ -535,6 +607,7 @@ map.on('load', () => {
     map.addLayer({
         'id': 'artwalk-route-layer',
         'type': 'line',
+        'slot': 'top',
         'source': 'artwalk-route-data',
         'paint': {
             'line-color': BRAND_PINK,
@@ -554,6 +627,7 @@ map.on('load', () => {
     map.addLayer({
         'id': 'artwalk-node-layer',
         'type': 'circle',
+        'slot': 'top',
         'source': 'artwalk-node-data',
         'paint': {
             'circle-radius': 8,
@@ -575,6 +649,7 @@ map.on('load', () => {
     map.addLayer({
         'id': 'pubcrawl-route-layer',
         'type': 'line',
+        'slot': 'top',
         'source': 'pubcrawl-route-data',
         'paint': {
             'line-color': BRAND_PINK,
@@ -594,6 +669,7 @@ map.on('load', () => {
     map.addLayer({
         'id': 'pubcrawl-node-layer',
         'type': 'circle',
+        'slot': 'top',
         'source': 'pubcrawl-node-data',
         'paint': {
             'circle-radius': 8,
@@ -615,6 +691,7 @@ map.on('load', () => {
     map.addLayer({
         'id': 'datenight-route-layer',
         'type': 'line',
+        'slot': 'top',
         'source': 'datenight-route-data',
         'paint': {
             'line-color': BRAND_PINK,
@@ -634,6 +711,7 @@ map.on('load', () => {
     map.addLayer({
         'id': 'datenight-node-layer',
         'type': 'circle',
+        'slot': 'top',
         'source': 'datenight-node-data',
         'paint': {
             'circle-radius': 8,
@@ -655,6 +733,7 @@ map.on('load', () => {
     map.addLayer({
         'id': 'pagetoscreen-route-layer',
         'type': 'line',
+        'slot': 'top',
         'source': 'pagetoscreen-route-data',
         'paint': {
             'line-color': BRAND_PINK,
@@ -675,6 +754,7 @@ map.on('load', () => {
     map.addLayer({
         'id': 'pagetoscreen-node-layer',
         'type': 'circle',
+        'slot': 'top',
         'source': 'pagetoscreen-node-data',
         'paint': {
             'circle-radius': 4,
@@ -696,6 +776,7 @@ map.on('load', () => {
         map.addLayer({
             'id': node_id + '-label',
             'type': 'symbol',
+            'slot': 'top',
             'source': node_source_id,
             'minzoom': 15,
             // 'paint': {
