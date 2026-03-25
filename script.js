@@ -122,13 +122,20 @@ document.getElementById('artwalk-google-maps-btn').addEventListener('click', (e)
 // Button event listener to export date night to google maps
 document.getElementById('date-night-google-maps-btn').addEventListener('click', (e) => {
     e.preventDefault();
-    let url = 'https://www.google.com/maps/dir/?api=1&origin=Beachwood+Flower+Shop+1916+Queen+St+E+Toronto&destination=Fox+Theatre+2236+Queen+St+E+Toronto&travelmode=walking&waypoints=Hanji+Gifts+1952+Queen+St+E+Toronto|Shop+Makers+The+Beaches+1984+Queen+St+E+Toronto|Arts+on+Queen+2198+Queen+St+E+Toronto|Ed%27s+Real+Scoop+2224+Queen+St+E+Toronto';
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=Beachwood+Flower+Shop+1916+Queen+St+E+Toronto&destination=Fox+Theatre+2236+Queen+St+E+Toronto&travelmode=walking&waypoints=Hanji+Gifts+1952+Queen+St+E+Toronto|Shop+Makers+The+Beaches+1984+Queen+St+E+Toronto|43.672121,-79.292585|Arts+on+Queen+2198+Queen+St+E+Toronto|Ed%27s+Real+Scoop+2224+Queen+St+E+Toronto';
     window.open(url, '_blank')
 });
 
 // Button event listener to export page to screen to google maps
 document.getElementById('page-to-screen-google-maps-btn').addEventListener('click', (e) => {
     e.preventDefault();
-    let url = 'https://www.google.com/maps/dir/?api=1&origin=Toronto+Public+Library+-+Beaches+Branch&destination=Fox+Theatre+2236+Queen+St+E+Toronto&travelmode=walking&waypoints=43.66987490917481,-79.29866420836301|43.670002184627094,-79.29785126569573|43.67176434692246,-79.29262763537818|Judy%27s+Beach+Café+Toronto';
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=43.672335814591555,-79.29044937527149&destination=43.66636934636088,-79.29672237527186&travelmode=walking&waypoints=43.670540860709345,-79.29951026177929';
+    window.open(url, '_blank')
+});
+
+// Button event listener to export pub crawl to google maps
+document.getElementById('pup-crawl-google-maps-btn').addEventListener('click', (e) => {
+    e.preventDefault();
+    let url = 'https://www.google.com/maps/dir/RAW+101+-+RAW+Food+For+Dogs+and+Cats,+2186+Queen+St+E,+Toronto,+ON+M4E+1E6/Kew+Gardens+Dog+Park,+Toronto,+ON+M4E+2N8/The+Petninsula+%E2%80%93+Lavakan+Pet+Spa(Self-Serve+Dog+Wash)+M4L+1J3,+Ontario,+Toronto,+Queen+St+E/@43.6692097,-79.3002577,16z?entry=tts';
     window.open(url, '_blank')
 });
