@@ -984,12 +984,18 @@ for (let i = 0; i < CARD_IDS.length; i++) { // over the list of card id's
         if (click_selected_node_id == node_id) {
             // THIS IS ALREADY CLICKED -> DESELECT IT
             make_route_invisible(route_id, node_id);
+            if (node_id == CARD_ID_TO_LAYER_INFO['card-ivan-forrest']['node_layer_id'] || node_id == CARD_ID_TO_LAYER_INFO['card-kew']['node_layer_id']) {
+                // make heatmap invisible
+            }
             click_selected_node_id = 'none';
             click_selected_route_id = 'none';
             // do not change extent
         } else {
             // THIS IS NOT ALREADY CLICKED -> SELECT IT
             make_route_visible(route_id, node_id, center);
+            if (node_id == CARD_ID_TO_LAYER_INFO['card-ivan-forrest']['node_layer_id'] || node_id == CARD_ID_TO_LAYER_INFO['card-kew']['node_layer_id']) {
+                // make heatmap visible
+            }
             make_route_invisible(click_selected_route_id, click_selected_node_id)
             fly_to_layer_extent(center);
             click_selected_route_id = route_id;
