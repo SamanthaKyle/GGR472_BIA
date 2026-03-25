@@ -25,7 +25,7 @@ const CLASS_2_MINZOOM = 16; //minzoom for class 2 features
 const CLASS_1_SIZE = 0.065;
 const CLASS_2_SIZE = 0.05;
 
-const ROUTE_OPACITY = 0.7;
+const ROUTE_OPACITY = 1;
 const NODE_OPACITY = 1;
 // Esri color ramps - Esri Purple 2
 // #73377eff,#9753a3ff,#b983c3ff,#daafe1ff,#eac5f0ff
@@ -142,58 +142,58 @@ map.on('load', () => {
         'type': 'line',
         'source': 'beaches-poly',
         'paint': {
-            'line-color': BRAND_WHITE,
+            'line-color': BRAND_ORANGE,
             'line-width': 1
         }
     });
 
     // Greenspaces poly - always visible - not present in legend
-    map.addSource('green-spaces-poly', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/aziza_geojsons_cleaned/green_spaces.geojson'
-        //'https://smith-lg.github.io/ggr472-wk6-demo/data/torontomusicvenues.geojson'
-    });
+    // map.addSource('green-spaces-poly', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/aziza_geojsons_cleaned/green_spaces.geojson'
+    //     //'https://smith-lg.github.io/ggr472-wk6-demo/data/torontomusicvenues.geojson'
+    // });
 
-    map.addLayer({
-        'id': 'green-spaces',
-        'type': 'fill',
-        'source': 'green-spaces-poly',
-        'paint': {
-            'fill-color': '#41c767',
-            'fill-opacity': 0.3
-        }
-    });
+    // map.addLayer({
+    //     'id': 'green-spaces',
+    //     'type': 'fill',
+    //     'source': 'green-spaces-poly',
+    //     'paint': {
+    //         'fill-color': '#41c767',
+    //         'fill-opacity': 0.3
+    //     }
+    // });
 
     // Tributaries - default visible - not on legend
 
-    map.addSource('tributaries-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/aziza_geojsons_cleaned/tributaries.geojson'
-    })
+    // map.addSource('tributaries-data', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/aziza_geojsons_cleaned/tributaries.geojson'
+    // })
 
-    map.addLayer({
-        'id': 'tributaries-layer',
-        'type': 'line',
-        'source': 'tributaries-data',
-        'paint': {
-            'line-color': BRAND_LIGHT_BLUE
-        }
-    });
+    // map.addLayer({
+    //     'id': 'tributaries-layer',
+    //     'type': 'line',
+    //     'source': 'tributaries-data',
+    //     'paint': {
+    //         'line-color': BRAND_LIGHT_BLUE
+    //     }
+    // });
 
     // water bodies - default visible - not on legend
-    map.addSource('waterbodies-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/aziza_geojsons_cleaned/waterbodies.geojson'
-    })
+    // map.addSource('waterbodies-data', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/aziza_geojsons_cleaned/waterbodies.geojson'
+    // })
 
-    map.addLayer({
-        'id': 'waterbodies-layer',
-        'type': 'fill',
-        'source': 'waterbodies-data',
-        'paint': {
-            'fill-color': BRAND_LIGHT_BLUE // from branding package
-        }
-    });
+    // map.addLayer({
+    //     'id': 'waterbodies-layer',
+    //     'type': 'fill',
+    //     'source': 'waterbodies-data',
+    //     'paint': {
+    //         'fill-color': BRAND_LIGHT_BLUE // from branding package
+    //     }
+    // });
 
     // pedestrian walking edges - NOT ADDED 
     // map.addSource('walking-edges', {
@@ -461,12 +461,12 @@ map.on('load', () => {
 
     map.addLayer({
         'id': 'ivan-gardens-route-layer',
-        'slot': 'top',
+        //'slot': 'top',
         'type': 'line',
         'source': 'ivan-gardens-route-data',
         'paint': {
             'line-color': BRAND_GREEN,
-            'line-width': 3,
+            'line-width': 5,
             'line-opacity': ROUTE_OPACITY,
         },
         'layout': {
@@ -482,13 +482,13 @@ map.on('load', () => {
     map.addLayer({
         'id': 'ivan-gardens-node-layer',
         'type': 'circle',
-        'slot': 'top',
+        //'slot': 'top',
         'source': 'ivan-gardens-node-data',
         'paint': {
-            'circle-radius': 4,
+            'circle-radius': 5,
             'circle-stroke-color': BRAND_PEACH,
-            'circle-stroke-width': 0.3,
-            'circle-color': BRAND_PEACH,
+            'circle-stroke-width': 0.5,
+            'circle-color': BRAND_DARK_BLUE,
             'circle-opacity': NODE_OPACITY
         },
         'layout': {
@@ -504,11 +504,11 @@ map.on('load', () => {
     map.addLayer({
         'id': 'kew-gardens-route-layer',
         'type': 'line',
-        'slot': 'top',
+        //'slot': 'top',
         'source': 'kew-gardens-route-data',
         'paint': {
             'line-color': BRAND_GREEN,
-            'line-width': 3,
+            'line-width': 5,
             'line-opacity': ROUTE_OPACITY
         },
         'layout': {
@@ -523,14 +523,14 @@ map.on('load', () => {
     map.addLayer({
         'id': 'kew-gardens-node-layer',
         'type': 'circle',
-        'slot': 'top',
+        //'slot': 'top',
         'source': 'kew-gardens-node-data',
         'paint': {
-            'circle-radius': 4,
+            'circle-radius': 5,
             'circle-stroke-color': BRAND_PEACH,
-            'circle-color': BRAND_PEACH,
+            'circle-color': BRAND_DARK_BLUE,
             'circle-opacity': NODE_OPACITY,
-            'circle-stroke-width': 0.3,
+            'circle-stroke-width': 0.5,
         },
         'layout': {
             'visibility': 'none'
@@ -609,11 +609,11 @@ map.on('load', () => {
     map.addLayer({
         'id': 'artwalk-route-layer',
         'type': 'line',
-        'slot': 'top',
+        //'slot': 'top',
         'source': 'artwalk-route-data',
         'paint': {
             'line-color': BRAND_PINK,
-            'line-width': 3,
+            'line-width': 5,
             'line-opacity': ROUTE_OPACITY
         },
         'layout': {
@@ -629,14 +629,14 @@ map.on('load', () => {
     map.addLayer({
         'id': 'artwalk-node-layer',
         'type': 'circle',
-        'slot': 'top',
+        //'slot': 'top',
         'source': 'artwalk-node-data',
         'paint': {
             'circle-radius': 8,
             'circle-stroke-color': BRAND_LIGHT_PINK,
             'circle-color': BRAND_LIGHT_PINK,
             'circle-opacity': NODE_OPACITY,
-            'circle-stroke-width': 0.3,
+            'circle-stroke-width': 0.5,
         },
         'layout': {
             'visibility': 'none'
@@ -651,11 +651,11 @@ map.on('load', () => {
     map.addLayer({
         'id': 'pubcrawl-route-layer',
         'type': 'line',
-        'slot': 'top',
+        //'slot': 'top',
         'source': 'pubcrawl-route-data',
         'paint': {
             'line-color': BRAND_PINK,
-            'line-width': 3,
+            'line-width': 5,
             'line-opacity': ROUTE_OPACITY
         },
         'layout': {
@@ -671,14 +671,14 @@ map.on('load', () => {
     map.addLayer({
         'id': 'pubcrawl-node-layer',
         'type': 'circle',
-        'slot': 'top',
+        //'slot': 'top',
         'source': 'pubcrawl-node-data',
         'paint': {
             'circle-radius': 8,
             'circle-stroke-color': BRAND_LIGHT_PINK,
             'circle-color': BRAND_LIGHT_PINK,
             'circle-opacity': NODE_OPACITY,
-            'circle-stroke-width': 0.3,
+            'circle-stroke-width': 0.5,
         },
         'layout': {
             'visibility': 'none'
@@ -693,11 +693,11 @@ map.on('load', () => {
     map.addLayer({
         'id': 'datenight-route-layer',
         'type': 'line',
-        'slot': 'top',
+        //'slot': 'top',
         'source': 'datenight-route-data',
         'paint': {
             'line-color': BRAND_PINK,
-            'line-width': 3,
+            'line-width': 5,
             'line-opacity': ROUTE_OPACITY
         },
         'layout': {
@@ -713,14 +713,14 @@ map.on('load', () => {
     map.addLayer({
         'id': 'datenight-node-layer',
         'type': 'circle',
-        'slot': 'top',
+        //'slot': 'top',
         'source': 'datenight-node-data',
         'paint': {
             'circle-radius': 8,
             'circle-stroke-color': BRAND_LIGHT_PINK,
             'circle-color': BRAND_LIGHT_PINK,
             'circle-opacity': NODE_OPACITY,
-            'circle-stroke-width': 0.3,
+            'circle-stroke-width': 0.5,
         },
         'layout': {
             'visibility': 'none'
@@ -735,11 +735,11 @@ map.on('load', () => {
     map.addLayer({
         'id': 'pagetoscreen-route-layer',
         'type': 'line',
-        'slot': 'top',
+        //'slot': 'top',
         'source': 'pagetoscreen-route-data',
         'paint': {
             'line-color': BRAND_PINK,
-            'line-width': 3,
+            'line-width': 5,
             'line-opacity': ROUTE_OPACITY
         },
         'layout': {
@@ -756,14 +756,14 @@ map.on('load', () => {
     map.addLayer({
         'id': 'pagetoscreen-node-layer',
         'type': 'circle',
-        'slot': 'top',
+        //'slot': 'top',
         'source': 'pagetoscreen-node-data',
         'paint': {
-            'circle-radius': 4,
+            'circle-radius': 5,
             'circle-stroke-color': BRAND_LIGHT_PINK,
             'circle-color': BRAND_LIGHT_PINK,
             'circle-opacity': NODE_OPACITY,
-            'circle-stroke-width': 0.3,
+            'circle-stroke-width': 0.5,
         },
         'layout': {
             'visibility': 'none'
@@ -780,7 +780,7 @@ map.addSource('pupcrawl-route-data', {
         'source': 'pupcrawl-route-data',
         'paint': {
             'line-color': BRAND_LIGHT_BLUE,
-            'line-width': 3,
+            'line-width': 5,
             'line-opacity': ROUTE_OPACITY
         },
         'layout': {
@@ -802,7 +802,7 @@ map.addSource('pupcrawl-route-data', {
             'circle-stroke-color': BRAND_LIGHT_BLUE,
             'circle-color': BRAND_LIGHT_BLUE,
             'circle-opacity': NODE_OPACITY,
-            'circle-stroke-width': 0.3,
+            'circle-stroke-width': 0.5,
         },
         'layout': {
             'visibility': 'none'
