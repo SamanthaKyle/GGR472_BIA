@@ -11,7 +11,8 @@ const map = new mapboxgl.Map({
     container: 'my-map', //container id in HTML
     //style: 'mapbox://styles/mapbox/dark-v11',  //stylesheet location
     //style: 'mapbox://styles/sam-kyle/cmmxorjrn008z01s6ga49hva8',
-    style: 'mapbox://styles/sam-kyle/cmmz1k1a4000o01qm7s9sevt1',
+    //style: 'mapbox://styles/sam-kyle/cmmz1k1a4000o01qm7s9sevt1',
+    style: 'mapbox://styles/sam-kyle/cmnfdfvnx007s01ryd30jccvf',
     center: [-79.305089, 43.670681],  // starting point, longitude/latitude 43.652652, -79.393014
     zoom: 14 // starting zoom level
 });
@@ -46,6 +47,8 @@ const BRAND_PINK = '#d90368'
 const BRAND_LIGHT_PINK = '#f385b9'
 const BRAND_GREEN = '#04a777'
 const BRAND_DARK_BLUE = '#000f4d'
+
+// OLD BRAND COLOURS
 const BRAND_LIGHT_PURPLE = '#d1d8e9'
 const BRAND_PEACH = '#f8d8aa'
 const BRAND_ORANGE = '#e27237'
@@ -148,21 +151,21 @@ map.on('load', () => {
     });
 
     // Greenspaces poly - always visible - not present in legend
-    // map.addSource('green-spaces-poly', {
-    //     type: 'geojson',
-    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/aziza_geojsons_cleaned/green_spaces.geojson'
-    //     //'https://smith-lg.github.io/ggr472-wk6-demo/data/torontomusicvenues.geojson'
-    // });
+    map.addSource('green-spaces-poly', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/aziza_geojsons_cleaned/green_spaces.geojson'
+        //'https://smith-lg.github.io/ggr472-wk6-demo/data/torontomusicvenues.geojson'
+    });
 
-    // map.addLayer({
-    //     'id': 'green-spaces',
-    //     'type': 'fill',
-    //     'source': 'green-spaces-poly',
-    //     'paint': {
-    //         'fill-color': '#41c767',
-    //         'fill-opacity': 0.3
-    //     }
-    // });
+    map.addLayer({
+        'id': 'green-spaces',
+        'type': 'fill',
+        'source': 'green-spaces-poly',
+        'paint': {
+            'fill-color': '#41c767',
+            'fill-opacity': 0.3
+        }
+    });
 
     // Tributaries - default visible - not on legend
 
@@ -201,9 +204,9 @@ map.on('load', () => {
     //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/walking_network_edges_updated.geojson'
     // });
 
-    console.log(map.getStyle().layers);
-    //map.getStyle().layers[0]['paint'] = {'icon-color': 'red'};
-    console.log(map.getStyle().layers);
+    // console.log(map.getStyle().layers);
+    // //map.getStyle().layers[0]['paint'] = {'icon-color': 'red'};
+    // console.log(map.getStyle().layers);
     // let bikes2 = map.getStyle().layers[2]['id']
     // console.log(bikes)
     // map.addPaintProperty(bikes, 'icon-color', 'red')
@@ -824,8 +827,8 @@ map.addSource('pupcrawl-route-data', {
             //     'line-width': 3
             // },
             'paint': {
-                'text-color': BRAND_WHITE,
-                'text-halo-color': BRAND_PINK,
+                'text-color': BRAND_LIGHT_PINK,
+                'text-halo-color': 'black',
                 'text-halo-width': 0.1
             },
             'layout': {
