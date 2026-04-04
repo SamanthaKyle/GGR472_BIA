@@ -335,13 +335,18 @@ map.on('load', () => {
         data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/aziza_geojsons_cleaned/green_spaces.geojson'
     });
 
+    let feature;
+
+    
+
     map.addLayer({
         'id': 'green-spaces',
         'type': 'fill',
+        'slot': 'bottom',
         'source': 'green-spaces-poly',
         'paint': {
             'fill-color': '#41c767',
-            'fill-opacity': 0.3
+            'fill-opacity': 0.2
         }
     });
 
@@ -809,7 +814,7 @@ function make_popup(e) {
     }
 
     this_html += "<h6>" + this_node.properties.name + "</h6>"
-    this_html += '<h8>' + this_node.properties.desc + '<h8>'
+    this_html += '<h8>' + this_node.properties.desc + '</h8>'
 
     if (e.features[0].properties.address) {
         this_html += '<br><p>' + this_node.properties.address + '<p>'
@@ -822,9 +827,7 @@ function make_popup(e) {
     return popup;
 }
 
-/*--------------------------------------------------------------------
-EVENT LISTENERS FOR MAP CHANGES
---------------------------------------------------------------------*/
+
 
 // DEFAULT CENTER to view full beaches map
 const DEFAULT_CENTER = [-79.305089, 43.670681];
@@ -839,7 +842,7 @@ let CURRENT_CENTER = DEFAULT_CENTER;
 //         .setHTML(e.lngLat)
 //         .addTo(map);
 // })
-map.once('idle', () =>{
+map.once('idle', () => {
     heatmap_layer = map.getStyle().layers[83]['id'];
     map.setLayoutProperty(
         heatmap_layer,
@@ -847,6 +850,9 @@ map.once('idle', () =>{
         'none'
     )
 
+    /*--------------------------------------------------------------------
+    EVENT LISTENERS FOR MAP CHANGES
+    --------------------------------------------------------------------*/
     for (let card_id in CARD_TO_INFO) {
         let route_layer = CARD_TO_INFO[card_id]['route_layer'];
         let node_layer = CARD_TO_INFO[card_id]['node_layer'];
@@ -941,86 +947,53 @@ map.once('idle', () =>{
     }
 });
 
+/*--------------------------------------------------------------------
+    EVENT LISTENERS FOR MAP ICONS
+    --------------------------------------------------------------------*/
 
-// for (let i = 0; i < CARD_IDS.length; i++) { // over the list of card id's
+map.on('click', "public-washrooms-d9mine", (e) => {
+    console.log('click washroom')
+    let this_icon = e.features[0]
+    let this_html = ''
 
-//     // fetch their information here for cleanliness
-//     let card_id = CARD_IDS[i];
-//     let route_id = CARD_ID_TO_LAYER_INFO[card_id]['route_layer_id'];
-//     let node_id = CARD_ID_TO_LAYER_INFO[card_id]['node_layer_id'];
-//     let center = CARD_ID_TO_LAYER_INFO[card_id]['center'];
+    this_html += "<h8><b> Washroom Information </b></h8>"
 
-//     // mouse enters a card -> toggle layer visibility
-//     document.getElementById(card_id).addEventListener("mouseenter", (e) => {
-//         if (click_selected_node_id != node_id) {
-//             // IF THIS LAYER IS NOT CURRENTLY CLICK-SELECTED
-//             // HOVER-SELECT IT
-//             make_route_visible(route_id, node_id, center);
-//             fly_to_layer_extent(center);
-//             hover_selected_node_id = node_id;
-//             hover_selected_route_id = route_id;
-//         } else {
-//             fly_to_layer_extent(center);
+    if (this_icon.properties.hours) {
+        this_html += '<p> Hours: ' + this_icon.properties.hours
+    }
+    if (this_icon.properties.accessible) {
+        this_html += 'Accessibility: ' + this_icon.properties.accessible + '</p>'
+    }
+    popup = new mapboxgl.Popup({ "closeButton": true})
+        .setLngLat(e.lngLat) // Use method to set coordinates of popup based on mouse click location
+        .setHTML(this_html)
+        .addTo(map);
+});
+
+// map.addInteraction("Click-handler", {
+//     type: "click",
+//     target: {
+//         "layerId": "public-washrooms-d9mine"
+//     },
+
+//     handler: (e) => {
+//         //let this_washroom = e.features[0];
+//         let this_html = ''
+
+//         this_html += "<h6> Washroom Information </h6>"
+//         //this_html += '<h8>' + this_node.properties.desc + '<h8>'
+
+//         if (e.features[0].properties.hours) {
+//             this_html += '<br><p> Hours: ' + this_node.properties.hours + '<p>'
 //         }
-//     });
-
-//     // mouse leaves a card -> toggle layer visibility
-//     document.getElementById(card_id).addEventListener("mouseleave", (e) => {
-//         if (click_selected_node_id != node_id) {
-//             // NOT CURRENTLY CLICK-SELECTED -> WE ARE EXITING A HOVER
-//             make_route_invisible(route_id, node_id);
-//             //fly_to_default_extent();
-//             fly_to_layer_extent(CURRENT_CENTER);
-//             hover_selected_node_id = 'none';
-//             hover_selected_route_id = 'none';
+//         if (e.features[0].properties.accessibility){
+//             this_html += '<br><p> Accessibility: ' + this_node.properties.hours + '<p>'
 //         }
+//         popup = new mapboxgl.Popup({ "closeButton": false })
+//             .setLngLat(e.lngLat) // Use method to set coordinates of popup based on mouse click location
+//             .setHTML(this_html)
+//             .addTo(map);
 
-//     });
-
-//     // click -> previously selected route becomes invisible and deselected, clicked route becomes selected, visible, and centered
-//     document.getElementById(card_id).addEventListener("click", (e) => {
-//         if (click_selected_node_id == node_id) {
-//             // THIS IS ALREADY CLICKED -> DESELECT IT
-//             make_route_invisible(route_id, node_id);
-//             if (node_id == CARD_ID_TO_LAYER_INFO['card-ivan-forrest']['node_layer_id'] || node_id == CARD_ID_TO_LAYER_INFO['card-kew']['node_layer_id']) {
-//                 // make heatmap invisible
-//             }
-//             click_selected_node_id = 'none';
-//             click_selected_route_id = 'none';
-//             // do not change extent
-//         } else {
-//             // THIS IS NOT ALREADY CLICKED -> SELECT IT
-//             make_route_visible(route_id, node_id, center);
-//             if (node_id == CARD_ID_TO_LAYER_INFO['card-ivan-forrest']['node_layer_id'] || node_id == CARD_ID_TO_LAYER_INFO['card-kew']['node_layer_id']) {
-//                 // make heatmap visible
-//             }
-//             make_route_invisible(click_selected_route_id, click_selected_node_id)
-//             fly_to_layer_extent(center);
-//             click_selected_route_id = route_id;
-//             click_selected_node_id = node_id;
-//             CURRENT_CENTER = center;
-//         }
-
-//     });
-
-//     // NOW THE NODES
-
-//     map.on('mouseenter', node_id, (e) => {
-//         popup = make_popup(e)
-//     });
-
-//     map.on('mouseleave', node_id, () => {
-//         // get rid of popups when mouse leaves
-//         popup.remove();
-//     });
-
-//     map.on('touchstart', node_id, (e) => {
-//         popup = make_popup(e)
-//         console.log('MAP LISTENER NODE')
-//     })
-
-//     map.on('touchend', () => { //new_routes[i]['node_layer_id'],
-//         // get rid of popups when mouse leaves
-//         popup.remove();
-//     });
-// }
+//         //return popup;
+//     }
+// });
