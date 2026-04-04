@@ -1,1 +1,65 @@
-{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"name":"","address":"","desc":""},"geometry":{"coordinates":[-79.28724772882744,43.67290184604616],"type":"Point"}},{"type":"Feature","properties":{"name":"Boa Boutique","address":"2116B Queen St E, Toronto, ON M4E 1E2","desc":"Independent Clothing Store"},"geometry":{"coordinates":[-79.29524090395124,43.67122936068054],"type":"Point"}},{"type":"Feature","properties":{"name":"Charming Parrot","address":"1978 Queen St E, Toronto, ON M4L 1H8","desc":"Clothing Boutique"},"geometry":{"coordinates":[-79.30112945386804,43.67001314928248],"type":"Point"}},{"type":"Feature","properties":{"name":"Dot & Bea","address":"1926 Queen St E, Toronto, ON M4L 1H5","desc":"Vinatge Clothing Store"},"geometry":{"coordinates":[-79.30381745386782,43.66939787621931],"type":"Point"}}]}
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "",
+                "address": "",
+                "desc": ""
+            },
+            "geometry": {
+                "coordinates": [
+                    -79.28724772882744,
+                    43.67290184604616
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Boa Boutique",
+                "address": "2116B Queen St E, Toronto, ON M4E 1E2",
+                "desc": "Independent Clothing Store"
+            },
+            "geometry": {
+                "coordinates": [
+                    -79.29524090395124,
+                    43.67122936068054
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Charming Parrot",
+                "address": "1978 Queen St E, Toronto, ON M4L 1H8",
+                "desc": "Clothing Boutique"
+            },
+            "geometry": {
+                "coordinates": [
+                    -79.30112945386804,
+                    43.67001314928248
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Dot & Bea",
+                "address": "1926 Queen St E, Toronto, ON M4L 1H5",
+                "desc": "Vinatge Clothing Store"
+            },
+            "geometry": {
+                "coordinates": [
+                    -79.30381745386782,
+                    43.66939787621931
+                ],
+                "type": "Point"
+            }
+        }
+    ]
+}

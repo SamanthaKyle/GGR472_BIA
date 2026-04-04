@@ -46,6 +46,7 @@ const BRAND_YELLOW = '#ffebb5'
 const BRAND_PINK = '#d90368'
 const BRAND_LIGHT_PINK = '#f385b9'
 const BRAND_GREEN = '#04a777'
+const ROUTE_GREEN = '#41c767'
 const BRAND_DARK_BLUE = '#000f4d'
 
 // OLD BRAND COLOURS
@@ -464,11 +465,11 @@ map.on('load', () => {
 
     map.addLayer({
         'id': 'ivan-gardens-route-layer',
-        //'slot': 'top',
+        'slot': 'bottom',
         'type': 'line',
         'source': 'ivan-gardens-route-data',
         'paint': {
-            'line-color': BRAND_GREEN,
+            'line-color': ROUTE_GREEN,
             'line-width': 5,
             'line-opacity': ROUTE_OPACITY,
         },
@@ -491,7 +492,7 @@ map.on('load', () => {
             'circle-radius': 5,
             'circle-stroke-color': BRAND_PEACH,
             'circle-stroke-width': 0.5,
-            'circle-color': BRAND_DARK_BLUE,
+            'circle-color': BRAND_PEACH,
             'circle-opacity': NODE_OPACITY
         },
         'layout': {
@@ -510,7 +511,7 @@ map.on('load', () => {
         //'slot': 'top',
         'source': 'kew-gardens-route-data',
         'paint': {
-            'line-color': BRAND_GREEN,
+            'line-color': ROUTE_GREEN,
             'line-width': 5,
             'line-opacity': ROUTE_OPACITY
         },
@@ -531,7 +532,7 @@ map.on('load', () => {
         'paint': {
             'circle-radius': 5,
             'circle-stroke-color': BRAND_PEACH,
-            'circle-color': BRAND_DARK_BLUE,
+            'circle-color': BRAND_PEACH,
             'circle-opacity': NODE_OPACITY,
             'circle-stroke-width': 0.5,
         },

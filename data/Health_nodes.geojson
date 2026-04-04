@@ -1,1 +1,108 @@
-{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"name":"Beaches Hot Yoga","address":"1911 Queen St E, Toronto, ON M4L 1H3","desc":"Yoga Studio"},"geometry":{"coordinates":[-79.30446517890914,43.668898907832016],"type":"Point"}},{"type":"Feature","properties":{"name":"Heal Wellness","address":"1938 Queen St E, Toronto, ON M4L 1H6","desc":"Acai Shop"},"geometry":{"coordinates":[-79.30322917890882,43.66964063394681],"type":"Point"}},{"type":"Feature","properties":{"name":"After Glow","address":"2034 Queen St E, Toronto, ON M4L 1J4","desc":"Pilates Studio"},"geometry":{"coordinates":[-79.29838545386795,43.67061239126761],"type":"Point"}},{"type":"Feature","properties":{"name":"Farmacia Health Bar","address":"2096 Queen St E, Toronto, ON M4E 1E1","desc":"Smoothie Shop"},"geometry":{"coordinates":[-79.29606390395097,43.67108887585596],"type":"Point"}},{"type":"Feature","properties":{"name":"The Boardwalk","desc":"Take a walk along the Beach"},"geometry":{"coordinates":[-79.29403911864192,43.667567230249176],"type":"Point"}},{"type":"Feature","properties":{"name":"The Boardwalk","desc":"Take a walk along the Beach"},"geometry":{"coordinates":[-79.2851526615791,43.670142432531975],"type":"Point"}},{"type":"Feature","properties":{"name":"The Haven Cafe","adress":"2256 Queen St E, Toronto, ON M4E 3K3","desc":"Health Food Cafe"},"geometry":{"coordinates":[-79.28655417890847,43.67312163275028],"type":"Point"}}]}
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Beaches Hot Yoga",
+                "address": "1911 Queen St E, Toronto, ON M4L 1H3",
+                "desc": "Yoga Studio"
+            },
+            "geometry": {
+                "coordinates": [
+                    -79.30446517890914,
+                    43.668898907832016
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Heal Wellness",
+                "address": "1938 Queen St E, Toronto, ON M4L 1H6",
+                "desc": "Acai Shop"
+            },
+            "geometry": {
+                "coordinates": [
+                    -79.30322917890882,
+                    43.66964063394681
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "After Glow",
+                "address": "2034 Queen St E, Toronto, ON M4L 1J4",
+                "desc": "Pilates Studio"
+            },
+            "geometry": {
+                "coordinates": [
+                    -79.29838545386795,
+                    43.67061239126761
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Farmacia Health Bar",
+                "address": "2096 Queen St E, Toronto, ON M4E 1E1",
+                "desc": "Smoothie Shop"
+            },
+            "geometry": {
+                "coordinates": [
+                    -79.29606390395097,
+                    43.67108887585596
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "The Boardwalk",
+                "desc": "Take a walk along the Beach"
+            },
+            "geometry": {
+                "coordinates": [
+                    -79.29403911864192,
+                    43.667567230249176
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "The Boardwalk",
+                "desc": "Take a walk along the Beach"
+            },
+            "geometry": {
+                "coordinates": [
+                    -79.2851526615791,
+                    43.670142432531975
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "The Haven Cafe",
+                "adress": "2256 Queen St E, Toronto, ON M4E 3K3",
+                "desc": "Health Food Cafe"
+            },
+            "geometry": {
+                "coordinates": [
+                    -79.28655417890847,
+                    43.67312163275028
+                ],
+                "type": "Point"
+            }
+        }
+    ]
+}
