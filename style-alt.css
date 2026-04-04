@@ -1,0 +1,237 @@
+
+:root {
+    --BRAND_WHITE: #e8f8ff;
+    --BRAND_LIGHT_BLUE: #a6ddf4;
+    --BRAND_YELLOW: #ffebb5;
+    --BRAND_PINK: #d90368;
+    --BRAND_LIGHT_PINK: #f385b9;
+    --BRAND_GREEN: #04a777;
+    --BRAND_DARK_BLUE: #000f4d;
+    --BRAND_LIGHT_PURPLE: #d1d8e9;
+    --BRAND_PEACH: #f8d8aa;
+    --BRAND_ORANGE: #e27237;
+    --BRAND_BROWN: #9a8f6e;
+    --BRAND_TAUPE: #b19074;
+}
+
+body {
+    font-family: "Noto Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        /* font-variation-settings:
+            "wdth" 87.5;
+            font-size: 0.7rem; */
+            font-size: 0.7rem;
+
+        color:#2b2b2b;
+}
+
+h5 {
+    font-family: "Noto Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+        font-variation-settings:
+            "wdth" 87.5;
+        font-size: 1rem;
+}
+
+.card {
+    background-color: white;
+    opacity: 1;
+}
+
+.card-body {
+    padding: 5%;
+    opacity: 1;
+}
+
+.btn {
+    /* width: 10rem; */
+    font-size: smaller;
+    padding: 1em;
+    background-color: color-mix(in srgb, black, transparent 40%);
+    border-color: #a6ddf4;
+}
+
+.map-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.map-search-container {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    top: 2vh;
+    right: 2vh;
+    width: 10vw;
+    padding: 2vh;
+    border-radius: 8px;
+    overflow: visible;
+}
+
+.mapboxgl-ctrl-top-right {
+    top: 160px;
+    right: 10px;
+}
+
+.geocoder {
+    position: relative;
+    margin: 10px 0 10px;
+}
+
+#returnbutton {
+    position: relative;
+    margin: 10px 0 10px;
+    width: 100%;
+}
+
+.left-panel {
+    position: absolute;
+    top: 2vh;
+    bottom: 2vh;
+
+    left: 2vh;
+    min-width: 150px;
+    width: 20vw;
+    max-width: 500px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+
+.scroll-area {
+    background: rgba(255, 255, 255, 0.3);
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+
+
+.card-kew {
+    width: 100%;
+        border-width: 5px;
+        border-style: solid;
+        border-color: var(--BRAND_LIGHT_BLUE);
+        border-radius: 8px;
+    
+    
+}
+
+.card-ivan-forrest {
+    /* background-color: var(--BRAND_LIGHT_BLUE); */
+    width: 100%;
+    border-width: 5px;
+        border-style: solid;
+        border-color: var(--BRAND_LIGHT_BLUE);
+        border-radius: 8px;
+
+}
+
+.card-pub-crawl {
+    width: 100%;
+        border-width: 5px;
+        border-style: solid;
+        border-color: var(--BRAND_LIGHT_BLUE);
+        border-radius: 8px;
+}
+
+.card-artwalk {
+    width: 100%;
+        border-width: 5px;
+        border-style: solid;
+        border-color: var(--BRAND_LIGHT_BLUE);
+        border-radius: 8px;
+}
+
+.card-date-night {
+    width: 100%;
+        border-width: 5px;
+        border-style: solid;
+        border-color: var(--BRAND_LIGHT_BLUE);
+        border-radius: 8px;
+}
+
+.card-page-to-screen {
+    width: 100%;
+        border-width: 5px;
+        border-style: solid;
+        border-color: var(--BRAND_LIGHT_BLUE);
+        border-radius: 8px;
+}
+.card-pup-crawl {
+    width: 100%;
+        border-width: 5px;
+        border-style: solid;
+        border-color: var(--BRAND_LIGHT_BLUE);
+        border-radius: 8px;
+    }
+
+.card-scenic-route {
+    width: 100%;
+        border-width: 5px;
+        border-style: solid;
+        border-color: var(--BRAND_LIGHT_PURPLE);
+        border-radius: 8px;
+}
+
+.side-panel {
+    position: absolute;
+    left: 22vw;
+    min-width: 150px;
+        width: 20vw;
+        max-width: 500px;
+    top: 2vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    padding: 2vh;
+
+    
+}
+
+#panel-kew {
+    background-color: color-mix(in srgb, var(--BRAND_GREEN), transparent 40%);
+}
+
+#panel-ivan-forrest {
+    background-color: color-mix(in srgb, var(--BRAND_LIGHT_BLUE), transparent 40%);;
+}
+
+#panel-pub-crawl {
+    background-color: color-mix(in srgb, var(--BRAND_TAUPE), transparent 40%);
+}
+
+#panel-page-to-screen {
+    background-color: color-mix(in srgb, var(--BRAND_YELLOW), transparent 40%);
+}
+
+#panel-artwalk {
+    background-color: color-mix(in srgb, var(--BRAND_LIGHT_PINK), transparent 40%);
+}
+
+#panel-date-night {
+    background-color: color-mix(in srgb, var(--BRAND_PINK), transparent 40%);
+}
+
+#panel-pup-crawl {
+    background-color: color-mix(in srgb, var(--BRAND_LIGHT_PURPLE), transparent 40%);
+}
+
+/* .custom-popup {
+    max-width: 200px;
+    background-color: blue;
+} */
+
+/* .h6 {
+    color: blue;
+} */
