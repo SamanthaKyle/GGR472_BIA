@@ -28,16 +28,6 @@ const CLASS_2_SIZE = 0.05;
 
 const ROUTE_OPACITY = 1;
 const NODE_OPACITY = 1;
-// Esri color ramps - Esri Purple 2
-// #73377eff,#9753a3ff,#b983c3ff,#daafe1ff,#eac5f0ff
-// const colors = ["#73377eff", "#9753a3ff", "#b983c3ff", "#daafe1ff", "#eac5f0ff"];
-// // Esri color ramps - Garden Grass
-// // #4d8c8cff,#6fa9aaff,#99c5b6ff,#cbe0b2ff,#e3f1d2ff
-// const colors = ["#4d8c8cff", "#6fa9aaff", "#99c5b6ff", "#cbe0b2ff", "#e3f1d2ff"];
-
-// // Esri color ramps - Heatmap 16
-// // #b397b3ff,#bd84bdff,#c672c6ff,#d05fd0ff,#d94cd9ff,#e339e3ff,#ec26ecff,#f613f6ff,#ff00ffff,#ff3bbfff,#ff7580ff,#ffb040ff,#ffea00ff
-// const colors = ["#b397b3ff", "#bd84bdff", "#c672c6ff", "#d05fd0ff", "#d94cd9ff", "#e339e3ff", "#ec26ecff", "#f613f6ff", "#ff00ffff", "#ff3bbfff", "#ff7580ff", "#ffb040ff", "#ffea00ff"];
 
 // BRANDING COLOURS
 const BRAND_WHITE = '#e8f8ff'
@@ -62,42 +52,230 @@ const CARD_IDS = ['card-ivan-forrest', 'card-kew', 'card-pub-crawl', 'card-date-
 // dictionary mapping card id's to their corresponding route layer, node layer, and center point
 // this will allow for event listeners to be automatically created with a smaller amount of code
 // useful as we expect to create many many more cards in the coming weeks
-const CARD_ID_TO_LAYER_INFO = {
+// const CARD_ID_TO_LAYER_INFO = {
+//     'card-ivan-forrest':
+//     {
+//         'node_source_id': 'ivan-gardens-node-data',
+//         'route_layer_id': 'ivan-gardens-route-layer',
+//         'node_layer_id': 'ivan-gardens-node-layer',
+//         'center': [-79.29407743073317, 43.67414933330741]
+//     },
+//     'card-kew':
+//     {
+//         'node_source_id': 'kew-gardens-node-data',
+//         'route_layer_id': 'kew-gardens-route-layer',
+//         'node_layer_id': 'kew-gardens-node-layer',
+//         'center': [-79.2984377648393, 43.66840672830028]
+//     },
+//     'card-pub-crawl':
+//     {
+//         'node_source_id': 'pubcrawl-node-data',
+//         'route_layer_id': 'pubcrawl-route-layer',
+//         'node_layer_id': 'pubcrawl-node-layer',
+//         'center': [-79.293212, 43.671496]
+//     },
+//     'card-date-night':
+//     {
+//         'node_source_id': 'datenight-node-data',
+//         'route_layer_id': 'datenight-route-layer',
+//         'node_layer_id': 'datenight-node-layer',
+//         'center': [-79.295706, 43.671042]
+//     },
+//     'card-artwalk':
+//     {
+//         'node_source_id': 'artwalk-node-data',
+//         'route_layer_id': 'artwalk-route-layer',
+//         'node_layer_id': 'artwalk-node-layer',
+//         'center': [-79.293947, 43.669808]
+//     },
+//     'card-page-to-screen':
+//     {
+//         'node_source_id': 'pagetoscreen-node-data',
+//         'route_layer_id': 'pagetoscreen-route-layer',
+//         'node_layer_id': 'pagetoscreen-node-layer',
+//         'center': [-79.292337, 43.671849]
+//     },
+//     'card-pup-crawl':
+//     {
+//         'node_source_id': 'pupcrawl-node-data',
+//         'route_layer_id': 'pupcrawl-route-layer',
+//         'node_layer_id': 'pupcrawl-node-layer',
+//         'center': [-79.2935, 43.6695]
+//     }
+// }
+
+const CARD_TO_INFO = {
     'card-ivan-forrest':
-        { 'node_source_id': 'ivan-gardens-node-data', 'route_layer_id': 'ivan-gardens-route-layer', 'node_layer_id': 'ivan-gardens-node-layer', 'center': [-79.29407743073317, 43.67414933330741] },
+    {
+        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/Ivan_Forrest_GlenStewart_Ravine_Nodes.geojson',
+        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/ivan_forrest_glen_stewart_route_cleaned.geojson',
+        'center': [-79.29407743073317, 43.67414933330741], // use turf to get center?,
+        'route_colour': BRAND_GREEN,
+        'node_colours': [BRAND_PEACH, BRAND_PEACH],
+        'node_layer': 'card-ivan-forrest-node-layer',
+        'route_layer': 'card-ivan-forrest-route-layer',
+        'label_layer': 'card-ivan-forrest-node-layer'
+
+    },
     'card-kew':
-        { 'node_source_id': 'kew-gardens-node-data', 'route_layer_id': 'kew-gardens-route-layer', 'node_layer_id': 'kew-gardens-node-layer', 'center': [-79.2984377648393, 43.66840672830028] },
+    {
+        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/Kew_Gardens_Park_Node.geojson',
+        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/kew_gardens_route_cleaned.geojson',
+        'center': [-79.2984377648393, 43.66840672830028],
+        'route_colour': BRAND_GREEN,
+        'node_colours': [BRAND_PEACH, BRAND_PEACH],
+        'node_layer': 'card-kew-node-layer',
+        'route_layer': 'card-kew-route-layer',
+        'label_layer': 'card-kew-node-layer'
+    },
     'card-pub-crawl':
-        { 'node_source_id': 'pubcrawl-node-data', 'route_layer_id': 'pubcrawl-route-layer', 'node_layer_id': 'pubcrawl-node-layer', 'center': [-79.293212, 43.671496] },
+    {
+        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PubCrawl_nodes.geojson',
+        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PubCrawl_routes.geojson',
+        'center': [-79.293212, 43.671496],
+        'route_colour': BRAND_PINK,
+        'node_colours': [BRAND_LIGHT_PINK, BRAND_LIGHT_PINK],
+        'node_layer': 'card-pub-crawl-node-layer',
+        'route_layer': 'card-pub-crawl-route-layer',
+        'label_layer': 'card-pub-crawl-node-layer'
+    },
     'card-date-night':
-        { 'node_source_id': 'datenight-node-data', 'route_layer_id': 'datenight-route-layer', 'node_layer_id': 'datenight-node-layer', 'center': [-79.295706, 43.671042] },
+    {
+        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/DateNight_nodes.geojson',
+        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/DateNight_lines.geojson',
+        'center': [-79.295706, 43.671042],
+        'route_colour': BRAND_PINK,
+        'node_colours': [BRAND_LIGHT_PINK, BRAND_LIGHT_PINK],
+        'node_layer': 'card-date-night-node-layer',
+        'route_layer': 'card-date-night-route-layer',
+        'label_layer': 'card-date-night-node-layer'
+    },
     'card-artwalk':
-        { 'node_source_id': 'artwalk-node-data', 'route_layer_id': 'artwalk-route-layer', 'node_layer_id': 'artwalk-node-layer', 'center': [-79.293947, 43.669808] },
+    {
+        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/ArtWalk_nodes.geojson',
+        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/ArtWalk_route.geojson',
+        'center': [-79.293947, 43.669808],
+        'route_colour': BRAND_PINK,
+        'node_colours': [BRAND_LIGHT_PINK, BRAND_LIGHT_PINK],
+        'node_layer': 'card-artwalk-node-layer',
+        'route_layer': 'card-artwalk-route-layer',
+        'label_layer': 'card-artwalk-node-layer'
+    },
     'card-page-to-screen':
-        { 'node_source_id': 'pagetoscreen-node-data', 'route_layer_id': 'pagetoscreen-route-layer', 'node_layer_id': 'pagetoscreen-node-layer', 'center': [-79.292337, 43.671849] },
+    {
+        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PageToScreen_nodes.geojson',
+        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PageToScreen_routes.geojson',
+        'center': [-79.292337, 43.671849],
+        'route_colour': BRAND_PINK,
+        'node_colours': [BRAND_LIGHT_PINK, BRAND_LIGHT_PINK],
+        'node_layer': 'card-page-to-screen-node-layer',
+        'route_layer': 'card-page-to-screen-route-layer',
+        'label_layer': 'card-page-to-screen-node-layer'
+    },
     'card-pup-crawl':
-        { 'node_source_id': 'pupcrawl-node-data', 'route_layer_id': 'pupcrawl-route-layer', 'node_layer_id': 'pupcrawl-node-layer', 'center': [-79.2935, 43.6695] }
+    {
+        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PupCrawl_nodes.geojson',
+        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PupCrawl_routes.geojson',
+        'center': [-79.2935, 43.6695],
+        'route_colour': BRAND_LIGHT_BLUE,
+        'node_colours': [BRAND_LIGHT_BLUE, BRAND_LIGHT_BLUE],
+        'node_layer': 'card-pup-crawl-node-layer',
+        'route_layer': 'card-pup-crawl-route-layer',
+        'label_layer': 'card-pup-crawl-node-layer'
+    }
 }
 
-/*--------------------------------------------------------------------
-PRELOAD ICONS
---------------------------------------------------------------------*/
-//const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/icons/bike.png?raw=true'
-const test_path = 'https://docs.mapbox.com/mapbox-gl-js/assets/cat.png'
-//const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/icons/bike2.png?raw=true'
-//const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/raw/e24e26c71054470033c8d43eb16b21cdea59fcf6/icons/bike.png'
-//const test_path = 'https://github.com/SamanthaKyle/GGR472_BIA/blob/039c6dfaa6153fba0cdcc629656ce893675b8e09/images/beaches_n_cream.png?raw=true'
+function add_nodes(card_id) {
+    let url = CARD_TO_INFO[card_id]['node_url'];
+    let node_layer = CARD_TO_INFO[card_id]['node_layer'];
+    let node_source = card_id + '-node-source';
 
-// map.addSource('test-source-id', {
-//     type: 'image',
-//     url: 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/icons/bike.png?raw=true'
-// });
+    CARD_TO_INFO[card_id]['node_source'] = node_source;
+    //CARD_TO_INFO[card_id]['node_layer'] = node_layer;
 
-// const image = new Image(30,30);
-// image.src = 'https://github.com/SamanthaKyle/GGR472_BIA/blob/main/icons/bike.png?raw=true'
-// const images = ['myImage', image]
+    map.addSource(node_source, {
+        type: 'geojson',
+        data: url
+    });
 
-// console.log('MADE IMAGE', images)
+    map.addLayer({
+        'id': node_layer,
+        'type': 'circle',
+        //'slot': 'top',
+        'source': node_source,
+        'paint': {
+            'circle-radius': 5,
+            'circle-stroke-color': CARD_TO_INFO[card_id]['node_colours'][0],
+            'circle-stroke-width': 0.5,
+            'circle-color': CARD_TO_INFO[card_id]['node_colours'][1],
+            'circle-opacity': NODE_OPACITY
+        },
+        'layout': {
+            'visibility': 'none'
+        }
+    });
+};
+
+function add_route(card_id) {
+    let url = CARD_TO_INFO[card_id]['route_url'];
+    let route_layer = CARD_TO_INFO[card_id]['route_layer'];
+    let route_source = card_id + '-route-source';
+
+    CARD_TO_INFO[card_id]['route_source'] = route_source;
+
+    map.addSource(route_source, {
+        type: 'geojson',
+        data: url
+    });
+
+    map.addLayer({
+        'id': route_layer,
+        'slot': 'bottom',
+        'type': 'line',
+        'source': route_source,
+        'paint': {
+            'line-color': CARD_TO_INFO[card_id]['route_colour'],
+            'line-width': 5,
+            'line-opacity': ROUTE_OPACITY,
+        },
+        'layout': {
+            'visibility': 'none'
+        }
+    });
+
+}
+
+function add_labels(card_id) {
+    let node_source = CARD_TO_INFO[card_id]['node_source'];
+    let node_layer = CARD_TO_INFO[card_id]['node_layer'];
+
+    let label_layer = node_layer + '-label-layer';
+
+    CARD_TO_INFO[card_id]['label_layer'] = label_layer;
+
+    map.addLayer({
+        'id': label_layer,
+        'type': 'symbol',
+        'slot': 'top',
+        'source': node_source,
+        'minzoom': 15,
+        // 'paint': {
+        //     'line-color': BRAND_YELLOW,
+        //     'line-width': 3
+        // },
+        'paint': {
+            'text-color': BRAND_WHITE,//BRAND_LIGHT_PINK,
+            'text-halo-color': 'black',
+            'text-halo-width': 0.1
+        },
+        'layout': {
+            'text-field': '{name}',
+            'text-anchor': 'top',
+            'text-offset': [0, 0.5],
+            'visibility': 'none'
+        }
+    });
+}
 
 /*--------------------------------------------------------------------
 ADD CONTROLS, INTERACTIVITY, AND GEOCODER
@@ -155,7 +333,6 @@ map.on('load', () => {
     map.addSource('green-spaces-poly', {
         type: 'geojson',
         data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/aziza_geojsons_cleaned/green_spaces.geojson'
-        //'https://smith-lg.github.io/ggr472-wk6-demo/data/torontomusicvenues.geojson'
     });
 
     map.addLayer({
@@ -168,679 +345,394 @@ map.on('load', () => {
         }
     });
 
-    // Tributaries - default visible - not on legend
-
-    // map.addSource('tributaries-data', {
+    // map.addSource('ivan-gardens-route-data', {
     //     type: 'geojson',
-    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/aziza_geojsons_cleaned/tributaries.geojson'
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/ivan_forrest_glen_stewart_route_cleaned.geojson'
     // })
 
     // map.addLayer({
-    //     'id': 'tributaries-layer',
+    //     'id': 'ivan-gardens-route-layer',
+    //     'slot': 'bottom',
     //     'type': 'line',
-    //     'source': 'tributaries-data',
+    //     'source': 'ivan-gardens-route-data',
     //     'paint': {
-    //         'line-color': BRAND_LIGHT_BLUE
-    //     }
-    // });
-
-    // water bodies - default visible - not on legend
-    // map.addSource('waterbodies-data', {
-    //     type: 'geojson',
-    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/aziza_geojsons_cleaned/waterbodies.geojson'
-    // })
-
-    // map.addLayer({
-    //     'id': 'waterbodies-layer',
-    //     'type': 'fill',
-    //     'source': 'waterbodies-data',
-    //     'paint': {
-    //         'fill-color': BRAND_LIGHT_BLUE // from branding package
-    //     }
-    // });
-
-    // pedestrian walking edges - NOT ADDED 
-    // map.addSource('walking-edges', {
-    //     type: 'geojson',
-    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/walking_network_edges_updated.geojson'
-    // });
-
-    // console.log(map.getStyle().layers);
-    // //map.getStyle().layers[0]['paint'] = {'icon-color': 'red'};
-    // console.log(map.getStyle().layers);
-    // let bikes2 = map.getStyle().layers[2]['id']
-    // console.log(bikes)
-    // map.addPaintProperty(bikes, 'icon-color', 'red')
-    // map.setLayoutProperty(bikes, 'visibility', 'none');
-    // map.setPaintProperty(bikes2, 'icon-color', 'red');
-    //map.setLayoutProperty(bikes2, 'visibility', 'none');
-
-    //map.setPaintProperty(bikes, 'fill-color', 'red');//{'icon-color': 'white', 'icon-halo-color': 'red', 'icon-halo-width': 0.3})
-    //map.setPaintProperty('waterbodies-layer', 'fill-color','red')
-
-
-    // Bikeshare stations - visible on high zoom value - present in legend
-    // map.addSource('bikeshare-stations-data', {
-    //     type: 'geojson',
-    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/bikeshare_cleaned.geojson'
-    // });
-
-    // map.addSource('bike-test', {
-    //     type: 'vector',
-    //     url: 'mapbox://sam-kyle.ce6jclwa'
-    // })
-
-    // map.addLayer({
-    //     'id': 'test-bike-layer',
-    //     'type': 'symbol',
-
-    // })
-    // Image loading for bikeshare icons
-    // map.addImage('bike', 'test-source-id', {sdf:true});
-    // map.addImage('tes', 'myImage');
-    // map.addLayer({
-    //     'id': 'bike-icon-layer',
-    //     'type': 'symbol',
-    //     'source': 'bikeshare-stations-data', // reference the data source
+    //         'line-color': ROUTE_GREEN,
+    //         'line-width': 5,
+    //         'line-opacity': ROUTE_OPACITY,
+    //     },
     //     'layout': {
-    //         // 'icon-allow-overlap': true,
-    //         'icon-image': 'tes', // reference the image
-            
-    //         // 'icon-size': CLASS_1_SIZE
+    //         'visibility': 'none'
     //     }
-    //     ,images: { images },
-    //     // 'paint': {
-    //     //     //'icon-color': 'white',
-    //     //     // 'icon-halo-color': 'red', //update if necessary
-    //     //     // 'icon-halo-width': 0.3
-    //     // },
-    //     //'minzoom': CLASS_1_MINZOOM
-    // });
-    // map.loadImage(
-    //     test_path,
-    //     (error, image) => {
-    //         if (error) throw error;
+    // })
 
-    //         // Add the image to the map style.
-    //         map.addImage('cat', image, { sdf: true });
+    // map.addSource('ivan-gardens-node-data', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/Ivan_Forrest_GlenStewart_Ravine_Nodes.geojson'
+    // })
 
-    //         // Add a layer to use the image to represent the data.
-    //         map.addLayer({
-    //             'id': 'bike-icon-layer',
-    //             'type': 'symbol',
-    //             'source': 'bikeshare-stations-data', // reference the data source
-    //             'layout': {
-    //                 'icon-allow-overlap': true,
-    //                 'icon-image': 'cat', // reference the image
-    //                 'icon-size': CLASS_1_SIZE
-    //             },
-    //             'paint': {
-    //                 'icon-color': 'white',
-    //                 // 'icon-halo-color': 'red', //update if necessary
-    //                 // 'icon-halo-width': 0.3
-    //             },
-    //             'minzoom': CLASS_1_MINZOOM
-    //         });
-    //     }
-    // );
-
-    // // Circle layer for bikeshare logo
     // map.addLayer({
-    //     'id': 'bikeshare-stations-layer',
+    //     'id': 'ivan-gardens-node-layer',
     //     'type': 'circle',
-    //     'source': 'bikeshare-stations-data',
+    //     //'slot': 'top',
+    //     'source': 'ivan-gardens-node-data',
     //     'paint': {
-    //         'circle-radius': 13,
-    //         'circle-color': '#5bb163', //taken from official logo
-    //         'circle-stroke-color': '#346e55', // taken from official logo
-    //         'circle-stroke-width': 2,
-    //         'circle-opacity': 1
+    //         'circle-radius': 5,
+    //         'circle-stroke-color': BRAND_PEACH,
+    //         'circle-stroke-width': 0.5,
+    //         'circle-color': BRAND_PEACH,
+    //         'circle-opacity': NODE_OPACITY
     //     },
-    //     'minzoom': CLASS_1_MINZOOM
-
-    // });
-
-    // City of Toronto Parking - visible on high zoom value - present in legend
-
-    // map.addSource('city-parking-data', {
-    //     type: 'geojson',
-    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/greenp_cleaned.geojson'
-    // });
-
-    // map.loadImage(
-    //     test_path,
-    //     (error, image) => {
-    //         if (error) throw error;
-
-    //         // Add the image to the map style.
-    //         map.addImage('cat', image, { sdf: true });
-
-    //         // Add a layer to use the image to represent the data.
-    //         map.addLayer({
-    //             'id': 'city-parking-icon-layer',
-    //             'type': 'symbol',
-    //             'source': 'city-parking-data', // reference the data source
-    //             'layout': {
-    //                 'icon-allow-overlap': true,
-    //                 'icon-image': 'cat', // reference the image
-    //                 'icon-size': CLASS_1_SIZE
-    //             },
-    //             'paint': {
-    //                 'icon-color': 'black',
-    //                 // 'icon-halo-color': 'red', //update if necessary
-    //                 // 'icon-halo-width': 0.3
-    //             },
-    //             'minzoom': CLASS_1_MINZOOM
-    //         });
-    //     }
-    // );
-
-    // Circle layer for city parking
-    // map.addLayer({
-    //     'id': 'city-parking-layer',
-    //     'type': 'circle',
-    //     'source': 'city-parking-data',
-    //     'paint': {
-    //         'circle-radius': 13,
-    //         'circle-color': '#5bb163', //taken from official logo
-    //         'circle-stroke-color': '#346e55', // taken from official logo
-    //         'circle-stroke-width': 2,
-    //         'circle-opacity': 1
-    //     },
-    //     'minzoom': CLASS_1_MINZOOM
-
-    // });
-
-    // Benches - visible on extra high zoom - present in legend
-
-    // map.addSource('benches-data', {
-    //     type: 'geojson',
-    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/aziza_geojsons_cleaned/benches.geojson'
-    // })
-
-    // map.loadImage(
-    //     test_path,
-    //     (error, image) => {
-    //         if (error) throw error;
-
-    //         // Add the image to the map style.
-    //         map.addImage('cat', image, { sdf: true });
-
-    //         // Add a layer to use the image to represent the data.
-    //         map.addLayer({
-    //             'id': 'benches-icon-layer',
-    //             'type': 'symbol',
-    //             'source': 'benches-data', // reference the data source
-    //             'layout': {
-    //                 'icon-allow-overlap': true,
-    //                 'icon-image': 'cat', // reference the image
-    //                 'icon-size': CLASS_2_SIZE
-    //             },
-    //             'paint': {
-    //                 'icon-color': BRAND_YELLOW,
-    //                 // 'icon-halo-color': 'red', //update if necessary
-    //                 // 'icon-halo-width': 0.3
-    //             },
-    //             'minzoom': CLASS_2_MINZOOM
-    //         });
-    //     }
-    // );
-
-    // Bike Rings - visible on extra high zoom - present in legend
-
-    // map.addSource('bike-ring-data', {
-    //     type: 'geojson',
-    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/aziza_geojsons_cleaned/bike_rings.geojson'
-    // })
-
-    // map.loadImage(
-    //     test_path,
-    //     (error, image) => {
-    //         if (error) throw error;
-
-    //         // Add the image to the map style.
-    //         map.addImage('cat', image, { sdf: true });
-
-    //         // Add a layer to use the image to represent the data.
-    //         map.addLayer({
-    //             'id': 'bike-ring-icon-layer',
-    //             'type': 'symbol',
-    //             'source': 'bike-ring-data', // reference the data source
-    //             'layout': {
-    //                 'icon-allow-overlap': true,
-    //                 'icon-image': 'cat', // reference the image
-    //                 'icon-size': CLASS_2_SIZE
-    //             },
-    //             'paint': {
-    //                 'icon-color': BRAND_ORANGE,
-    //                 // 'icon-halo-color': 'red', //update if necessary
-    //                 // 'icon-halo-width': 0.3
-    //             },
-    //             'minzoom': CLASS_2_MINZOOM
-    //         });
-    //     }
-    // );
-
-    // Public Washrooms - visible on extra high zoom - present in legend
-
-    // map.addSource('washrooms-data', {
-    //     type: 'geojson',
-    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/aziza_geojsons_cleaned/public_washrooms.geojson'
-    // })
-
-    // map.loadImage(
-    //     test_path,
-    //     (error, image) => {
-    //         if (error) throw error;
-
-    //         // Add the image to the map style.
-    //         map.addImage('cat', image, { sdf: true });
-
-    //         // Add a layer to use the image to represent the data.
-    //         map.addLayer({
-    //             'id': 'washrooms-icon-layer',
-    //             'type': 'symbol',
-    //             'source': 'washrooms-data', // reference the data source
-    //             'layout': {
-    //                 'icon-allow-overlap': true,
-    //                 'icon-image': 'cat', // reference the image
-    //                 'icon-size': CLASS_2_SIZE
-    //             },
-    //             'paint': {
-    //                 'icon-color': 'white',
-    //                 'icon-halo-color': 'grey', //update if necessary
-    //                 'icon-halo-width': 0.3
-    //             },
-    //             'minzoom': CLASS_2_MINZOOM
-    //         });
-    //     }
-    // );
-
-    // ROUTES - visible on hover or click
-
-    map.addSource('ivan-gardens-route-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/ivan_forrest_glen_stewart_route_cleaned.geojson'
-    })
-
-    map.addLayer({
-        'id': 'ivan-gardens-route-layer',
-        'slot': 'bottom',
-        'type': 'line',
-        'source': 'ivan-gardens-route-data',
-        'paint': {
-            'line-color': ROUTE_GREEN,
-            'line-width': 5,
-            'line-opacity': ROUTE_OPACITY,
-        },
-        'layout': {
-            'visibility': 'none'
-        }
-    })
-
-    map.addSource('ivan-gardens-node-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/Ivan_Forrest_GlenStewart_Ravine_Nodes.geojson'
-    })
-
-    map.addLayer({
-        'id': 'ivan-gardens-node-layer',
-        'type': 'circle',
-        //'slot': 'top',
-        'source': 'ivan-gardens-node-data',
-        'paint': {
-            'circle-radius': 5,
-            'circle-stroke-color': BRAND_PEACH,
-            'circle-stroke-width': 0.5,
-            'circle-color': BRAND_PEACH,
-            'circle-opacity': NODE_OPACITY
-        },
-        'layout': {
-            'visibility': 'none'
-        }
-    })
-
-    map.addSource('kew-gardens-route-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/kew_gardens_route_cleaned.geojson'
-    })
-
-    map.addLayer({
-        'id': 'kew-gardens-route-layer',
-        'type': 'line',
-        //'slot': 'top',
-        'source': 'kew-gardens-route-data',
-        'paint': {
-            'line-color': ROUTE_GREEN,
-            'line-width': 5,
-            'line-opacity': ROUTE_OPACITY
-        },
-        'layout': {
-            'visibility': 'none'
-        }
-    })
-
-    map.addSource('kew-gardens-node-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/Kew_Gardens_Park_Node.geojson'
-    })
-    map.addLayer({
-        'id': 'kew-gardens-node-layer',
-        'type': 'circle',
-        //'slot': 'top',
-        'source': 'kew-gardens-node-data',
-        'paint': {
-            'circle-radius': 5,
-            'circle-stroke-color': BRAND_PEACH,
-            'circle-color': BRAND_PEACH,
-            'circle-opacity': NODE_OPACITY,
-            'circle-stroke-width': 0.5,
-        },
-        'layout': {
-            'visibility': 'none'
-        }
-    })
-    // map.addLayer({
-    //     'id': 'basketball-courts',
-    //     'type': 'fill',
-    //     'source': 'basketball-courts-poly',
-    //     'paint': {
-    //         'fill-color': '#a3995d',
-    //         'fill-opacity': 1
-    //     }
-    // });
-
-    // Draw GeoJSON points
-    // map.addLayer({
-    //     'id': 'toronto-mus-pnts',
-    //     'type': 'circle',
-    //     'source': 'toronto-mus',
-    //     'paint': {
-    //         'circle-radius': [
-    //             'interpolate', //INTERPOLATE expression produces continuous results by interplating between value pairs
-    //             ['linear'], //linear interpolation between stops but could be exponential ['exponential', base] where base controls rate at which output increases
-    //             ['zoom'], //zoom expression changes appearance with zoom level
-    //             10, 5, // when zoom is 10 (or less), radius will be 5px
-    //             12, ['/', ['get', 'capacity'], 20] // when zoom is 12 (or greater), radius will be capacity/20
-    //         ],
-    //         'circle-color': [
-    //             'step', // STEP expression produces stepped results based on value pairs
-    //             ['get', 'capacity'], // GET expression retrieves property value from 'capacity' data field
-    //             '#800026', // Colour assigned to any values < first step
-    //             150, '#bd0026', // Colours assigned to values >= each step
-    //             500, '#e31a1c',
-    //             1000, '#fc4e2a',
-    //             2500, '#fd8d3c'
-    //         ]
-    //     }
-    // });
-
-    // Draw GeoJSON labels using 'name' property
-    // map.addLayer({
-    //     'id': 'toronto-mus-labels',
-    //     'type': 'symbol',
-    //     'source': 'toronto-mus',
     //     'layout': {
-    //         'text-field': ['get', 'name'],
-    //         'text-variable-anchor': ['bottom'],
-    //         'text-radial-offset': 0.5,
-    //         'text-justify': 'auto'
-    //     },
-    //     'paint': {
-    //         'text-color': 'blue'
+    //         'visibility': 'none'
     //     }
+    // })
+
+    // map.addSource('kew-gardens-route-data', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/kew_gardens_route_cleaned.geojson'
+    // })
+
+    // map.addLayer({
+    //     'id': 'kew-gardens-route-layer',
+    //     'type': 'line',
+    //     //'slot': 'top',
+    //     'source': 'kew-gardens-route-data',
+    //     'paint': {
+    //         'line-color': ROUTE_GREEN,
+    //         'line-width': 5,
+    //         'line-opacity': ROUTE_OPACITY
+    //     },
+    //     'layout': {
+    //         'visibility': 'none'
+    //     }
+    // })
+
+    // map.addSource('kew-gardens-node-data', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/Kew_Gardens_Park_Node.geojson'
+    // })
+    // map.addLayer({
+    //     'id': 'kew-gardens-node-layer',
+    //     'type': 'circle',
+    //     //'slot': 'top',
+    //     'source': 'kew-gardens-node-data',
+    //     'paint': {
+    //         'circle-radius': 5,
+    //         'circle-stroke-color': BRAND_PEACH,
+    //         'circle-color': BRAND_PEACH,
+    //         'circle-opacity': NODE_OPACITY,
+    //         'circle-stroke-width': 0.5,
+    //     },
+    //     'layout': {
+    //         'visibility': 'none'
+    //     }
+    // })
+    // // map.addLayer({
+    // //     'id': 'basketball-courts',
+    // //     'type': 'fill',
+    // //     'source': 'basketball-courts-poly',
+    // //     'paint': {
+    // //         'fill-color': '#a3995d',
+    // //         'fill-opacity': 1
+    // //     }
+    // // });
+
+    // // Draw GeoJSON points
+    // // map.addLayer({
+    // //     'id': 'toronto-mus-pnts',
+    // //     'type': 'circle',
+    // //     'source': 'toronto-mus',
+    // //     'paint': {
+    // //         'circle-radius': [
+    // //             'interpolate', //INTERPOLATE expression produces continuous results by interplating between value pairs
+    // //             ['linear'], //linear interpolation between stops but could be exponential ['exponential', base] where base controls rate at which output increases
+    // //             ['zoom'], //zoom expression changes appearance with zoom level
+    // //             10, 5, // when zoom is 10 (or less), radius will be 5px
+    // //             12, ['/', ['get', 'capacity'], 20] // when zoom is 12 (or greater), radius will be capacity/20
+    // //         ],
+    // //         'circle-color': [
+    // //             'step', // STEP expression produces stepped results based on value pairs
+    // //             ['get', 'capacity'], // GET expression retrieves property value from 'capacity' data field
+    // //             '#800026', // Colour assigned to any values < first step
+    // //             150, '#bd0026', // Colours assigned to values >= each step
+    // //             500, '#e31a1c',
+    // //             1000, '#fc4e2a',
+    // //             2500, '#fd8d3c'
+    // //         ]
+    // //     }
+    // // });
+
+    // // Draw GeoJSON labels using 'name' property
+    // // map.addLayer({
+    // //     'id': 'toronto-mus-labels',
+    // //     'type': 'symbol',
+    // //     'source': 'toronto-mus',
+    // //     'layout': {
+    // //         'text-field': ['get', 'name'],
+    // //         'text-variable-anchor': ['bottom'],
+    // //         'text-radial-offset': 0.5,
+    // //         'text-justify': 'auto'
+    // //     },
+    // //     'paint': {
+    // //         'text-color': 'blue'
+    // //     }
+    // // });
+
+    // // map.addLayer({
+    // //     'id': 'feature_labels',
+    // //     'type': 'symbol',
+    // //     'source': 'features',
+    // //     // 'layout': {
+    // //     //     'text-field': ['get', 'name'],
+    // //     //     'text-variable-anchor': ['bottom'],
+    // //     //     'text-radial-offset': 0.5,
+    // //     //     'text-justify': 'auto'
+    // //     // },
+    // //     // 'paint': {
+    // //     //     'text-color': 'blue'
+    // //     // }
+    // // });
+    // map.addSource('artwalk-route-data', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/ArtWalk_route.geojson'
     // });
 
     // map.addLayer({
-    //     'id': 'feature_labels',
-    //     'type': 'symbol',
-    //     'source': 'features',
-    //     // 'layout': {
-    //     //     'text-field': ['get', 'name'],
-    //     //     'text-variable-anchor': ['bottom'],
-    //     //     'text-radial-offset': 0.5,
-    //     //     'text-justify': 'auto'
-    //     // },
-    //     // 'paint': {
-    //     //     'text-color': 'blue'
-    //     // }
+    //     'id': 'artwalk-route-layer',
+    //     'type': 'line',
+    //     //'slot': 'top',
+    //     'source': 'artwalk-route-data',
+    //     'paint': {
+    //         'line-color': BRAND_PINK,
+    //         'line-width': 5,
+    //         'line-opacity': ROUTE_OPACITY
+    //     },
+    //     'layout': {
+    //         'visibility': 'none'
+    //     }
     // });
-    map.addSource('artwalk-route-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/ArtWalk_route.geojson'
-    });
 
-    map.addLayer({
-        'id': 'artwalk-route-layer',
-        'type': 'line',
-        //'slot': 'top',
-        'source': 'artwalk-route-data',
-        'paint': {
-            'line-color': BRAND_PINK,
-            'line-width': 5,
-            'line-opacity': ROUTE_OPACITY
-        },
-        'layout': {
-            'visibility': 'none'
-        }
-    });
+    // map.addSource('artwalk-node-data', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/ArtWalk_nodes.geojson'
+    // });
 
-    map.addSource('artwalk-node-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/ArtWalk_nodes.geojson'
-    });
+    // map.addLayer({
+    //     'id': 'artwalk-node-layer',
+    //     'type': 'circle',
+    //     //'slot': 'top',
+    //     'source': 'artwalk-node-data',
+    //     'paint': {
+    //         'circle-radius': 8,
+    //         'circle-stroke-color': BRAND_LIGHT_PINK,
+    //         'circle-color': BRAND_LIGHT_PINK,
+    //         'circle-opacity': NODE_OPACITY,
+    //         'circle-stroke-width': 0.5,
+    //     },
+    //     'layout': {
+    //         'visibility': 'none'
+    //     }
+    // });
 
-    map.addLayer({
-        'id': 'artwalk-node-layer',
-        'type': 'circle',
-        //'slot': 'top',
-        'source': 'artwalk-node-data',
-        'paint': {
-            'circle-radius': 8,
-            'circle-stroke-color': BRAND_LIGHT_PINK,
-            'circle-color': BRAND_LIGHT_PINK,
-            'circle-opacity': NODE_OPACITY,
-            'circle-stroke-width': 0.5,
-        },
-        'layout': {
-            'visibility': 'none'
-        }
-    });
+    // map.addSource('pubcrawl-route-data', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PubCrawl_routes.geojson'
+    // });
 
-    map.addSource('pubcrawl-route-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PubCrawl_routes.geojson'
-    });
+    // map.addLayer({
+    //     'id': 'pubcrawl-route-layer',
+    //     'type': 'line',
+    //     //'slot': 'top',
+    //     'source': 'pubcrawl-route-data',
+    //     'paint': {
+    //         'line-color': BRAND_PINK,
+    //         'line-width': 5,
+    //         'line-opacity': ROUTE_OPACITY
+    //     },
+    //     'layout': {
+    //         'visibility': 'none'
+    //     }
+    // });
 
-    map.addLayer({
-        'id': 'pubcrawl-route-layer',
-        'type': 'line',
-        //'slot': 'top',
-        'source': 'pubcrawl-route-data',
-        'paint': {
-            'line-color': BRAND_PINK,
-            'line-width': 5,
-            'line-opacity': ROUTE_OPACITY
-        },
-        'layout': {
-            'visibility': 'none'
-        }
-    });
+    // map.addSource('pubcrawl-node-data', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PubCrawl_nodes.geojson'
+    // });
 
-    map.addSource('pubcrawl-node-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PubCrawl_nodes.geojson'
-    });
+    // map.addLayer({
+    //     'id': 'pubcrawl-node-layer',
+    //     'type': 'circle',
+    //     //'slot': 'top',
+    //     'source': 'pubcrawl-node-data',
+    //     'paint': {
+    //         'circle-radius': 8,
+    //         'circle-stroke-color': BRAND_LIGHT_PINK,
+    //         'circle-color': BRAND_LIGHT_PINK,
+    //         'circle-opacity': NODE_OPACITY,
+    //         'circle-stroke-width': 0.5,
+    //     },
+    //     'layout': {
+    //         'visibility': 'none'
+    //     }
+    // });
 
-    map.addLayer({
-        'id': 'pubcrawl-node-layer',
-        'type': 'circle',
-        //'slot': 'top',
-        'source': 'pubcrawl-node-data',
-        'paint': {
-            'circle-radius': 8,
-            'circle-stroke-color': BRAND_LIGHT_PINK,
-            'circle-color': BRAND_LIGHT_PINK,
-            'circle-opacity': NODE_OPACITY,
-            'circle-stroke-width': 0.5,
-        },
-        'layout': {
-            'visibility': 'none'
-        }
-    });
+    // map.addSource('datenight-route-data', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/DateNight_lines.geojson'
+    // });
 
-    map.addSource('datenight-route-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/DateNight_lines.geojson'
-    });
+    // map.addLayer({
+    //     'id': 'datenight-route-layer',
+    //     'type': 'line',
+    //     //'slot': 'top',
+    //     'source': 'datenight-route-data',
+    //     'paint': {
+    //         'line-color': BRAND_PINK,
+    //         'line-width': 5,
+    //         'line-opacity': ROUTE_OPACITY
+    //     },
+    //     'layout': {
+    //         'visibility': 'none'
+    //     }
+    // });
 
-    map.addLayer({
-        'id': 'datenight-route-layer',
-        'type': 'line',
-        //'slot': 'top',
-        'source': 'datenight-route-data',
-        'paint': {
-            'line-color': BRAND_PINK,
-            'line-width': 5,
-            'line-opacity': ROUTE_OPACITY
-        },
-        'layout': {
-            'visibility': 'none'
-        }
-    });
+    // map.addSource('datenight-node-data', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/DateNight_nodes.geojson'
+    // });
 
-    map.addSource('datenight-node-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/DateNight_nodes.geojson'
-    });
+    // map.addLayer({
+    //     'id': 'datenight-node-layer',
+    //     'type': 'circle',
+    //     //'slot': 'top',
+    //     'source': 'datenight-node-data',
+    //     'paint': {
+    //         'circle-radius': 8,
+    //         'circle-stroke-color': BRAND_LIGHT_PINK,
+    //         'circle-color': BRAND_LIGHT_PINK,
+    //         'circle-opacity': NODE_OPACITY,
+    //         'circle-stroke-width': 0.5,
+    //     },
+    //     'layout': {
+    //         'visibility': 'none'
+    //     }
+    // });
 
-    map.addLayer({
-        'id': 'datenight-node-layer',
-        'type': 'circle',
-        //'slot': 'top',
-        'source': 'datenight-node-data',
-        'paint': {
-            'circle-radius': 8,
-            'circle-stroke-color': BRAND_LIGHT_PINK,
-            'circle-color': BRAND_LIGHT_PINK,
-            'circle-opacity': NODE_OPACITY,
-            'circle-stroke-width': 0.5,
-        },
-        'layout': {
-            'visibility': 'none'
-        }
-    });
+    // map.addSource('pagetoscreen-route-data', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PageToScreen_routes.geojson'
+    // });
 
-    map.addSource('pagetoscreen-route-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PageToScreen_routes.geojson'
-    });
+    // map.addLayer({
+    //     'id': 'pagetoscreen-route-layer',
+    //     'type': 'line',
+    //     //'slot': 'top',
+    //     'source': 'pagetoscreen-route-data',
+    //     'paint': {
+    //         'line-color': BRAND_PINK,
+    //         'line-width': 5,
+    //         'line-opacity': ROUTE_OPACITY
+    //     },
+    //     'layout': {
+    //         'visibility': 'none'
+    //     }
 
-    map.addLayer({
-        'id': 'pagetoscreen-route-layer',
-        'type': 'line',
-        //'slot': 'top',
-        'source': 'pagetoscreen-route-data',
-        'paint': {
-            'line-color': BRAND_PINK,
-            'line-width': 5,
-            'line-opacity': ROUTE_OPACITY
-        },
-        'layout': {
-            'visibility': 'none'
-        }
+    // });
 
-    });
+    // map.addSource('pagetoscreen-node-data', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PageToScreen_nodes.geojson'
+    // });
 
-    map.addSource('pagetoscreen-node-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PageToScreen_nodes.geojson'
-    });
+    // map.addLayer({
+    //     'id': 'pagetoscreen-node-layer',
+    //     'type': 'circle',
+    //     //'slot': 'top',
+    //     'source': 'pagetoscreen-node-data',
+    //     'paint': {
+    //         'circle-radius': 5,
+    //         'circle-stroke-color': BRAND_LIGHT_PINK,
+    //         'circle-color': BRAND_LIGHT_PINK,
+    //         'circle-opacity': NODE_OPACITY,
+    //         'circle-stroke-width': 0.5,
+    //     },
+    //     'layout': {
+    //         'visibility': 'none'
+    //     }
+    // });
+    // map.addSource('pupcrawl-route-data', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PupCrawl_routes.geojson'
+    // });
 
-    map.addLayer({
-        'id': 'pagetoscreen-node-layer',
-        'type': 'circle',
-        //'slot': 'top',
-        'source': 'pagetoscreen-node-data',
-        'paint': {
-            'circle-radius': 5,
-            'circle-stroke-color': BRAND_LIGHT_PINK,
-            'circle-color': BRAND_LIGHT_PINK,
-            'circle-opacity': NODE_OPACITY,
-            'circle-stroke-width': 0.5,
-        },
-        'layout': {
-            'visibility': 'none'
-        }
-    });
-map.addSource('pupcrawl-route-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PupCrawl_routes.geojson'
-    });
+    // map.addLayer({
+    //     'id': 'pupcrawl-route-layer',
+    //     'type': 'line',
+    //     'source': 'pupcrawl-route-data',
+    //     'paint': {
+    //         'line-color': BRAND_LIGHT_BLUE,
+    //         'line-width': 5,
+    //         'line-opacity': ROUTE_OPACITY
+    //     },
+    //     'layout': {
+    //         'visibility': 'none'
+    //     }
+    // });
 
-    map.addLayer({
-        'id': 'pupcrawl-route-layer',
-        'type': 'line',
-        'source': 'pupcrawl-route-data',
-        'paint': {
-            'line-color': BRAND_LIGHT_BLUE,
-            'line-width': 5,
-            'line-opacity': ROUTE_OPACITY
-        },
-        'layout': {
-            'visibility': 'none'
-        }
-    });
+    // map.addSource('pupcrawl-node-data', {
+    //     type: 'geojson',
+    //     data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PupCrawl_nodes.geojson'
+    // });
 
-    map.addSource('pupcrawl-node-data', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PupCrawl_nodes.geojson'
-    });
+    // map.addLayer({
+    //     'id': 'pupcrawl-node-layer',
+    //     'type': 'circle',
+    //     'source': 'pupcrawl-node-data',
+    //     'paint': {
+    //         'circle-radius': 8,
+    //         'circle-stroke-color': BRAND_LIGHT_BLUE,
+    //         'circle-color': BRAND_LIGHT_BLUE,
+    //         'circle-opacity': NODE_OPACITY,
+    //         'circle-stroke-width': 0.5,
+    //     },
+    //     'layout': {
+    //         'visibility': 'none'
+    //     }
+    // });
 
-    map.addLayer({
-        'id': 'pupcrawl-node-layer',
-        'type': 'circle',
-        'source': 'pupcrawl-node-data',
-        'paint': {
-            'circle-radius': 8,
-            'circle-stroke-color': BRAND_LIGHT_BLUE,
-            'circle-color': BRAND_LIGHT_BLUE,
-            'circle-opacity': NODE_OPACITY,
-            'circle-stroke-width': 0.5,
-        },
-        'layout': {
-            'visibility': 'none'
-        }
-    });
+    // for (let i = 0; i < CARD_IDS.length; i++) {
+    //     let card_id = CARD_IDS[i];
+    //     let node_id = CARD_ID_TO_LAYER_INFO[card_id]['node_layer_id'];
+    //     let node_source_id = CARD_ID_TO_LAYER_INFO[card_id]['node_source_id'];
+    //     map.addLayer({
+    //         'id': node_id + '-label',
+    //         'type': 'symbol',
+    //         'slot': 'top',
+    //         'source': node_source_id,
+    //         'minzoom': 15,
+    //         // 'paint': {
+    //         //     'line-color': BRAND_YELLOW,
+    //         //     'line-width': 3
+    //         // },
+    //         'paint': {
+    //             'text-color': BRAND_LIGHT_PINK,
+    //             'text-halo-color': 'black',
+    //             'text-halo-width': 0.1
+    //         },
+    //         'layout': {
+    //             'text-field': '{name}',
+    //             'text-anchor': 'top',
+    //             'text-offset': [0, 0.5],
+    //             'visibility': 'none'
+    //         }
+    //     });
+    // }
 
-    for (let i = 0; i < CARD_IDS.length; i++) {
-        let card_id = CARD_IDS[i];
-        let node_id = CARD_ID_TO_LAYER_INFO[card_id]['node_layer_id'];
-        let node_source_id = CARD_ID_TO_LAYER_INFO[card_id]['node_source_id'];
-        map.addLayer({
-            'id': node_id + '-label',
-            'type': 'symbol',
-            'slot': 'top',
-            'source': node_source_id,
-            'minzoom': 15,
-            // 'paint': {
-            //     'line-color': BRAND_YELLOW,
-            //     'line-width': 3
-            // },
-            'paint': {
-                'text-color': BRAND_LIGHT_PINK,
-                'text-halo-color': 'black',
-                'text-halo-width': 0.1
-            },
-            'layout': {
-                'text-field': '{name}',
-                'text-anchor': 'top',
-                'text-offset': [0, 0.5],
-                'visibility': 'none'
-            }
-        });
+    for (let card_id in CARD_TO_INFO) {
+        add_route(card_id);
+        add_nodes(card_id);
+        add_labels(card_id);
     }
-
 });
 
 /*--------------------------------------------------------------------
@@ -869,7 +761,7 @@ function make_route_visible(route_layer_id, node_layer_id, layer_center) {
     );
 
     map.setLayoutProperty(
-        node_layer_id + '-label',
+        node_layer_id + '-label-layer',
         'visibility', 'visible'
     )
 }
@@ -886,7 +778,7 @@ function make_route_invisible(route_layer_id, node_layer_id) {
         'none'
     )
     map.setLayoutProperty(
-        node_layer_id + '-label',
+        node_layer_id + '-label-layer',
         'visibility', 'none'
     )
 }
@@ -947,86 +839,188 @@ let CURRENT_CENTER = DEFAULT_CENTER;
 //         .setHTML(e.lngLat)
 //         .addTo(map);
 // })
+map.once('idle', () =>{
+    heatmap_layer = map.getStyle().layers[83]['id'];
+    map.setLayoutProperty(
+        heatmap_layer,
+        'visibility',
+        'none'
+    )
 
-for (let i = 0; i < CARD_IDS.length; i++) { // over the list of card id's
+    for (let card_id in CARD_TO_INFO) {
+        let route_layer = CARD_TO_INFO[card_id]['route_layer'];
+        let node_layer = CARD_TO_INFO[card_id]['node_layer'];
+        let center = CARD_TO_INFO[card_id]['center'];
 
-    // fetch their information here for cleanliness
-    let card_id = CARD_IDS[i];
-    let route_id = CARD_ID_TO_LAYER_INFO[card_id]['route_layer_id'];
-    let node_id = CARD_ID_TO_LAYER_INFO[card_id]['node_layer_id'];
-    let center = CARD_ID_TO_LAYER_INFO[card_id]['center'];
-
-    // mouse enters a card -> toggle layer visibility
-    document.getElementById(card_id).addEventListener("mouseenter", (e) => {
-        if (click_selected_node_id != node_id) {
-            // IF THIS LAYER IS NOT CURRENTLY CLICK-SELECTED
-            // HOVER-SELECT IT
-            make_route_visible(route_id, node_id, center);
-            fly_to_layer_extent(center);
-            hover_selected_node_id = node_id;
-            hover_selected_route_id = route_id;
-        } else {
-            fly_to_layer_extent(center);
-        }
-    });
-
-    // mouse leaves a card -> toggle layer visibility
-    document.getElementById(card_id).addEventListener("mouseleave", (e) => {
-        if (click_selected_node_id != node_id) {
-            // NOT CURRENTLY CLICK-SELECTED -> WE ARE EXITING A HOVER
-            make_route_invisible(route_id, node_id);
-            //fly_to_default_extent();
-            fly_to_layer_extent(CURRENT_CENTER);
-            hover_selected_node_id = 'none';
-            hover_selected_route_id = 'none';
-        }
-
-    });
-
-    // click -> previously selected route becomes invisible and deselected, clicked route becomes selected, visible, and centered
-    document.getElementById(card_id).addEventListener("click", (e) => {
-        if (click_selected_node_id == node_id) {
-            // THIS IS ALREADY CLICKED -> DESELECT IT
-            make_route_invisible(route_id, node_id);
-            if (node_id == CARD_ID_TO_LAYER_INFO['card-ivan-forrest']['node_layer_id'] || node_id == CARD_ID_TO_LAYER_INFO['card-kew']['node_layer_id']) {
-                // make heatmap invisible
+        // mouse enters a card -> toggle layer visibility
+        document.getElementById(card_id).addEventListener("mouseenter", (e) => {
+            console.log(card_id, node_layer)
+            if (click_selected_node_id != node_layer) {
+                // IF THIS LAYER IS NOT CURRENTLY CLICK-SELECTED
+                // HOVER-SELECT IT
+                make_route_visible(route_layer, node_layer, center);
+                fly_to_layer_extent(center);
+                hover_selected_node_id = node_layer;
+                hover_selected_route_id = route_layer;
+            } else {
+                fly_to_layer_extent(center);
             }
-            click_selected_node_id = 'none';
-            click_selected_route_id = 'none';
-            // do not change extent
-        } else {
-            // THIS IS NOT ALREADY CLICKED -> SELECT IT
-            make_route_visible(route_id, node_id, center);
-            if (node_id == CARD_ID_TO_LAYER_INFO['card-ivan-forrest']['node_layer_id'] || node_id == CARD_ID_TO_LAYER_INFO['card-kew']['node_layer_id']) {
-                // make heatmap visible
+        });
+
+        // mouse leaves a card -> toggle layer visibility
+        document.getElementById(card_id).addEventListener("mouseleave", (e) => {
+            if (click_selected_node_id != node_layer) {
+                // NOT CURRENTLY CLICK-SELECTED -> WE ARE EXITING A HOVER
+                make_route_invisible(route_layer, node_layer);
+                //fly_to_default_extent();
+                fly_to_layer_extent(CURRENT_CENTER);
+                hover_selected_node_id = 'none';
+                hover_selected_route_id = 'none';
             }
-            make_route_invisible(click_selected_route_id, click_selected_node_id)
-            fly_to_layer_extent(center);
-            click_selected_route_id = route_id;
-            click_selected_node_id = node_id;
-            CURRENT_CENTER = center;
-        }
 
-    });
+        });
 
-    // NOW THE NODES
+        document.getElementById(card_id).addEventListener("click", (e) => {
+            if (click_selected_node_id == node_layer) {
+                // THIS IS ALREADY CLICKED -> DESELECT IT
+                make_route_invisible(route_id, node_layer);
 
-    map.on('mouseenter', node_id, (e) => {
-        popup = make_popup(e)
-    });
+                // heat map specifications
+                if (node_layer == CARD_TO_INFO['card-ivan-forrest']['node_layer'] || node_layer == CARD_TO_INFO['card-kew']['node_layer']) {//CARD_ID_TO_LAYER_INFO['card-ivan-forrest']['node_layer_id'] || node_id == CARD_ID_TO_LAYER_INFO['card-kew']['node_layer_id']) {
+                    // make heatmap invisible
+                }
 
-    map.on('mouseleave', node_id, () => {
-        // get rid of popups when mouse leaves
-        popup.remove();
-    });
+                click_selected_node_id = 'none';
+                click_selected_route_id = 'none';
+                // do not change extent
+            } else {
+                // THIS IS NOT ALREADY CLICKED -> SELECT IT
+                make_route_visible(route_layer, node_layer, center);
+                if (node_layer == CARD_TO_INFO['card-ivan-forrest']['node_layer'] || node_layer == CARD_TO_INFO['card-kew']['node_layer']) {
+                    // make heatmap visible
+                    map.setLayoutProperty(
+                        heatmap_layer,
+                        'visibility',
+                        'visible'
+                    )
+                } else {
+                    map.setLayoutProperty(
+                        heatmap_layer,
+                        'visibility',
+                        'none'
+                    )
+                }
+                make_route_invisible(click_selected_route_id, click_selected_node_id)
+                fly_to_layer_extent(center);
+                click_selected_route_id = route_layer;
+                click_selected_node_id = node_layer;
+                CURRENT_CENTER = center;
+            }
 
-    map.on('touchstart', node_id, (e) => {
-        popup = make_popup(e)
-        console.log('MAP LISTENER NODE')
-    })
+        });
 
-    map.on('touchend', () => { //new_routes[i]['node_layer_id'],
-        // get rid of popups when mouse leaves
-        popup.remove();
-    });
-}
+        map.on('mouseenter', node_layer, (e) => {
+            popup = make_popup(e)
+        });
+
+        map.on('mouseleave', node_layer, () => {
+            // get rid of popups when mouse leaves
+            popup.remove();
+        });
+
+        map.on('touchstart', node_layer, (e) => {
+            popup = make_popup(e)
+            console.log('MAP LISTENER NODE')
+        })
+
+        map.on('touchend', () => { //new_routes[i]['node_layer_id'],
+            // get rid of popups when mouse leaves
+            popup.remove();
+        });
+
+    }
+});
+
+
+// for (let i = 0; i < CARD_IDS.length; i++) { // over the list of card id's
+
+//     // fetch their information here for cleanliness
+//     let card_id = CARD_IDS[i];
+//     let route_id = CARD_ID_TO_LAYER_INFO[card_id]['route_layer_id'];
+//     let node_id = CARD_ID_TO_LAYER_INFO[card_id]['node_layer_id'];
+//     let center = CARD_ID_TO_LAYER_INFO[card_id]['center'];
+
+//     // mouse enters a card -> toggle layer visibility
+//     document.getElementById(card_id).addEventListener("mouseenter", (e) => {
+//         if (click_selected_node_id != node_id) {
+//             // IF THIS LAYER IS NOT CURRENTLY CLICK-SELECTED
+//             // HOVER-SELECT IT
+//             make_route_visible(route_id, node_id, center);
+//             fly_to_layer_extent(center);
+//             hover_selected_node_id = node_id;
+//             hover_selected_route_id = route_id;
+//         } else {
+//             fly_to_layer_extent(center);
+//         }
+//     });
+
+//     // mouse leaves a card -> toggle layer visibility
+//     document.getElementById(card_id).addEventListener("mouseleave", (e) => {
+//         if (click_selected_node_id != node_id) {
+//             // NOT CURRENTLY CLICK-SELECTED -> WE ARE EXITING A HOVER
+//             make_route_invisible(route_id, node_id);
+//             //fly_to_default_extent();
+//             fly_to_layer_extent(CURRENT_CENTER);
+//             hover_selected_node_id = 'none';
+//             hover_selected_route_id = 'none';
+//         }
+
+//     });
+
+//     // click -> previously selected route becomes invisible and deselected, clicked route becomes selected, visible, and centered
+//     document.getElementById(card_id).addEventListener("click", (e) => {
+//         if (click_selected_node_id == node_id) {
+//             // THIS IS ALREADY CLICKED -> DESELECT IT
+//             make_route_invisible(route_id, node_id);
+//             if (node_id == CARD_ID_TO_LAYER_INFO['card-ivan-forrest']['node_layer_id'] || node_id == CARD_ID_TO_LAYER_INFO['card-kew']['node_layer_id']) {
+//                 // make heatmap invisible
+//             }
+//             click_selected_node_id = 'none';
+//             click_selected_route_id = 'none';
+//             // do not change extent
+//         } else {
+//             // THIS IS NOT ALREADY CLICKED -> SELECT IT
+//             make_route_visible(route_id, node_id, center);
+//             if (node_id == CARD_ID_TO_LAYER_INFO['card-ivan-forrest']['node_layer_id'] || node_id == CARD_ID_TO_LAYER_INFO['card-kew']['node_layer_id']) {
+//                 // make heatmap visible
+//             }
+//             make_route_invisible(click_selected_route_id, click_selected_node_id)
+//             fly_to_layer_extent(center);
+//             click_selected_route_id = route_id;
+//             click_selected_node_id = node_id;
+//             CURRENT_CENTER = center;
+//         }
+
+//     });
+
+//     // NOW THE NODES
+
+//     map.on('mouseenter', node_id, (e) => {
+//         popup = make_popup(e)
+//     });
+
+//     map.on('mouseleave', node_id, () => {
+//         // get rid of popups when mouse leaves
+//         popup.remove();
+//     });
+
+//     map.on('touchstart', node_id, (e) => {
+//         popup = make_popup(e)
+//         console.log('MAP LISTENER NODE')
+//     })
+
+//     map.on('touchend', () => { //new_routes[i]['node_layer_id'],
+//         // get rid of popups when mouse leaves
+//         popup.remove();
+//     });
+// }
