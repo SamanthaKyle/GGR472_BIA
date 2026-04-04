@@ -13,7 +13,9 @@
     --BRAND_TAUPE: #b19074;
 }
 
-
+body {
+  font-family: "IBM Plex Mono", monospace;
+}
 
 .map-container {
     position: absolute;
