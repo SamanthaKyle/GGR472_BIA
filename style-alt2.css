@@ -75,9 +75,18 @@ h5 {
     right: 10px;
 }
 
+.mapboxgl-ctrl-geocoder {
+    width: 100% !important;
+    min-width: unset !important;
+    max-width: unset !important;
+    box-shadow: none;
+    margin: 0;
+}
+
 .geocoder {
     position: relative;
     margin: 10px 0 10px;
+    width: 100%;
 }
 
 #returnbutton {
@@ -111,8 +120,6 @@ h5 {
     padding: 10px;
     border-radius: 8px;
 }
-
-
 
 .card-kew {
     background-color: var(--BRAND_GREEN);
