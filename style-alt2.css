@@ -46,8 +46,8 @@ h5 {
 
 .btn {
     /* width: 5rem; */
-    font-size: smaller;
-    padding: 1em;
+    font-size: small;
+    padding: 0.5em;
     background-color: color-mix(in srgb, black, transparent 40%);
     border-color: #a6ddf4;
 }
@@ -134,11 +134,11 @@ h5 {
 }
 
 .card-artwalk {
-    background-color: var(--BRAND_LIGHT_PINK);
+    background-color: var(--BRAND_ORANGE);
 }
 
 .card-date-night {
-    background-color: var(--BRAND_PINK);
+    background-color: var(--BRAND_LIGHT_PINK);
     width: 100%;
     border-radius: 8px;
 }
@@ -156,7 +156,7 @@ h5 {
 }
 
 .card-scenic-route {
-    background-color: #c4a2d5;
+    background-color: var(--BRAND_WHITE);
     width: 100%;
     border-radius: 8px;
 }
@@ -193,15 +193,15 @@ h5 {
 }
 
 #panel-artwalk {
-    background-color: color-mix(in srgb, var(--BRAND_LIGHT_PINK), transparent 40%);
+    background-color: color-mix(in srgb, var(--BRAND_ORANGE), transparent 40%);
 }
 
 #panel-date-night {
-    background-color: color-mix(in srgb, var(--BRAND_PINK), transparent 40%);
+    background-color: color-mix(in srgb, var(--BRAND_LIGHT_PINK), transparent 40%);
 }
 
 #panel-pup-crawl {
-    background-color: color-mix(in srgb, var(--BRAND_LIGHT_PURPLE), transparent 40%);
+    background-color: color-mix(in srgb, var(--BRAND_LIGHT_BLUE), transparent 40%);
 }
 
 /* .custom-popup {
