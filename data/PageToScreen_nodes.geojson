@@ -1,1 +1,101 @@
-{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"name":"Toronto Public Library - Beaches Branch","address":"2161 Queen St E","desc":"A historic library with books galore!"},"geometry":{"coordinates":[-79.29848340735208,43.67016879048933],"type":"Point"},"id":0},{"type":"Feature","properties":{"name":"Kew Gardens","address":"Queen St E","desc":"Take a seat and enjoy the folliage as you dive into your newly picked up book."},"geometry":{"coordinates":[-79.29866420836301,43.66987490917481],"type":"Point"},"id":1},{"type":"Feature","properties":{"name":"Kew Gardens","address":"Queen St E","desc":"Take a seat and enjoy the folliage as you dive into your newly picked up book."},"geometry":{"coordinates":[-79.29785126569573,43.670002184627094],"type":"Point"},"id":2},{"type":"Feature","properties":{"name":"Ivan Forrest Gardens","address":"Queen St E","desc":"A charming park to relax, watch the waterfall in summer, and enjoy any books you may have picked up on your way."},"geometry":{"coordinates":[-79.29262763537818,43.67176434692246],"type":"Point"},"id":3},{"type":"Feature","properties":{"name":"Judy's Beach Cafe","address":"2188 Queen St E","desc":"A new cafe serving Queen Street East with stellar coffee, baked goods, and other tasty items."},"geometry":{"coordinates":[-79.29046397702828,43.6721366774953],"type":"Point"},"id":4},{"type":"Feature","properties":{"name":"Fox Theatre","address":"2236 Queen St E","desc":"Long-running, single-screen movie theatre with retro flair showing second-run & independent films."},"geometry":{"coordinates":[-79.28726682498267,43.672792674735064],"type":"Point"},"id":5}]}
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Toronto Public Library - Beaches Branch",
+                "address": "2161 Queen St E",
+                "desc": "A historic library with books galore!"
+            },
+            "geometry": {
+                "coordinates": [
+                    -79.29848340735208,
+                    43.67016879048933
+                ],
+                "type": "Point"
+            },
+            "id": 0
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Kew Gardens",
+                "address": "Queen St E",
+                "desc": "Take a seat and enjoy the folliage as you dive into your newly picked up book."
+            },
+            "geometry": {
+                "coordinates": [
+                    -79.29866420836301,
+                    43.66987490917481
+                ],
+                "type": "Point"
+            },
+            "id": 1
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Kew Gardens",
+                "address": "Queen St E",
+                "desc": "Take a seat and enjoy the folliage as you dive into your newly picked up book."
+            },
+            "geometry": {
+                "coordinates": [
+                    -79.29785126569573,
+                    43.670002184627094
+                ],
+                "type": "Point"
+            },
+            "id": 2
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Ivan Forrest Gardens",
+                "address": "Queen St E",
+                "desc": "A charming park to relax, watch the waterfall in summer, and enjoy any books you may have picked up on your way."
+            },
+            "geometry": {
+                "coordinates": [
+                    -79.29262763537818,
+                    43.67176434692246
+                ],
+                "type": "Point"
+            },
+            "id": 3
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Judy's Beach Cafe",
+                "address": "2188 Queen St E",
+                "desc": "A new cafe serving Queen Street East with stellar coffee, baked goods, and other tasty items."
+            },
+            "geometry": {
+                "coordinates": [
+                    -79.29046397702828,
+                    43.6721366774953
+                ],
+                "type": "Point"
+            },
+            "id": 4
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Fox Theatre",
+                "address": "2236 Queen St E",
+                "desc": "Long-running, single-screen movie theatre with retro flair showing second-run & independent films."
+            },
+            "geometry": {
+                "coordinates": [
+                    -79.28726682498267,
+                    43.672792674735064
+                ],
+                "type": "Point"
+            },
+            "id": 5
+        }
+    ]
+}
