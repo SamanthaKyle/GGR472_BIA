@@ -13,7 +13,8 @@
             "properties": {
                 "node": "317338581",
                 "area": "Upper Park",
-                "name": "Ruby-throated Hummingbird"
+                "name": "Ruby-throated Hummingbird",
+                "desc": "Small but mighty in the Summer time"
             }
         },
         {
@@ -28,7 +29,8 @@
             "properties": {
                 "node": "9416966044",
                 "area": "Mid Park",
-                "name": "Baltimore Oriole"
+                "name": "Baltimore Oriole",
+                "desc": "A classic sign of Spring in The Beach"
             }
         },
         {
@@ -43,7 +45,8 @@
             "properties": {
                 "node": "317338542",
                 "area": "Lower Park",
-                "name": "Eastern Cottontail"
+                "name": "Eastern Cottontail",
+                "desc": "Can be seen nibbling grass along the park edges"
             },
             "id": 20
         },
@@ -59,7 +62,8 @@
             "properties": {
                 "node": "415591555",
                 "area": "South End",
-                "name": "Eastern Grey Squirrel"
+                "name": "Eastern Grey Squirrel",
+                "desc": "One of the most commonly found aminals in the park"
             },
             "id": 25
         }
