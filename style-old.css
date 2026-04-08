@@ -1,3 +1,4 @@
+
 :root {
     --BRAND_WHITE: #e8f8ff;
     --BRAND_LIGHT_BLUE: #a6ddf4;
@@ -13,8 +14,30 @@
     --BRAND_TAUPE: #b19074;
 }
 
+    /* font-family: "IBM Plex Mono", monospace; */
+
+
 body {
-  font-family: "IBM Plex Mono", monospace;
+    font-family: "Noto Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-variation-settings:
+            "wdth" 87.5;
+            font-size:70%;
+}
+
+h5 {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.btn {
+    width: 5rem;
+    font-size: smaller;
+    padding: 1em;
+    background-color: #000f4d;
 }
 
 .map-container {
@@ -36,7 +59,7 @@ body {
 }
 
 .mapboxgl-ctrl-top-right {
-    top: 160px; 
+    top: 160px;
     right: 10px;
 }
 
@@ -73,66 +96,91 @@ body {
     border-radius: 8px;
 }
 
-.card-kew { 
-    background-color: var(--BRAND_GREEN); 
+.card-kew {
+    background-color: var(--BRAND_GREEN);
     width: 100%;
     border-radius: 8px;
-} 
-.card-ivan-forrest { 
-    background-color: var(--BRAND_LIGHT_BLUE); 
+}
+
+.card-ivan-forrest {
+    background-color: var(--BRAND_LIGHT_BLUE);
     width: 100%;
     border-radius: 8px;
 
-} 
-.card-pub-crawl { 
-    background-color: var(--BRAND_TAUPE); 
-    width: 100%;
-    border-radius: 8px;
-} 
-.card-artwalk { 
-    background-color: var(--BRAND_LIGHT_PINK);}
+}
 
-.card-date-night { 
-    background-color: var(--BRAND_PINK); 
+.card-pub-crawl {
+    background-color: var(--BRAND_TAUPE);
     width: 100%;
     border-radius: 8px;
-} 
-.card-page-to-screen { 
-    background-color: var(--BRAND_YELLOW); 
-    width: 100%;
-    border-radius: 8px;
-} 
+}
 
-.card-pup-crawl { 
-    background-color: var(--BRAND_LIGHT_BLUE); 
-    width: 100%;
-    border-radius: 8px;
-} 
+.card-artwalk {
+    background-color: var(--BRAND_LIGHT_PINK);
+}
 
-.card-scenic-route { 
-    background-color: #c4a2d5; 
+.card-date-night {
+    background-color: var(--BRAND_PINK);
     width: 100%;
     border-radius: 8px;
-} 
+}
+
+.card-page-to-screen {
+    background-color: var(--BRAND_YELLOW);
+    width: 100%;
+    border-radius: 8px;
+}
+
+.card-pup-crawl {
+    background-color: var(--BRAND_LIGHT_BLUE);
+    width: 100%;
+    border-radius: 8px;
+}
+
+.card-scenic-route {
+    background-color: #c4a2d5;
+    width: 100%;
+    border-radius: 8px;
+}
 
 .side-panel {
     position: absolute;
-    left: 330px; 
+    left: 330px;
     top: 20px;
-    width: 300px; 
+    width: 300px;
     display: flex;
     flex-direction: column;
     border-radius: 8px;
     padding: 10px;
 }
 
-#panel-kew { background-color: var(--BRAND_GREEN); }
-#panel-ivan-forrest { background-color: var(--BRAND_LIGHT_BLUE); }
-#panel-pub-crawl { background-color: var(--BRAND_TAUPE); }
-#panel-page-to-screen { background-color: var(--BRAND_YELLOW); }
-#panel-artwalk { background-color: var(--BRAND_LIGHT_PINK);} 
-#panel-date-night { background-color: var(--BRAND_PINK); }
-#panel-pup-crawl { background-color: var(--BRAND_LIGHT_BLUE); }
+#panel-kew {
+    background-color: var(--BRAND_GREEN);
+}
+
+#panel-ivan-forrest {
+    background-color: var(--BRAND_LIGHT_BLUE);
+}
+
+#panel-pub-crawl {
+    background-color: var(--BRAND_TAUPE);
+}
+
+#panel-page-to-screen {
+    background-color: var(--BRAND_YELLOW);
+}
+
+#panel-artwalk {
+    background-color: var(--BRAND_LIGHT_PINK);
+}
+
+#panel-date-night {
+    background-color: var(--BRAND_PINK);
+}
+
+#panel-pup-crawl {
+    background-color: var(--BRAND_LIGHT_BLUE);
+}
 
 /* .custom-popup {
     max-width: 200px;
