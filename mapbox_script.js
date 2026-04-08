@@ -107,8 +107,8 @@ const CARD_IDS = ['card-ivan-forrest', 'card-kew', 'card-pub-crawl', 'card-date-
 const CARD_TO_INFO = {
     'card-ivan-forrest':
     {
-        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/Ivan_Forrest_GlenStewart_Ravine_Nodes.geojson',
-        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/ivan_forrest_glen_stewart_route_cleaned.geojson',
+        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/Ivan_Forrest_GlenStewart_Ravine_Nodes.geojson',
+        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/ivan_forrest_glen_stewart_route_cleaned.geojson',
         'center': [-79.29407743073317, 43.67414933330741], // use turf to get center?,
         'route_colour': BRAND_LIGHT_BLUE,
         'node_colours': [BRAND_PEACH, BRAND_PEACH],
@@ -119,8 +119,8 @@ const CARD_TO_INFO = {
     },
     'card-kew':
     {
-        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/Kew_Gardens_Park_Node.geojson',
-        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/emmett_data/routes/kew_gardens_route_cleaned.geojson',
+        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/Kew_Gardens_Park_Node.geojson',
+        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/kew_gardens_route_cleaned.geojson',
         'center': [-79.2984377648393, 43.66840672830028],
         'route_colour': BRAND_GREEN,
         'node_colours': [BRAND_PEACH, BRAND_PEACH],
@@ -130,8 +130,8 @@ const CARD_TO_INFO = {
     },
     'card-pub-crawl':
     {
-        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PubCrawl_nodes.geojson',
-        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PubCrawl_routes.geojson',
+        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/PubCrawl_nodes.geojson',
+        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/PubCrawl_routes.geojson',
         'center': [-79.293212, 43.671496],
         'route_colour': BRAND_TAUPE,
         'node_colours': [BRAND_LIGHT_PINK, BRAND_LIGHT_PINK],
@@ -141,8 +141,8 @@ const CARD_TO_INFO = {
     },
     'card-date-night':
     {
-        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/DateNight_nodes.geojson',
-        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/DateNight_lines.geojson',
+        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/DateNight_nodes.geojson',
+        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/DateNight_lines.geojson',
         'center': [-79.295706, 43.671042],
         'route_colour': BRAND_LIGHT_PINK,
         'node_colours': [BRAND_PINK, BRAND_PINK],
@@ -152,8 +152,8 @@ const CARD_TO_INFO = {
     },
     'card-artwalk':
     {
-        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/ArtWalk_nodes.geojson',
-        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/ArtWalk_route.geojson',
+        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/ArtWalk_nodes.geojson',
+        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/ArtWalk_route.geojson',
         'center': [-79.293947, 43.669808],
         'route_colour': BRAND_ORANGE,
         'node_colours': [BRAND_LIGHT_PINK, BRAND_LIGHT_PINK],
@@ -163,8 +163,8 @@ const CARD_TO_INFO = {
     },
     'card-page-to-screen':
     {
-        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PageToScreen_nodes.geojson',
-        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PageToScreen_routes.geojson',
+        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/PageToScreen_nodes.geojson',
+        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/PageToScreen_routes.geojson',
         'center': [-79.292337, 43.671849],
         'route_colour': BRAND_YELLOW,
         'node_colours': [BRAND_LIGHT_PINK, BRAND_LIGHT_PINK],
@@ -174,8 +174,8 @@ const CARD_TO_INFO = {
     },
     'card-pup-crawl':
     {
-        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PupCrawl_nodes.geojson',
-        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/PupCrawl_routes.geojson',
+        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/PupCrawl_nodes.geojson',
+        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/PupCrawl_routes.geojson',
         'center': [-79.2935, 43.6695],
         'route_colour': BRAND_LIGHT_BLUE,
         'node_colours': [BRAND_LIGHT_BLUE, BRAND_LIGHT_BLUE],
@@ -316,7 +316,7 @@ map.on('load', () => {
     // Neighbourhood outline - always visible - not present in legends
     map.addSource('beaches-poly', {
         type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/aziza_geojsons_cleaned/neighbourhood.geojson'
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/data/aziza_geojsons_cleaned/neighbourhood.geojson'
     });
 
     map.addLayer({
@@ -332,7 +332,7 @@ map.on('load', () => {
     // Greenspaces poly - always visible - not present in legend
     map.addSource('green-spaces-poly', {
         type: 'geojson',
-        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/emmett_data/aziza_geojsons_cleaned/green_spaces.geojson'
+        data: 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/main/data/aziza_geojsons_cleaned/green_spaces.geojson'
     });
 
     let feature;
