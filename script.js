@@ -94,7 +94,7 @@ EVENT LISTENERS FOR BUTTONS
 // Button event listener to export kew gardens stroll to google maps
 document.getElementById('kew-gardens-google-maps-btn').addEventListener('click', (e) => {
     e.preventDefault();
-    let url = 'https://www.google.com/maps/dir/?api=1&origin=43.6717645,-79.292627&destination=43.670023,-79.2997718&travelmode=walking&waypoints=43.6693425,-79.297661|43.6684888,-79.2977055|43.6679937,-79.2977183|43.66628356772898,-79.29749104811573|43.6690367,-79.2993947';
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=43.670023,-79.299771&destination=43.670023,-79.2997718&travelmode=walking&waypoints=43.6693425,-79.297661|43.6684888,-79.2977055|43.6679937,-79.2977183|43.66628356772898,-79.29749104811573|43.6690367,-79.2993947';
     window.open(url, '_blank')
 });
 
@@ -108,14 +108,14 @@ document.getElementById('ivan-forrest-glen-stewart-google-maps-btn').addEventLis
 // Button event listener to export pub crawl to google maps
 document.getElementById('bar-crawl-google-maps-btn').addEventListener('click', (e) => {
     e.preventDefault();
-    let url = 'https://www.google.com/maps/dir/?api=1&origin=43.669658478714325,-79.30241797077133&destination=43.673316738616506,-79.28492871510936&travelmode=walking&waypoints=43.66941454708757,-79.30199935012045|Castro%27s+Lounge+Toronto|The+Druid+Bar+Toronto';
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=43.669658478714325,-79.30241797077133&destination=43.673316738616506,-79.28492871510936&travelmode=walking&waypoints=43.66941454708757,-79.30199935012045|Castro%27s+Lounge+Toronto|The+Druid+Bar+Toronto|Outrigger+Toronto';
     window.open(url, '_blank')
 });
 
 // Button event listener to export art walk to google maps
 document.getElementById('artwalk-google-maps-btn').addEventListener('click', (e) => {
     e.preventDefault();
-    let url = 'https://www.google.com/maps/dir/?api=1&origin=Thought+Fox+Art+Studio+Toronto&destination=Incurable+Collector+Toronto&travelmode=walking&waypoints=Studio+88+Art+Gallery+Toronto|43.66909611178548,-79.28864219251545|43.6681341196406,-79.29728945767154|43.66628356772898,-79.29749104811573';
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=Thought+Fox+Art+Studio+Toronto&destination=Incurable+Collector+Toronto&travelmode=walking&waypoints=Studio+88+Art+Gallery+Toronto|43.66909611178548,-79.28864219251545|43.66628356772898,-79.29749104811573|43.6681341196406,-79.29728945767154';
     window.open(url, '_blank')
 });
 
@@ -129,13 +129,14 @@ document.getElementById('date-night-google-maps-btn').addEventListener('click', 
 // Button event listener to export page to screen to google maps
 document.getElementById('page-to-screen-google-maps-btn').addEventListener('click', (e) => {
     e.preventDefault();
-    let url = 'https://www.google.com/maps/dir/?api=1&origin=43.672335814591555,-79.29044937527149&destination=43.66636934636088,-79.29672237527186&travelmode=walking&waypoints=43.670540860709345,-79.29951026177929';
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=43.67016879048933,-79.29848340735208&destination=Fox+Theatre+Toronto&travelmode=walking&waypoints=43.66987490917481,-79.29866420836301|43.670002184627094,-79.29785126569573|43.67176434692246,-79.29262763537818|Judy%27s+Beach+Café+Toronto';
     window.open(url, '_blank')
 });
 
 // Button event listener to export pub crawl to google maps
 document.getElementById('pup-crawl-google-maps-btn').addEventListener('click', (e) => {
     e.preventDefault();
-    let url = 'https://www.google.com/maps/dir/RAW+101+-+RAW+Food+For+Dogs+and+Cats,+2186+Queen+St+E,+Toronto,+ON+M4E+1E6/Kew+Gardens+Dog+Park,+Toronto,+ON+M4E+2N8/The+Petninsula+%E2%80%93+Lavakan+Pet+Spa(Self-Serve+Dog+Wash)+M4L+1J3,+Ontario,+Toronto,+Queen+St+E/@43.6692097,-79.3002577,16z?entry=tts';
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=RAW+101+-+RAW+Food+For+Dogs+and+Cats,+2186+Queen+St+E,+Toronto,+ON+M4E+1E6&destination=The+Petninsula+%E2%80%93+Lavakan+Pet+Spa(Self-Serve+Dog+Wash)+M4L+1J3,+Ontario,+Toronto,+Queen+St+E&travelmode=walking&waypoints=43.670201,-79.297930|Kew+Gardens+Dog+Park,+Toronto,+ON+M4E+2N8';
+    // 'https://www.google.com/maps/dir/RAW+101+-+RAW+Food+For+Dogs+and+Cats,+2186+Queen+St+E,+Toronto,+ON+M4E+1E6/Kew+Gardens+Dog+Park,+Toronto,+ON+M4E+2N8/The+Petninsula+%E2%80%93+Lavakan+Pet+Spa(Self-Serve+Dog+Wash)+M4L+1J3,+Ontario,+Toronto,+Queen+St+E/@43.6692097,-79.3002577,16z?entry=tts';
     window.open(url, '_blank')
 });
