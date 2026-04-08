@@ -10,10 +10,10 @@ place = 'The Beaches, Toronto, Ontario, Canada'
 G = ox.graph.graph_from_place(place, network_type='walk')
 
 #Parse the GPX file for the Kew Gardens Route and the Ivan Forrest / Glen Stewart Ravine Route.
-with open("emmett_data/routes/Walk_through_kew_Gardens.gpx", "r") as f:
+with open("data/nature_routes_raw/Walk_through_kew_Gardens.gpx", "r") as f:
     gpx_kg = gpxpy.parse(f)
     
-with open("emmett_data/routes/Glen_Stewart_and_Ivan_Forest_Garden_route.gpx", "r") as f:
+with open("data/nature_routes_raw/Glen_Stewart_and_Ivan_Forest_Garden_route.gpx", "r") as f:
     gpx_ifgsr = gpxpy.parse(f)
 
 #Extract coordinates from the GPX track for Kew Gardens and then Ivan Forrest / Glen Stewart Ravine Routes.

@@ -1,7 +1,7 @@
 import geopandas as gpd
 
 #Imported the geojson and saved it to inat.
-inat = gpd.read_file("emmett_data/inat_beaches.geojson")
+inat = gpd.read_file("data/inat_data/inat_beaches.geojson")
 
 #Printed the columns of inat to see what data is available.
 # print(inat.columns.tolist())
@@ -29,4 +29,4 @@ inat = inat[important_cols]
 inat = inat[inat["quality_gr"] == "research"]
 
 #Uncomment this to save it to the emmett_data folder as a geojson file. I already did this, so I commented it out to avoid overwriting the file.
-# inat.to_file("emmett_data/inat_beaches_cleaned.geojson", driver="GeoJSON")
+# inat.to_file("data/inat_data/inat_beaches_cleaned.geojson", driver="GeoJSON")

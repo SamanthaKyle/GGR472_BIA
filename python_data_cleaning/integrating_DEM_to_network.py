@@ -10,11 +10,11 @@ G = ox.graph.graph_from_place(place, network_type='walk')
 nodes, edges = ox.convert.graph_to_gdfs(G)
 
 #Uncomment this code below and comment everything else to make sure the TIFF file is in ESPG: 4326 before proceeding.
-# with rasterio.open("emmett_data/Beaches_DEM_WGS84_Files/Beaches_DEM_WGS84.tif") as dem:
+# with rasterio.open("data/Beaches_DEM_WGS84_Files/Beaches_DEM_WGS84.tif") as dem:
 #     print(dem.crs)
 
 #Used Claude to figure out how to add DEM to graph. The line below adds elevation to the nodes.
-G = ox.elevation.add_node_elevations_raster(G, "emmett_data/Beaches_DEM_WGS84_Files/Beaches_DEM_WGS84.tif")
+G = ox.elevation.add_node_elevations_raster(G, "data/Beaches_DEM_WGS84_Files/Beaches_DEM_WGS84.tif")
 
 #Used Claude to figure out how to add elevation to the edges (performed in the below code).
 G = ox.elevation.add_edge_grades(G)
@@ -51,4 +51,4 @@ def get_route_stats(G, route_nodes):
 
 #Uncomment this code below to save the new edges file with the stored elevation data. Done outside of a folder originally
 #in JupyterHub, but saved to emmett_data in files afterward.
-#edges.to_file('emmett_data/walking_network_edges_elevation.geojson', driver='GeoJSON')
+#edges.to_file('data/files_for_future/walking_network_edges_updated.geojson', driver='GeoJSON')

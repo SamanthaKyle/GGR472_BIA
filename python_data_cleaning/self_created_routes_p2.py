@@ -7,8 +7,8 @@ import networkx as nx
 #nodes as JSONs.
 
 #Use GPD read_file to import the edited geojsons.
-edited_nodes_kg = gpd.read_file("emmett_data/routes/Kew_Gardens_Park_Node.geojson")
-edited_nodes_ifgsr = gpd.read_file("emmett_data/routes/Ivan_Forrest_GlenStewart_Ravine_Nodes.geojson")
+edited_nodes_kg = gpd.read_file("data/routes/Kew_Gardens_Park_Node.geojson")
+edited_nodes_ifgsr = gpd.read_file("data/routes/Ivan_Forrest_GlenStewart_Ravine_Nodes.geojson")
 
 #Extract the node IDs in order from the properties to ensure the shortest cost path is perfect later.
 manual_nodes_kg = [int(row["node"]) for _, row in edited_nodes_kg.iterrows()]
@@ -45,13 +45,7 @@ for u, v in zip(manual_nodes_ifgsr[:-1], manual_nodes_ifgsr[1:]):
 #Uncomment to save the cleaned routes for later computation, along with their respective JSONs.
 #I already did this, so it should be fine
 #route_gdf_kg = ox.routing.route_to_gdf(G, full_route_kg)
-#route_gdf_kg.to_file("emmett_data/routes/kew_gardens_route_cleaned.geojson", driver="GeoJSON")
+#route_gdf_kg.to_file("data/routes/kew_gardens_route_cleaned.geojson", driver="GeoJSON")
 
 #route_gdf_ifgsr = ox.routing.route_to_gdf(G, full_route_ifgsr)
-#route_gdf_ifgsr.to_file("emmett_data/routes/ivan_forrest_glen_stewart_route_cleaned.geojson", driver="GeoJSON")
-
-#with open("emmett_data/routes/kew_gardens_nodes_cleaned.json", "w") as f:
-#    json.dump(full_route_kg, f)
-    
-#with open("emmett_data/routes/ivan_forrest_glen_stewart_nodes_cleaned.json", "w") as f:
-#    json.dump(full_route_ifgsr, f)
+#route_gdf_ifgsr.to_file("data/routes/ivan_forrest_glen_stewart_route_cleaned.geojson", driver="GeoJSON")
