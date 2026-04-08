@@ -137,6 +137,5 @@ document.getElementById('page-to-screen-google-maps-btn').addEventListener('clic
 document.getElementById('pup-crawl-google-maps-btn').addEventListener('click', (e) => {
     e.preventDefault();
     let url = 'https://www.google.com/maps/dir/?api=1&origin=RAW+101+-+RAW+Food+For+Dogs+and+Cats,+2186+Queen+St+E,+Toronto,+ON+M4E+1E6&destination=The+Petninsula+%E2%80%93+Lavakan+Pet+Spa(Self-Serve+Dog+Wash)+M4L+1J3,+Ontario,+Toronto,+Queen+St+E&travelmode=walking&waypoints=43.670201,-79.297930|Kew+Gardens+Dog+Park,+Toronto,+ON+M4E+2N8';
-    // 'https://www.google.com/maps/dir/RAW+101+-+RAW+Food+For+Dogs+and+Cats,+2186+Queen+St+E,+Toronto,+ON+M4E+1E6/Kew+Gardens+Dog+Park,+Toronto,+ON+M4E+2N8/The+Petninsula+%E2%80%93+Lavakan+Pet+Spa(Self-Serve+Dog+Wash)+M4L+1J3,+Ontario,+Toronto,+Queen+St+E/@43.6692097,-79.3002577,16z?entry=tts';
     window.open(url, '_blank')
 });
