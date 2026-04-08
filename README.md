@@ -39,6 +39,8 @@ Toronto Open Data Portal - TTC GTFS data
 Open Street Maps - Amenities
 Provided by Aziza Reddy - Beaches neighbourhood boundary, water fountain locations, park polygons, bikeshare docks, public parking, public washroom locations
 
-Thank you to Christine Ovcaric for facilitating the connection between GGR472 - Developing Web Maps and The Beach BIA.
-Thank you to Professor Lindsey Smith for selecting us for this opportunity and providing guidance along the way.
-Thank you to Dr. Johanna Carlo for trusting us with your vision for your community and your unwavering support.
+*Thank you to Christine Ovcaric for facilitating the connection between GGR472 - Developing Web Maps and The Beach BIA.*
+
+*Thank you to Professor Lindsey Smith for selecting us for this opportunity and providing guidance along the way.*
+
+*Thank you to Dr. Johanna Carlo for trusting us with your vision for your community and offering your unwavering support*
