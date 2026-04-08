@@ -44,4 +44,4 @@ important_cols = [
 #Filter the place features to only include the important columns and save as a new GeoJSON file.
 cleaned_place_features = place_features[important_cols]
 #Uncomment the code below to save the cleaned place features to a new GeoJSON file (already done so no need to re-do unless you want to).
-#cleaned_place_features.to_file('emmett_data/Beaches_places_features_updated.geojson', driver='GeoJSON')
+#cleaned_place_features.to_file('data/files_for_future/Beaches_places_features_updated.geojson', driver='GeoJSON')
