@@ -44,3 +44,8 @@ Provided by Aziza Reddy - Beaches neighbourhood boundary, water fountain locatio
 *Thank you to Professor Lindsey Smith for selecting us for this opportunity and providing guidance along the way.*
 
 *Thank you to Dr. Johanna Carlo for trusting us with your vision for your community and offering your unwavering support*
+
+### Special Note:
+
+With the amount of data we collected, we ended up processing and cleaning more data than we needed for our project's scope. With that in mind, we still decided to include these pieces of data should any future students need them in future iterations of The Beach BIA X Sandbox’s projects. All cleaned data, whether used or un-used, is in a subfolder of our data folder, with Open Street Maps networks in a folder titled “files_for_future”
+
