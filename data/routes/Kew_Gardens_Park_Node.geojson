@@ -1,0 +1,71 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.297661,
+                    43.6693425
+                ]
+            },
+            "properties": {
+                "node": "317338581",
+                "area": "Upper Park",
+                "name": "Ruby-throated Hummingbird",
+                "desc": "Small but mighty in the Summer time"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.2977183,
+                    43.6679937
+                ]
+            },
+            "properties": {
+                "node": "9416966044",
+                "area": "Mid Park",
+                "name": "Baltimore Oriole",
+                "desc": "A classic sign of Spring in The Beach"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.2984888,
+                    43.6669143
+                ]
+            },
+            "properties": {
+                "node": "317338542",
+                "area": "Lower Park",
+                "name": "Eastern Cottontail",
+                "desc": "Can be seen nibbling grass along the park edges"
+            },
+            "id": 20
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.2997718,
+                    43.670023
+                ]
+            },
+            "properties": {
+                "node": "415591555",
+                "area": "South End",
+                "name": "Eastern Grey Squirrel",
+                "desc": "One of the most commonly found aminals in the park"
+            },
+            "id": 25
+        }
+    ]
+}

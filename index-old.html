@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take the Scenic Route</title>
+
+    <!-- Mapbox GL JS -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.18.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.18.1/mapbox-gl.js"></script>
+
+
+
+    <!-- Mapbox Geocoder -->
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.1.0/mapbox-gl-geocoder.css"
+        type="text/css">
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.1.0/mapbox-gl-geocoder.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- Link to CSS File -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Link to Google Fonts -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans:ital,wdth,wght@0,87.5,100..900;1,87.5,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- MAP CONTAINER -->
+    <div id='my-map' class='map-container'></div>
+
+    <!-- NAVIGATION ELEMENTS -->
+    <div class='map-search-container'>
+        <label for="geocoder">Search for location</label>
+        <div id="geocoder" class="geocoder"></div>
+        <button type="button" class="btn btn-primary btn-sm" id="returnbutton">Return to full extent</button>
+    </div>
+
+    <!-- LEFT PANEL -->
+    <div class="left-panel">
+        <!-- SCROLL AREA WITH CARDS FOR ROUTE CHOICE -->
+        <div class="scroll-area" style="overflow-y:scroll;">
+            <div class="mb-3" id="card-kew" data-panel="panel-kew">
+                <div class="card card-kew">
+                    <div class="card-body">
+                        <h5 class="card-title">Kew Garden Stroll</h5>
+                        <p class="card-text">A route for those who enjoy outdoor physical activity, play and
+                            tranquility.
+                        </p>
+                        <a href="#" class="btn btn-primary" id="kew-gardens-google-maps-btn">Take this route</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3" id="card-ivan-forrest" data-panel="panel-ivan-forrest">
+                <div class="card card-ivan-forrest">
+                    <div class="card-body">
+                        <h5 class="card-title">Ivan Forrest/Glen Stewart Hike</h5>
+                        <p class="card-text">A trail for nature enthusiasts, hikers and those who enjoy a challenge.</p>
+                        <a href="#" class="btn btn-primary" id="ivan-forrest-glen-stewart-google-maps-btn">Take this
+                            route</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3" id="card-pub-crawl" data-panel="panel-pub-crawl">
+                <div class="card card-pub-crawl">
+                    <div class="card-body">
+                        <h5 class="card-title">Pub Crawl</h5>
+                        <p class="card-text">A route for those who enjoy exploring local bars and restaurants.</p>
+                        <a href="#" class="btn btn-primary" id="bar-crawl-google-maps-btn">Take this route</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3" id="card-date-night" data-panel="panel-date-night">
+                <div class="card card-date-night">
+                    <div class="card-body">
+                        <h5 class="card-title">Date Night</h5>
+                        <p class="card-text">A route for you and your partner to explore the best of The Beaches.
+                        </p>
+                        <a href="#" class="btn btn-primary" id="date-night-google-maps-btn">Take this route</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3" id="card-artwalk" data-panel="panel-artwalk">
+                <div class="card card-artwalk">
+                    <div class="card-body">
+                        <h5 class="card-title">Art Walk</h5>
+                        <p class="card-text">A route for parents, who wish to drop off their children at a fun activity
+                            and explore the Beaches art scene.</p>
+                        <a href="#" class="btn btn-primary" id="artwalk-google-maps-btn">Take this route</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3" id="card-page-to-screen" data-panel="panel-page-to-screen">
+                <div class="card card-page-to-screen">
+                    <div class="card-body">
+                        <h5 class="card-title">Page to Screen</h5>
+                        <p class="card-text">A route for those looking to read a book, watch a movie, and explore The
+                            Beaches.</p>
+                        <a href="#" class="btn btn-primary" id="page-to-screen-google-maps-btn">Take this route</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3" id="card-pup-crawl" data-panel="panel-pup-crawl">
+                <div class="card card-pup-crawl">
+                    <div class="card-body">
+                        <h5 class="card-title">Pup Crawl</h5>
+                        <p class="card-text">A route for you and your pup to have an adventurous day at The Beaches.
+                        </p>
+                        <a href="#" class="btn btn-primary" id="pup-crawl-google-maps-btn">Take this route</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FIND YOUR ADVENTURE ROUTE OPTION -->
+        <div class="mb-3" id="card-scenic-route">
+            <div class="card card-scenic-route">
+                <div class="card-body">
+                    <h5 class="card-title">Find your Adventure</h5>
+                    <p class="card-text">Create your own adventure through the Beaches, visiting all of the locations
+                        you wish!</p>
+                    <a href="#" class="btn btn-primary">Coming Soon...</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD PANELS -->
+    <div id="panel-kew" class="side-panel" style="display: none;">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Kew Garden Stroll</h5>
+                <p class="card-text">A route for those who enjoy outdoor physical activity, play and tranquility. This
+                    trail takes travellers through Kew Gardens Park, a staple place of gathering and play in The
+                    Beaches.
+                    Individuals and families may explore the park's gazebo, wildlife, and flora, while children are sure
+                    to
+                    love the playground nested just south of Queen Street East.
+                </p>
+                </br>
+                <h5 class="card-title">While exploring, you may find:</h5>
+                <p class="card-text">Eastern Grey Squirrel (Sciurus carolinensis), Peregrine Falcon (Falco peregrinus),
+                    and Monarch (Danaus plexippus)</p>
+
+                <a href="#" class="btn btn-primary" id="kew-gardens-google-maps-btn">Take this route</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="panel-ivan-forrest" class="side-panel" style="display: none;">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Ivan Forrest/Glen Stewart Hike</h5>
+                <p class="card-text">A trail for nature enthusiasts, hikers and those who enjoy a challenge. This trail
+                    winds through The Beaches Neighbourhood's popular Ivan Forrest Gardens and Glen Stewart Ravine.
+                    Whether it is the diversity in wildlife and flora or the steep elevation changes, the challenging
+                    trail is best suited for those up for a challenge. Experience all the ravine has to offer, and don't
+                    be afraid to go off the wooden path.</p>
+                </br>
+                <h5 class="card-title">While exploring, you may find:</h5>
+                <p class="card-text">American Robin (Turdus migratorius), Turkey-Tail (Trametes versicolor), and
+                    Cooper's Hawk (Astur cooperii)</p>
+                <a href="#" class="btn btn-primary" id="ivan-forrest-glen-stewart-google-maps-btn">Take this
+                    route</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="panel-pub-crawl" class="side-panel" style="display: none;">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Pub Crawl</h5>
+                <p class="card-text">A route for those who enjoy exploring local bars and restaurants. This route is
+                    best for individuals and groups 19+. Experience what The Beaches has to offer as you meander along
+                    Queen Street East, stopping at exciting pubs throughout your journey. Don't be afraid to try a spot
+                    that catches your eye.</p>
+                </br>
+                <h5 class="card-title">On your journey, you will visit:</h5>
+                <p class="card-text">The Stone Lion, The Wolfe Tone, Castro's Lounge, The Druid, The Outrigger, and The
+                    Hideout on the Beach</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="panel-artwalk" class="side-panel" style="display: none;">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Art Walk</h5>
+                <p class="card-text">A route for parents in need of a fun night out. This route allows parents to drop
+                    off their kids at a fun art studio. From there, parents will meander along Queen Street, stopping at
+                    the many art stores and galleries the neighbourhood has to offer. Why not get a scoop of ice cream
+                    on your way too?</p>
+                </br>
+                <h5 class="card-title">On your journey, you will visit:</h5>
+                <p class="card-text">Thought Fox Art Studio, Studio 88 Art Gallery, the Boardwalk, Beaches N' Cream, The
+                    Gardener's Cottage - Kew Williams House, and Incurable Collector</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="panel-date-night" class="side-panel" style="display: none;">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Date Night</h5>
+                <p class="card-text">Looking to explore the best of The Beaches? This route is for pairs seeking a
+                    memorable evening out! Experience the charm of Queen Street East as you stroll past gift shops, ice
+                    cream, and finish it off with a movie. Whether you're celebrating a special occasion or simply
+                    enjoying a night out, let The Beaches set the scene.</p>
+                </br>
+                <h5 class="card-title">On your journey, you will visit:</h5>
+                <p class="card-text">Beachwood Flower Shop, Hanji Gifts, Shop Makers The Beaches, Arts on Queen, Ed's
+                    Real Scoop, & Fox Theatre.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="panel-page-to-screen" class="side-panel" style="display: none;">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Page to Screen</h5>
+                <p class="card-text">A route for those looking to read a book, watch a movie, and explore The
+                    Beaches. This route is primarily for those who enjoy time with themselves or with a friend, and some
+                    quiet. Travellers will first start at The Beaches branch of The Toronto Public Library, picking out
+                    a book of their choosing. They may also want to check out the Coles bookstore just nextdoor. After,
+                    travellers will be encouraged to read their new book, before walking towards one of the oldest movie
+                    theatres in Toronto, The Fox Theatre. Travellers shouldn't be afraid to check out some stores along
+                    the way.</p>
+                </br>
+                <h5 class="card-title">While exploring, you may find:</h5>
+                <p class="card-text">Toronto Public Library - Beaches Branch, Kew Gardens, Ivan Forrest Gardens, Judy's
+                    Beach Cafe, and The Fox Theatre</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="panel-pup-crawl" class="side-panel" style="display: none;">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Pup Crawl</h5>
+                <p class="card-text">Take this route if you want to give your pup the ultimate day out! Start your
+                    adventure with a quick trip to a pet food store and grab a treat for your furry pal. Next, take a
+                    walk down to Kew Gardens Dog Park for some sandy paws and splashes in the lake. Finally, end the day
+                    by pampering the pooch at a doggy spa for a quick wash.</p>
+                </br>
+                <h5 class="card-title">On your journey, you will visit:</h5>
+                <p class="card-text">RAW 101, Kew Gardens Dog Park, & Petninsula.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load the mapbox-gl-geocoder plugin. -->
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.1.0/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.1.0/mapbox-gl-geocoder.css"
+        type="text/css">
+
+    <!-- Load First JS File -->
+    <script src="script.js"></script>
+    <!-- Load Second JS File -->
+    <script src="mapbox_script.js"></script>
+
+    <!-- SWITCH REFERENCE TO ALTERNATIVE JS SOURCE WHEN READY TO EXPLORE EVENTS -->
+    <!-- <script src="script-events-adv.js"></script> -->
+    <!-- <script src="script-events-adv.js"></script> -->
+</body>
+
+</html>
