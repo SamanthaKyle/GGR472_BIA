@@ -1,4 +1,11 @@
-/* To add and style a new card, follow these steps:
+/* To style a new card, already added in HTML, follow these steps:
+    add new style:
+    #<YOUR-CARD-CUSTOM-ID> {
+    background-color: var(<BRAND COLOUR OF YOUR CHOICE);
+    }
+
+    Fill in the id and colour fields with those of your choice.
+    Keep this id and colour in mind when moving to route styling in mapbox_script.js
 1. */
 :root {
     /* Brand colours defined as constants here so they can be accessed everywhere and changed easily */
