@@ -170,6 +170,14 @@ h5 {
     background-color: var(--BRAND_LIGHT_PURPLE);
 }
 
+#card-clothing-crawl { 
+    background-color: var(--BRAND_PEACH);
+}
+
+#card-health-walk {
+    background-color: var(--BRAND_GREEN);
+}
+    
 .side-panel {
     /* This is the panel that opens up to show more information */
     position: absolute;
@@ -214,4 +222,11 @@ h5 {
 
 #panel-pup-crawl {
     background-color: color-mix(in srgb, var(--BRAND_LIGHT_BLUE), transparent 40%);
+}
+
+#panel-clothing-crawl { 
+    background-color: color-mix(in srgb, var(--BRAND_PEACH), transparent 40%);
+}
+
+#panel-health-walk {background-color: color-mix(in srgb, var(--BRAND_GREEN), transparent 40%);
 }
