@@ -91,6 +91,13 @@ function closeCardPanel(card) {
 /*--------------------------------------------------------------------
 EVENT LISTENERS FOR BUTTONS
 --------------------------------------------------------------------*/
+// Button event listeners: open each themed route in Google Maps
+// Each URL uses the Directions API with hardcoded coordinates or place name strings
+// as waypoints. 'travelmode=walking' is set for all routes.
+// '_blank' opens the link in a new tab to keep the map app in view.
+
+// May need to play around with using coordinates and/or place name strings for waypoints to get them all to work properly.
+
 // Button event listener to export kew gardens stroll to google maps
 document.getElementById('kew-gardens-google-maps-btn').addEventListener('click', (e) => {
     e.preventDefault();
