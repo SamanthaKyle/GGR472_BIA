@@ -195,6 +195,6 @@ document.getElementById('clothing-crawl-google-maps-btn').addEventListener('clic
 // Button event listener to export health walk to google maps
 document.getElementById('health-walk-google-maps-btn').addEventListener('click', (e) => {
     e.preventDefault();
-    let url = 'https://www.google.com/maps/dir/?api=1&origin=Beaches+Hot+Yoga,+1911+Queen+St+E,+Toronto,+ON+M4L+1H3&destination=The+Haven+Cafe,+2256+Queen+St+E,+Toronto,+ON+M4E+3K3&travelmode=walking&waypoints=After+Glow,+2034+Queen+St+E,+Toronto,+ON+M4L+1J4|Heal+Wellness,+1938+Queen+St+E,+Toronto,+ON+M4L+1H6|Farmacia+Health+Bar,+2096+Queen+St+E,+Toronto,+ON+M4E+1E1';
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=Beaches+Hot+Yoga,+1911+Queen+St+E,+Toronto,+ON+M4L+1H3&destination=The+Haven+Cafe,+2256+Queen+St+E,+Toronto,+ON+M4E+3K3&travelmode=walking&waypoints=360+Lake+Front,+Toronto,+ON+M4E+1A7|1+Lee+Ave,+Toronto,+ON+M4E+2N8|After+Glow,+2034+Queen+St+E,+Toronto,+ON+M4L+1J4|Heal+Wellness,+1938+Queen+St+E,+Toronto,+ON+M4L+1H6|Farmacia+Health+Bar,+2096+Queen+St+E,+Toronto,+ON+M4E+1E1';
     window.open(url, '_blank')
 });
