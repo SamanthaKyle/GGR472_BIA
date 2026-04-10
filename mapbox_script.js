@@ -67,7 +67,7 @@ HOW TO ADD NEW CARDS/ROUTES
     - the layer values are just the same names that will be used in the later stage of creating the layers
     - in node_colours, the 0th element is the fill colour, and the 1st element is an outline colour
 
-    If you want this route to behave like the existing nature routes (Kew Gardens and Ivan Forrest), there is one more line to update down below in the card event listeners (line 538)
+    If you want this route to behave like the existing nature routes (Kew Gardens and Ivan Forrest), there is one more line to update down below in the card event listeners (line 560)
         this will control whether or not the iNaturalist heatmap becomes visible alongside the route
 
 */
