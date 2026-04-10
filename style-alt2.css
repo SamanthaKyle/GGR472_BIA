@@ -138,22 +138,16 @@ h5 {
 
 #card-kew {
     background-color: var(--BRAND_GREEN);
-    width: 100%;
-    border-radius: 8px;
 }
 
 
 #card-ivan-forrest {
     background-color: var(--BRAND_LIGHT_BLUE);
-    width: 100%;
-    border-radius: 8px;
 
 }
 
 #card-pub-crawl {
     background-color: var(--BRAND_TAUPE);
-    /* width: 100%;
-    border-radius: 8px; */
 }
 
 #card-artwalk {
@@ -162,26 +156,18 @@ h5 {
 
 #card-date-night {
     background-color: var(--BRAND_LIGHT_PINK);
-    /* width: 100%;
-    border-radius: 8px; */
 }
 
 #card-page-to-screen {
     background-color: var(--BRAND_YELLOW);
-    /* width: 100%;
-    border-radius: 8px; */
 }
 
 #card-pup-crawl {
     background-color: var(--BRAND_LIGHT_BLUE);
-    /* width: 100%;
-    border-radius: 8px; */
 }
 
 #card-scenic-route {
     background-color: var(--BRAND_LIGHT_PURPLE);
-    /* width: 100%;
-    border-radius: 8px; */
 }
 
 .side-panel {
