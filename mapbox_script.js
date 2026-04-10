@@ -150,6 +150,28 @@ const CARD_TO_INFO = {
         'node_layer': 'card-pup-crawl-node-layer',
         'route_layer': 'card-pup-crawl-route-layer',
         'label_layer': 'card-pup-crawl-node-layer'
+    },
+    'card-clothing-crawl':
+    {
+        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/ClothingCrawl_nodes.geojson',
+        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/ClothingCrawl_routes.geojson',
+        'center': [-79.2935, 43.6695],
+        'route_colour': BRAND_PEACH,
+        'node_colours': [BRAND_PEACH, BRAND_PEACH],
+        'node_layer': 'card-clothing-crawl-node-layer',
+        'route_layer': 'card-clothing-crawl-route-layer',
+        'label_layer': 'card-clothing-crawl-node-layer'
+    },
+    'card-health-walk':
+    {
+        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/Health_nodes.geojson',
+        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/Health_route.geojson',
+        'center': [-79.2935, 43.6695],
+        'route_colour': BRAND_GREEN,
+        'node_colours': [BRAND_GREEN, BRAND_GREEN],
+        'node_layer': 'card-health-walk-node-layer',
+        'route_layer': 'card-health-walk-route-layer',
+        'label_layer': 'card-health-walk-node-layer'
     }
 }
 
