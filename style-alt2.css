@@ -166,13 +166,13 @@ h5 {
 }
 
 #card-pup-crawl {
-    background-color: var(--BRAND_LIGHT_BLUE);
+    background-color: "lightblue";
     width: 100%;
     border-radius: 8px;
 }
 
 #card-scenic-route {
-    background-color: var(--BRAND_WHITE);
+    background-color: var(--BRAND_LIGHT_PURPLE);
     width: 100%;
     border-radius: 8px;
 }
