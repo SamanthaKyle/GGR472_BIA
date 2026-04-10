@@ -156,8 +156,8 @@ const CARD_TO_INFO = {
         'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/ClothingCrawl_nodes.geojson',
         'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/ClothingCrawl_routes.geojson',
         'center': [-79.2935, 43.6695],
-        'route_colour': BRAND_PEACH,
-        'node_colours': [BRAND_PEACH, BRAND_PEACH],
+        'route_colour': BRAND_LIGHT_PINK,
+        'node_colours': [BRAND_LIGHT_PINK, BRAND_LIGHT_PINK],
         'node_layer': 'card-clothing-crawl-node-layer',
         'route_layer': 'card-clothing-crawl-route-layer',
         'label_layer': 'card-clothing-crawl-node-layer'
