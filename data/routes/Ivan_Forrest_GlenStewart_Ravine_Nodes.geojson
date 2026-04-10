@@ -110,8 +110,8 @@
       "properties": {
         "node": "13359927598",
         "area": "Upper-mid Park",
-        "name": "Bittersweet Nightshade",
-        "desc": "Stop and take a look at the beautiful star-shaped purple flowers"
+        "name": "Cooper's Hawk",
+        "desc": "A bird of prey with rounded wings and a very long tail"
       }
     },
     {
@@ -126,8 +126,8 @@
       "properties": {
         "node": "315664853",
         "area": "Upper Park",
-        "name": "White Snakeroot",
-        "desc": "A native woodland perennial producing fluffy clusters of small white flowers"
+        "name": "Turkey Tail",
+        "desc": "This mushroom owes its name to the shape of wild turkey tail feathers!"
       },
       "id": 26
     },
