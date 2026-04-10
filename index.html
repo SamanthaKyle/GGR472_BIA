@@ -11,8 +11,6 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.18.1/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.18.1/mapbox-gl.js"></script>
 
-
-
     <!-- Mapbox Geocoder -->
     <link rel="stylesheet"
         href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.1.0/mapbox-gl-geocoder.css"
@@ -27,18 +25,11 @@
     <!-- Link to CSS File -->
     <link rel="stylesheet" href="style-alt2.css">
 
-    <!-- Link to Google Fonts -->
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans:ital,wdth,wght@0,87.5,100..900;1,87.5,100..900&display=swap"
         rel="stylesheet">
-    <!-- <link
-        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
-        rel="stylesheet"> -->
 </head>
 
 <body>
@@ -47,18 +38,18 @@
 
     <!-- NAVIGATION ELEMENTS -->
     <div class='map-search-container'>
-        <!-- <label for="geocoder">Search for location</label> -->
         <div id="geocoder" class="geocoder"></div>
         <button type="button" class="btn btn-primary btn-sm" id="returnbutton">Return to full extent</button>
     </div>
 
-    <!-- LEFT PANEL -->
+    <!-- LEFT SIDEBAR PANEL -->
     <div class="left-panel">
         <!-- SCROLL AREA WITH CARDS FOR ROUTE CHOICE -->
         <div class="scroll-area" style="overflow-y:scroll;">
-            <div class="mb-3"  data-panel="panel-kew">
+            <div class="mb-3" data-panel="panel-kew">
                 <div class="card" id="card-kew">
                     <div class="card-body">
+                        <!-- THIS IS WHAT USES SEE WHEN THE CARD IS IDLE -->
                         <h5 class="card-title">Kew Garden Stroll</h5>
                         <p class="card-text">A route for those who enjoy outdoor physical activity, play and
                             tranquility.
@@ -68,8 +59,9 @@
                 </div>
             </div>
             <div class="mb-3" data-panel="panel-ivan-forrest">
-                <div class="card" id="card-ivan-forrest" >
+                <div class="card" id="card-ivan-forrest">
                     <div class="card-body">
+                        <!-- THIS IS WHAT USES SEE WHEN THE CARD IS IDLE -->
                         <h5 class="card-title">Ivan Forrest/Glen Stewart Hike</h5>
                         <p class="card-text">A trail for nature enthusiasts, hikers and those who enjoy a challenge.</p>
 
@@ -77,17 +69,19 @@
                 </div>
             </div>
             <div class="mb-3" data-panel="panel-pub-crawl">
-                <div class="card"  id="card-pub-crawl">
+                <div class="card" id="card-pub-crawl">
                     <div class="card-body">
+                        <!-- THIS IS WHAT USES SEE WHEN THE CARD IS IDLE -->
                         <h5 class="card-title">Pub Crawl</h5>
                         <p class="card-text">A route for those who enjoy exploring local bars and restaurants.</p>
 
                     </div>
                 </div>
             </div>
-            <div class="mb-3"  data-panel="panel-date-night">
+            <div class="mb-3" data-panel="panel-date-night">
                 <div class="card" id="card-date-night">
                     <div class="card-body">
+                        <!-- THIS IS WHAT USES SEE WHEN THE CARD IS IDLE -->
                         <h5 class="card-title">Date Night</h5>
                         <p class="card-text">A route for you and your partner to explore the best of The Beaches.
                         </p>
@@ -95,9 +89,10 @@
                     </div>
                 </div>
             </div>
-            <div class="mb-3"  data-panel="panel-artwalk">
+            <div class="mb-3" data-panel="panel-artwalk">
                 <div class="card" id="card-artwalk">
                     <div class="card-body">
+                        <!-- THIS IS WHAT USES SEE WHEN THE CARD IS IDLE -->
                         <h5 class="card-title">Art Walk</h5>
                         <p class="card-text">A route for parents, who wish to drop off their children at a fun activity
                             and explore the Beaches art scene.</p>
@@ -105,9 +100,10 @@
                     </div>
                 </div>
             </div>
-            <div class="mb-3"  data-panel="panel-page-to-screen">
-                <div class="card" id="card-page-to-screen" >
+            <div class="mb-3" data-panel="panel-page-to-screen">
+                <div class="card" id="card-page-to-screen">
                     <div class="card-body">
+                        <!-- THIS IS WHAT USES SEE WHEN THE CARD IS IDLE -->
                         <h5 class="card-title">Page to Screen</h5>
                         <p class="card-text">A route for those looking to read a book, watch a movie, and explore The
                             Beaches.</p>
@@ -116,8 +112,9 @@
                 </div>
             </div>
             <div class="mb-3" data-panel="panel-pup-crawl">
-                <div class="card"  id="card-pup-crawl">
+                <div class="card" id="card-pup-crawl">
                     <div class="card-body">
+                        <!-- THIS IS WHAT USES SEE WHEN THE CARD IS IDLE -->
                         <h5 class="card-title">Pup Crawl</h5>
                         <p class="card-text">A route for you and your pup to have an adventurous day at The Beaches.
                         </p>
@@ -127,8 +124,8 @@
             </div>
         </div>
 
-        <!-- FIND YOUR ADVENTURE ROUTE OPTION -->
-        <div class="mb-3" >
+        <!-- FIND YOUR ADVENTURE ROUTE OPTION (TO BE IMPLEMENTED) -->
+        <div class="mb-3">
             <div class="card" id="card-scenic-route">
                 <div class="card-body">
                     <h5 class="card-title">Find your Adventure</h5>
@@ -141,6 +138,7 @@
     </div>
 
     <!-- CARD PANELS -->
+     <!-- THIS IS WHAT USES SEE WHEN A CARD IS HOVERED OR CLICKED -->
     <div id="panel-kew" class="side-panel" style="display: none;">
         <div class="card">
             <div class="card-body">
@@ -160,6 +158,7 @@
                 </br>
                 <h5 class="card-title">Note:</h5>
                 <p class="card-text">The purple heat-map present on the map represents areas of high biodiversity.</p>
+                <!-- GOOGLE MAPS BUTTON (SEE SCRIPT.JS) -->
                 <a href="#" class="btn btn-primary" id="kew-gardens-google-maps-btn">Take this route</a>
             </div>
         </div>
@@ -182,6 +181,7 @@
                 </br>
                 <h5 class="card-title">Note:</h5>
                 <p class="card-text">The purple heat-map present on the map represents areas of high biodiversity.</p>
+                <!-- GOOGLE MAPS BUTTON (SEE SCRIPT.JS) -->
                 <a href="#" class="btn btn-primary" id="ivan-forrest-glen-stewart-google-maps-btn">Take this
                     route</a>
             </div>
@@ -200,6 +200,7 @@
                 <h5 class="card-title">On your journey, you will visit:</h5>
                 <p class="card-text">The Stone Lion, The Wolfe Tone, Castro's Lounge, The Druid, The Outrigger, and The
                     Hideout on the Beach</p>
+                <!-- GOOGLE MAPS BUTTON (SEE SCRIPT.JS) -->
                 <a href="#" class="btn btn-primary" id="bar-crawl-google-maps-btn">Take this route</a>
             </div>
         </div>
@@ -217,6 +218,7 @@
                 <h5 class="card-title">On your journey, you will visit:</h5>
                 <p class="card-text">Thought Fox Art Studio, Studio 88 Art Gallery, the Boardwalk, Beaches N' Cream, The
                     Gardener's Cottage - Kew Williams House, and Incurable Collector</p>
+                <!-- GOOGLE MAPS BUTTON (SEE SCRIPT.JS) -->
                 <a href="#" class="btn btn-primary" id="artwalk-google-maps-btn">Take this route</a>
             </div>
         </div>
@@ -234,6 +236,7 @@
                 <h5 class="card-title">On your journey, you will visit:</h5>
                 <p class="card-text">Beachwood Flower Shop, Hanji Gifts, Shop Makers The Beaches, Arts on Queen, Ed's
                     Real Scoop, & Fox Theatre.</p>
+                <!-- GOOGLE MAPS BUTTON (SEE SCRIPT.JS) -->
                 <a href="#" class="btn btn-primary" id="date-night-google-maps-btn">Take this route</a>
             </div>
         </div>
@@ -254,6 +257,7 @@
                 <h5 class="card-title">While exploring, you may find:</h5>
                 <p class="card-text">Toronto Public Library - Beaches Branch, Kew Gardens, Ivan Forrest Gardens, Judy's
                     Beach Cafe, and The Fox Theatre</p>
+                <!-- GOOGLE MAPS BUTTON (SEE SCRIPT.JS) -->
                 <a href="#" class="btn btn-primary" id="page-to-screen-google-maps-btn">Take this route</a>
             </div>
         </div>
@@ -270,6 +274,7 @@
                 </br>
                 <h5 class="card-title">On your journey, you will visit:</h5>
                 <p class="card-text">RAW 101, Kew Gardens Dog Park, & Petninsula.</p>
+                <!-- GOOGLE MAPS BUTTON (SEE SCRIPT.JS) -->
                 <a href="#" class="btn btn-primary" id="pup-crawl-google-maps-btn">Take this route</a>
             </div>
         </div>
