@@ -1,5 +1,6 @@
 
 :root {
+    /* Brand colours defined as constants here so they can be accessed everywhere and changed easily */
     --BRAND_WHITE: #e8f8ff;
     --BRAND_LIGHT_BLUE: #a6ddf4;
     --BRAND_YELLOW: #ffebb5;
@@ -15,6 +16,7 @@
 }
 
 body {
+    /* The exact font in branding package is proprietary and therefore not accessible to us. Here is an approximation */
     font-family: "Noto Sans", sans-serif;
         font-optical-sizing: auto;
         font-weight: 400;
@@ -91,11 +93,11 @@ h5 {
 
 #returnbutton {
     position: relative;
-    /* margin: 10px 0 10px; */
     width: 100%;
 }
 
 .left-panel {
+    /* Contains all cards along left */
     position: absolute;
     top: 2vh;
     bottom: 2vh;
@@ -112,6 +114,7 @@ h5 {
 
 
 .scroll-area {
+    /* Allows for scrolling through cards */
     background: rgba(255, 255, 255, 0.3);
     width: 100%;
     flex: 1;
@@ -120,6 +123,8 @@ h5 {
     padding: 10px;
     border-radius: 8px;
 }
+/* each card has a custom class/id to be styled below */
+/* To add a new card, replicate patterns below */
 
 .card-kew {
     background-color: var(--BRAND_GREEN);
@@ -169,6 +174,7 @@ h5 {
 }
 
 .side-panel {
+    /* This is the panel that opens up to show more information */
     position: absolute;
     left: 22vw;
     min-width: 150px;
