@@ -171,7 +171,7 @@ h5 {
 }
 
 #card-clothing-crawl { 
-    background-color: var(--BRAND_PEACH);
+    background-color: var(--BRAND_LIGHT_PINK);
 }
 
 #card-health-walk {
@@ -225,7 +225,7 @@ h5 {
 }
 
 #panel-clothing-crawl { 
-    background-color: color-mix(in srgb, var(--BRAND_PEACH), transparent 40%);
+    background-color: color-mix(in srgb, var(--BRAND_LIGHT_PINK), transparent 40%);
 }
 
 #panel-health-walk {background-color: color-mix(in srgb, var(--BRAND_GREEN), transparent 40%);
