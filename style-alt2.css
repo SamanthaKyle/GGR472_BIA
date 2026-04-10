@@ -40,6 +40,8 @@ h5 {
 .card {
     background-color: white;
     opacity: 1;
+    width: 100%;
+    border-radius: 8px;
 }
 
 .card-body {
@@ -127,36 +129,37 @@ h5 {
 /* each card has a custom class/id to be styled below */
 /* To add a new card, replicate patterns below */
 
-.card-kew {
+#card-kew {
     background-color: var(--BRAND_GREEN);
     width: 100%;
     border-radius: 8px;
 }
 
-.card-ivan-forrest {
+
+#card-ivan-forrest {
     background-color: var(--BRAND_LIGHT_BLUE);
     width: 100%;
     border-radius: 8px;
 
 }
 
-.card-pub-crawl {
+#card-pub-crawl {
     background-color: var(--BRAND_TAUPE);
     width: 100%;
     border-radius: 8px;
 }
 
-.card-artwalk {
+#card-artwalk {
     background-color: var(--BRAND_ORANGE);
 }
 
-.card-date-night {
+#card-date-night {
     background-color: var(--BRAND_LIGHT_PINK);
     width: 100%;
     border-radius: 8px;
 }
 
-.card-page-to-screen {
+#card-page-to-screen {
     background-color: var(--BRAND_YELLOW);
     width: 100%;
     border-radius: 8px;
@@ -168,7 +171,7 @@ h5 {
     border-radius: 8px;
 }
 
-.card-scenic-route {
+#card-scenic-route {
     background-color: var(--BRAND_WHITE);
     width: 100%;
     border-radius: 8px;
