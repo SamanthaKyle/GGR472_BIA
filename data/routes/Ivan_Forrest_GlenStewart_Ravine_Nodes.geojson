@@ -11,7 +11,10 @@
         ]
       },
       "properties": {
-        "node": "315664859"
+        "node": "315664859",
+        "area": "Lower Park",
+        "name": "Purple-flowered Raspberry",
+        "desc": "A native flowering shrub that's a favourite of local birds"
       }
     },
     {
@@ -24,7 +27,10 @@
         ]
       },
       "properties": {
-        "node": "315664853"
+        "node": "315664853",
+        "area": "Lower-mid Park",
+        "name": "Spotted Jewelweed",
+        "desc": "A native annual flower. Watchout for the orange trumpet-shaped blooms!"
       }
     },
     {
@@ -37,7 +43,10 @@
         ]
       },
       "properties": {
-        "node": "10227716058"
+        "node": "10227716058",
+        "area": "Lower-mid Park",
+        "name": "Eastern Grey Squirrel",
+        "desc": "One of the most recognizable animals in Toronto"
       },
       "id": 2
     },
@@ -51,7 +60,10 @@
         ]
       },
       "properties": {
-        "node": "10226956902"
+        "node": "10226956902",
+        "area": "Mid Park",
+        "name": "Red-winged Blackbird",
+        "desc": "A song bird with bright red and yellow shoulder patches"
       }
     },
     {
@@ -64,7 +76,10 @@
         ]
       },
       "properties": {
-        "node": "10226956857"
+        "node": "10226956857",
+        "area": "Mid Park",
+        "name": "American Robin",
+        "desc": "Look out for this birds orange-red breast and cheery song"
       }
     },
     {
@@ -77,7 +92,10 @@
         ]
       },
       "properties": {
-        "node": "315669770"
+        "node": "315669770",
+        "area": "Upper-mid Park",
+        "name": "Northern Cardinal",
+        "desc": "A beloved bird seen year round at the park"
       }
     },
     {
@@ -90,7 +108,10 @@
         ]
       },
       "properties": {
-        "node": "13359927598"
+        "node": "13359927598",
+        "area": "Upper-mid Park",
+        "name": "Bittersweet Nightshade",
+        "desc": "Stop and take a look at the beautiful star-shaped purple flowers"
       }
     },
     {
@@ -103,7 +124,10 @@
         ]
       },
       "properties": {
-        "node": "315664853"
+        "node": "315664853",
+        "area": "Upper Park",
+        "name": "White Snakeroot",
+        "desc": "A native woodland perennial producing fluffy clusters of small white flowers"
       },
       "id": 26
     },
@@ -117,7 +141,10 @@
         ]
       },
       "properties": {
-        "node": "315664864"
+        "node": "315664864",
+        "area": "Lower Park",
+        "name": "Red-berried Elder",
+        "desc": "A native shrub that blooms early in spring time"
       },
       "id": 32
     }
