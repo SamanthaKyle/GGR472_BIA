@@ -67,7 +67,7 @@ HOW TO ADD NEW CARDS/ROUTES
     - the layer values are just the same names that will be used in the later stage of creating the layers
     - in node_colours, the 0th element is the fill colour, and the 1st element is an outline colour
 
-    If you want this route to behave like the existing nature routes (Kew Gardens and Ivan Forrest), there is one more line to update down below in the card event listeners (line 538)
+    If you want this route to behave like the existing nature routes (Kew Gardens and Ivan Forrest), there is one more line to update down below in the card event listeners (line 560)
         this will control whether or not the iNaturalist heatmap becomes visible alongside the route
 
 */
@@ -150,6 +150,28 @@ const CARD_TO_INFO = {
         'node_layer': 'card-pup-crawl-node-layer',
         'route_layer': 'card-pup-crawl-route-layer',
         'label_layer': 'card-pup-crawl-node-layer'
+    },
+    'card-clothing-crawl':
+    {
+        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/ClothingCrawl_nodes.geojson',
+        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/ClothingCrawl_routes.geojson',
+        'center': [-79.2935, 43.6695],
+        'route_colour': BRAND_LIGHT_PINK,
+        'node_colours': [BRAND_LIGHT_PINK, BRAND_LIGHT_PINK],
+        'node_layer': 'card-clothing-crawl-node-layer',
+        'route_layer': 'card-clothing-crawl-route-layer',
+        'label_layer': 'card-clothing-crawl-node-layer'
+    },
+    'card-health-walk':
+    {
+        'node_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/Health_nodes.geojson',
+        'route_url': 'https://raw.githubusercontent.com/SamanthaKyle/GGR472_BIA/refs/heads/main/data/routes/Health_route.geojson',
+        'center': [-79.2935, 43.6695],
+        'route_colour': BRAND_GREEN,
+        'node_colours': [BRAND_GREEN, BRAND_GREEN],
+        'node_layer': 'card-health-walk-node-layer',
+        'route_layer': 'card-health-walk-route-layer',
+        'label_layer': 'card-health-walk-node-layer'
     }
 }
 
