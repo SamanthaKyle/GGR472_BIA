@@ -1,4 +1,5 @@
-
+/* To add and style a new card, follow these steps:
+1. */
 :root {
     /* Brand colours defined as constants here so they can be accessed everywhere and changed easily */
     --BRAND_WHITE: #e8f8ff;
@@ -189,6 +190,8 @@ h5 {
     
 }
 
+/* Each card has a custom panel. To create a new card, follow style pattern below. */
+
 #panel-kew {
     background-color: color-mix(in srgb, var(--BRAND_GREEN), transparent 40%);
 }
@@ -216,12 +219,3 @@ h5 {
 #panel-pup-crawl {
     background-color: color-mix(in srgb, var(--BRAND_LIGHT_BLUE), transparent 40%);
 }
-
-/* .custom-popup {
-    max-width: 200px;
-    background-color: blue;
-} */
-
-/* .h6 {
-    color: blue;
-} */
