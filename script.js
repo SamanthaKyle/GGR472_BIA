@@ -186,3 +186,15 @@ document.getElementById('pup-crawl-google-maps-btn').addEventListener('click', (
     let url = 'https://www.google.com/maps/dir/?api=1&origin=RAW+101+-+RAW+Food+For+Dogs+and+Cats,+2186+Queen+St+E,+Toronto,+ON+M4E+1E6&destination=The+Petninsula+%E2%80%93+Lavakan+Pet+Spa(Self-Serve+Dog+Wash)+M4L+1J3,+Ontario,+Toronto,+Queen+St+E&travelmode=walking&waypoints=43.670201,-79.297930|Kew+Gardens+Dog+Park,+Toronto,+ON+M4E+2N8';
     window.open(url, '_blank')
 });
+// Button event listener to export clothing crawl to google maps
+document.getElementById('clothing-crawl-google-maps-btn').addEventListener('click', (e) => {
+    e.preventDefault();
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=Marias+Vintage+Boutique,+2238+Queen+St+E,+Toronto,+ON+M4E+1G2&destination=Dot+%26+Bea,+1926+Queen+St+E,+Toronto,+ON+M4L+1H5&travelmode=walking&waypoints=Boa+Boutique,+2116B+Queen+St+E,+Toronto,+ON+M4E+1E2|Charming+Parrot,+1978+Queen+St+E,+Toronto,+ON+M4L+1H8';
+    window.open(url, '_blank')
+});
+// Button event listener to export health walk to google maps
+document.getElementById('health-walk-google-maps-btn').addEventListener('click', (e) => {
+    e.preventDefault();
+    let url = 'https://www.google.com/maps/dir/?api=1&origin=Beaches+Hot+Yoga,+1911+Queen+St+E,+Toronto,+ON+M4L+1H3&destination=The+Haven+Cafe,+2256+Queen+St+E,+Toronto,+ON+M4E+3K3&travelmode=walking&waypoints=After+Glow,+2034+Queen+St+E,+Toronto,+ON+M4L+1J4|Heal+Wellness,+1938+Queen+St+E,+Toronto,+ON+M4L+1H6|Farmacia+Health+Bar,+2096+Queen+St+E,+Toronto,+ON+M4E+1E1';
+    window.open(url, '_blank')
+});
